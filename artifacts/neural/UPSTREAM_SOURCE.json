@@ -1,0 +1,7 @@
+{
+  "model": "cointegrated/rubert-tiny2",
+  "revision": "e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae",
+  "card_url": "https://huggingface.co/cointegrated/rubert-tiny2/raw/e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae/README.md",
+  "license": "MIT per model card",
+  "card_sha256": "6eec7047e9db76ee30e4c9dd542a25cf0c4f1f93a2119db56cd10f0c393fc00f"
+}

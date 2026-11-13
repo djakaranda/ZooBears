@@ -6,7 +6,8 @@
     "nonconsecutive_turn_ids",
     "http_health",
     "http_extraction_matches_cli",
-    "http_invalid_payloads_rejected"
+    "http_invalid_payloads_rejected",
+    "http_demo_page"
   ],
   "http_process_stopped": true
 }

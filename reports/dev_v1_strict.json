@@ -1,0 +1,67 @@
+{
+  "definition": "Full-name similarity >= .8, value >= .85; per-object state; not the official scorer",
+  "calls": 592,
+  "gold_facts": 2793,
+  "pred_facts": 2136,
+  "matched": 658,
+  "fact_precision": 0.3080524344569288,
+  "fact_recall": 0.23558897243107768,
+  "temporal_recall_over_ALL_gold": 0.07124955245255997,
+  "temporal_accuracy_among_matches": 0.30243161094224924,
+  "grounding_turn_among_matches": 0.7629179331306991,
+  "state_accuracy_per_object": 0.20104712041884817,
+  "state_static_vs_changed": {
+    "changed": {
+      "total": 351,
+      "correct": 80,
+      "accuracy": 0.22792022792022792
+    },
+    "static": {
+      "total": 604,
+      "correct": 112,
+      "accuracy": 0.18543046357615894
+    }
+  },
+  "per_attribute": {
+    "action": {
+      "gold": 533,
+      "pred": 234,
+      "matched": 91,
+      "correct_dates": 73,
+      "precision": 0.3888888888888889,
+      "recall": 0.17073170731707318
+    },
+    "agreement": {
+      "gold": 745,
+      "pred": 919,
+      "matched": 59,
+      "correct_dates": 50,
+      "precision": 0.06420021762785637,
+      "recall": 0.07919463087248323
+    },
+    "service_state": {
+      "pred": 414,
+      "gold": 651,
+      "matched": 186,
+      "correct_dates": 15,
+      "precision": 0.4492753623188406,
+      "recall": 0.2857142857142857
+    },
+    "tariff": {
+      "gold": 336,
+      "pred": 142,
+      "matched": 34,
+      "correct_dates": 2,
+      "precision": 0.23943661971830985,
+      "recall": 0.10119047619047619
+    },
+    "ticket_status": {
+      "gold": 528,
+      "pred": 427,
+      "matched": 288,
+      "correct_dates": 59,
+      "precision": 0.6744730679156908,
+      "recall": 0.5454545454545454
+    }
+  }
+}

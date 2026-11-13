@@ -1,0 +1,12 @@
+{
+  "revision": "e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae",
+  "thresholds": {
+    "service_state": 1.5999999999999992,
+    "tariff": 1.799999999999999,
+    "ticket_status": 1.9999999999999991,
+    "action": 1.799999999999999,
+    "agreement": 1.1999999999999993
+  },
+  "selected_epoch": 3,
+  "source": "held-out train dev; complete-pipeline comparison in frozen_selection.json"
+}

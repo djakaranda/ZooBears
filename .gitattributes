@@ -7,3 +7,9 @@
 Dockerfile text eol=lf
 *.pdf binary
 *.joblib binary
+*.safetensors binary
+*.model binary
+*.pptx binary
+*.mjs text eol=lf
+*.html text eol=lf
+data/raw/** -text

@@ -7,3 +7,5 @@ tmp/
 !.env.example
 *.pem
 *.key
+.chart-data-*/
+.codex-finalizer/

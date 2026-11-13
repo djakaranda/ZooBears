@@ -9,11 +9,11 @@ def read_jsonl(path):
 
 def write_json(path, value):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
-    Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
+    Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
 
 
 def write_jsonl(path, rows):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with Path(path).open("w", encoding="utf-8") as stream:
+    with Path(path).open("w", encoding="utf-8", newline="\n") as stream:
         for row in rows:
             stream.write(json.dumps(row, ensure_ascii=False) + "\n")

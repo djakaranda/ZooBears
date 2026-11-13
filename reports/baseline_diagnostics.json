@@ -1,0 +1,3001 @@
+{
+  "official": {
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 2097,
+    "fact_precision": 0.2189,
+    "fact_recall": 0.2488,
+    "temporal_recall": 0.4205,
+    "n_temporal": 459,
+    "state_accuracy": 0.3194,
+    "n_state": 623,
+    "grounding_turn": 0.6906,
+    "grounding_span": null,
+    "n_grounded": 459
+  },
+  "per_attribute": {
+    "service_state": {
+      "n_calls": 383,
+      "n_gold_facts": 453,
+      "n_pred_facts": 749,
+      "fact_precision": 0.0521,
+      "fact_recall": 0.0861,
+      "temporal_recall": 0.1795,
+      "n_temporal": 39,
+      "state_accuracy": 0.0485,
+      "n_state": 309,
+      "grounding_turn": 0.6923,
+      "grounding_span": null,
+      "n_grounded": 39
+    },
+    "tariff": {
+      "n_calls": 383,
+      "n_gold_facts": 146,
+      "n_pred_facts": 196,
+      "fact_precision": 0.3571,
+      "fact_recall": 0.4795,
+      "temporal_recall": 0.2429,
+      "n_temporal": 70,
+      "state_accuracy": 0.3491,
+      "n_state": 106,
+      "grounding_turn": 0.6571,
+      "grounding_span": null,
+      "n_grounded": 70
+    },
+    "ticket_status": {
+      "n_calls": 383,
+      "n_gold_facts": 400,
+      "n_pred_facts": 495,
+      "fact_precision": 0.6444,
+      "fact_recall": 0.7975,
+      "temporal_recall": 0.4828,
+      "n_temporal": 319,
+      "state_accuracy": 0.7067,
+      "n_state": 208,
+      "grounding_turn": 0.721,
+      "grounding_span": null,
+      "n_grounded": 319
+    },
+    "action": {
+      "n_calls": 383,
+      "n_gold_facts": 368,
+      "n_pred_facts": 422,
+      "fact_precision": 0.0332,
+      "fact_recall": 0.038,
+      "temporal_recall": 0.5,
+      "n_temporal": 14,
+      "state_accuracy": null,
+      "n_state": 0,
+      "grounding_turn": 0.7143,
+      "grounding_span": null,
+      "n_grounded": 14
+    },
+    "agreement": {
+      "n_calls": 383,
+      "n_gold_facts": 478,
+      "n_pred_facts": 235,
+      "fact_precision": 0.0723,
+      "fact_recall": 0.0356,
+      "temporal_recall": 0.4706,
+      "n_temporal": 17,
+      "state_accuracy": null,
+      "n_state": 0,
+      "grounding_turn": 0.2353,
+      "grounding_span": null,
+      "n_grounded": 17
+    }
+  },
+  "errors": [
+    {
+      "call_id": "u2027_00005:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00005:dev0",
+          "type": "device",
+          "name": "сплиттер"
+        },
+        "attribute": "service_state",
+        "value": "слабый сигнал вай-фай",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-06-26T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            162,
+            201
+          ],
+          "quote": "слабый сигнал вай-фай, прямо еле тянет"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Здравствуйте-здравствуйте. Это Анячвосия Валерьевна. У меня вот, эээ, беда с интернетом... ну, точнее не с ивтупбетом даже, а со сплиттиром. Вчера ещё заметила — слабый сигнал вай-фэй, пряма еле тянет, чуть телефон не двырнула."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "device",
+            "name": "сплиттер"
+          },
+          "attribute": "service_state",
+          "value": "слабый сигнал Wi-Fi",
+          "polarity": 1,
+          "valid_from": "2026-06-26T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "сплиттер"
+          },
+          "attribute": "service_state",
+          "value": "по кабелю работает нормально",
+          "polarity": 1,
+          "valid_from": "2026-06-27T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "приставка"
+          },
+          "attribute": "agreement",
+          "value": "удалённая перенастройка во вторник",
+          "polarity": 1,
+          "valid_from": "2026-06-27T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "приставка"
+          },
+          "attribute": "action",
+          "value": "удалённая перенастройка с предварительным звонком",
+          "polarity": 1,
+          "valid_from": "2026-06-30T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-06-27T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00006:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00006:svc1",
+          "type": "service",
+          "name": "мобильный интернет"
+        },
+        "attribute": "service_state",
+        "value": "оплата не прошла",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-05-03T08:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            55,
+            111
+          ],
+          "quote": "Списали деньги за мобильный интернет, а оплата не прошла"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Здравствуйте! Эээ, у меня тут биллинг скандал, короче! Списали щыньги за мобильный интернет, а оплата не прошла понимаете?! Деньги верните!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "client",
+            "name": "Мария Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "Орбита-Люкс",
+          "polarity": 1,
+          "valid_from": "2026-08-08T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "мобильный интернет"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-08-08T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "мобильный интернет"
+          },
+          "attribute": "action",
+          "value": "оплата",
+          "polarity": 1,
+          "valid_from": "2026-08-07T00:00:00",
+          "valid_to": "2026-08-07T00:00:00",
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на проверку оплаты"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-08-08T08:00:00",
+          "valid_to": "2026-08-13T00:00:00",
+          "source": {
+            "turn_idx": 12
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на проверку оплаты"
+          },
+          "attribute": "agreement",
+          "value": "согласие на проверку оплаты с ответом по смс до четверга",
+          "polarity": 1,
+          "valid_from": "2026-08-08T08:00:00",
+          "valid_to": "2026-08-13T00:00:00",
+          "source": {
+            "turn_idx": 11
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00008:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00008:client",
+          "type": "client",
+          "name": "Марин Олеговна"
+        },
+        "attribute": "action",
+        "value": "замена сплиттера выполнена мастером",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-09-12T17:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 3,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "client",
+        "text": "Да нет, что вы. У меня замена оборудования была, сплиттер меняли. Я же говорю — —"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5737"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-09-05T00:00:00",
+          "valid_to": "2026-09-06T00:00:00",
+          "source": {
+            "turn_idx": 4
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5737"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-09-06T00:00:00",
+          "valid_to": "2026-09-08T00:00:00",
+          "source": {
+            "turn_idx": 6
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5737"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "valid_from": "2026-09-08T00:00:00",
+          "valid_to": "2026-09-12T17:00:00",
+          "source": {
+            "turn_idx": 6
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5737"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "valid_from": "2026-09-12T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "сплиттер"
+          },
+          "attribute": "action",
+          "value": "замена",
+          "polarity": 1,
+          "valid_from": "2026-09-12T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5737"
+          },
+          "attribute": "agreement",
+          "value": "уведомлена о статусе «выполнена»",
+          "polarity": 1,
+          "valid_from": "2026-09-12T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00009:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00009:svc0",
+          "type": "service",
+          "name": "второй телевизор по договору"
+        },
+        "attribute": "service_state",
+        "value": "работает нормально",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2025-11-20T17:00:00",
+        "valid_to": "2026-06-06T00:00:00",
+        "source": {
+          "turn_idx": 7,
+          "span": null,
+          "quote": "ещё на прошлой неделе второй работал нормально, всё чётко было"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 7,
+        "speaker": "client",
+        "text": "Ну второй ну по договору! Первый-то пабютает представь И вообще ещё на кеделе лтозой работал нормально всё чётко было Я ж не просто так звоню!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "второй телевизор по договору"
+          },
+          "attribute": "service_state",
+          "value": "неисправен: видео воспроизводится рывками",
+          "polarity": 1,
+          "valid_from": "2026-06-07T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "первый телевизор"
+          },
+          "attribute": "service_state",
+          "value": "работает исправно",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "мобильный интернет"
+          },
+          "attribute": "service_state",
+          "value": "работает исправно",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "меш-модуль"
+          },
+          "attribute": "action",
+          "value": "перезагрузка выполнена, проблему не устранила",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": "2026-06-09T17:00:00",
+          "source": {
+            "turn_idx": 17
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марина Андреевна"
+          },
+          "attribute": "tariff",
+          "value": "Квант-X",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 19
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "выезд специалиста на дом"
+          },
+          "attribute": "action",
+          "value": "выезд мастера для диагностики второго телевизора назначен на 2026-06-11, интервал 12:00–14:00",
+          "polarity": 1,
+          "valid_from": "2026-06-11T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 25
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на ремонт второго телевизора"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 25
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "статический IP-адрес"
+          },
+          "attribute": "agreement",
+          "value": "отказ от подключения",
+          "polarity": -1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 27
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "камера"
+          },
+          "attribute": "service_state",
+          "value": "неисправна: мутное, размытое изображение",
+          "polarity": 1,
+          "valid_from": "2026-06-01T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 32
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "камера"
+          },
+          "attribute": "action",
+          "value": "протирка объектива выполнена, не помогла",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": "2026-06-09T17:00:00",
+          "source": {
+            "turn_idx": 34
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "камера"
+          },
+          "attribute": "service_state",
+          "value": "подключена по wi-fi",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 40
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "меш-модуль"
+          },
+          "attribute": "action",
+          "value": "установка для усиления сигнала до камеры назначена на 2026-06-11, интервал 10:00–13:00, без доплаты",
+          "polarity": 1,
+          "valid_from": "2026-06-11T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 56
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на ремонт камеры"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "valid_from": "2026-06-09T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 57
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00010:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00010:client",
+          "type": "client",
+          "name": "Анастасия Валерьевна Прохорова"
+        },
+        "attribute": "tariff",
+        "value": "тариф Гелиос",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-07-23T09:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 5,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 5,
+        "speaker": "client",
+        "text": "Эээ, ну овори что тут за пытки. Я плачу по тарифу Гелиос, а вы мне чего наделали — оплата не прошла, факс стаит мёртвый!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "факсимильная связь"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-07-23T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "факсимильная связь"
+          },
+          "attribute": "service_state",
+          "value": "платёж не прошёл",
+          "polarity": 1,
+          "valid_from": "2026-07-23T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Анастасия Валерьевна"
+          },
+          "attribute": "tariff",
+          "value": "Гелиос",
+          "polarity": 1,
+          "valid_from": "2026-07-23T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "факсимильная связь"
+          },
+          "attribute": "action",
+          "value": "перерасчёт счёта",
+          "polarity": 1,
+          "valid_from": "2026-07-23T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "переходник для сим-карты"
+          },
+          "attribute": "action",
+          "value": "доставка переходника",
+          "polarity": 1,
+          "valid_from": "2026-07-25T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "84512"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-07-23T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00012:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00012:client",
+          "type": "client",
+          "name": "Елен Петровна"
+        },
+        "attribute": "agreement",
+        "value": "выезд специалиста",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-01-28T14:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 16,
+          "span": null,
+          "quote": "Давайте я вам сразу выезд поставлю"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 16,
+        "speaker": "operator",
+        "text": "Отлично фиксирую: выезд специалиста через неделю после двух подтвердит падключение и по заявке 4055 сделают пиресчёт  деньги фирщут на счёт"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "client",
+            "name": "Елена Петровна"
+          },
+          "attribute": "tariff",
+          "value": "Всё для дома",
+          "polarity": 1,
+          "valid_from": "2026-01-21T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "второй телевизор по договору"
+          },
+          "attribute": "service_state",
+          "value": "не подключен",
+          "polarity": -1,
+          "valid_from": "2026-01-21T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4055"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-01-18T00:00:00",
+          "valid_to": "2026-01-20T23:59:59",
+          "source": {
+            "turn_idx": 6
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4055"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-01-21T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "выезд специалиста на дом"
+          },
+          "attribute": "action",
+          "value": "назначен",
+          "polarity": 1,
+          "valid_from": "2026-01-28T14:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4055"
+          },
+          "attribute": "action",
+          "value": "пересчёт и возврат денежных средств",
+          "polarity": 1,
+          "valid_from": "2026-01-21T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "выезд специалиста на дом"
+          },
+          "attribute": "agreement",
+          "value": "согласован клиентом",
+          "polarity": 1,
+          "valid_from": "2026-01-21T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 17
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00013:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00013:svc0",
+          "type": "service",
+          "name": "второй номер"
+        },
+        "attribute": "service_state",
+        "value": "работает нормально",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2025-06-15T10:00:00",
+        "valid_to": "2026-06-09T00:00:00",
+        "source": {
+          "turn_idx": 3,
+          "span": [
+            0,
+            58
+          ],
+          "quote": "Да, работало нормально, прямо до вторника всё было хорошо"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "client",
+        "text": "Да, работало нормально, прямо до вторника всё было хорошо. Со вторника — и поехало. Я уж думала, сама с пяльтом намудрила, есала галову."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "второй номер"
+          },
+          "attribute": "service_state",
+          "value": "нет звука на каналах",
+          "polarity": 1,
+          "valid_from": "2026-06-09T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "второй номер"
+          },
+          "attribute": "action",
+          "value": "проверка и переподключение разъёмов",
+          "polarity": 1,
+          "valid_from": "2026-06-12T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "камера видеонаблюдения"
+          },
+          "attribute": "service_state",
+          "value": "работает",
+          "polarity": 1,
+          "valid_from": "2026-06-14T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "Для ноутбука",
+          "polarity": 1,
+          "valid_from": "2026-05-14T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 481"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-06-14T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 14
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "второй номер"
+          },
+          "attribute": "action",
+          "value": "переключение на резервный канал",
+          "polarity": 1,
+          "valid_from": "2026-06-20T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 14
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00014:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00014:ticket0",
+          "type": "ticket",
+          "name": "заявка 4324"
+        },
+        "attribute": "ticket_status",
+        "value": "принята",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-09-01T00:00:00",
+        "valid_to": "2026-09-03T00:00:00",
+        "source": {
+          "turn_idx": 4,
+          "span": [
+            47,
+            78
+          ],
+          "quote": "три дня назад она была принята"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 4,
+        "speaker": "client",
+        "text": "** Вижу вашу заявку, секунду... Так, смотрите: три дня назад она была принята, тальше по ней уже двигались специалисты..."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "device",
+            "name": "приставка Android TV Box"
+          },
+          "attribute": "service_state",
+          "value": "не работает: виснет, нет изображения",
+          "polarity": 1,
+          "valid_from": "2026-09-01T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4324"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "valid_from": "2026-09-04T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4324"
+          },
+          "attribute": "agreement",
+          "value": "согласие на выезд специалиста в воскресенье (2026-09-06)",
+          "polarity": 1,
+          "valid_from": "2026-09-04T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4324"
+          },
+          "attribute": "action",
+          "value": "подтверждение заявки по смс перед выездом",
+          "polarity": 1,
+          "valid_from": "2026-09-04T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4324"
+          },
+          "attribute": "action",
+          "value": "специалист позвонит перед выездом",
+          "polarity": 1,
+          "valid_from": "2026-09-04T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00015:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00015:svc0",
+          "type": "service",
+          "name": "антивирус для дома"
+        },
+        "attribute": "service_state",
+        "value": "работает нормально",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2025-06-30T16:00:00",
+        "valid_to": "2026-04-10T00:00:00",
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            79,
+            133
+          ],
+          "quote": "антивирус для дома работал нормально, всё было хорошо"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Здравствуйте... это самое... у меня тут, эээ, странная штука. Слушайте, у меня антивирус для дома работал нормально, всё было хорошо, а вчера вдруг — бац — и нет доступа в интернет. Я в шоке, честно говоря."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "антивирус для дома"
+          },
+          "attribute": "service_state",
+          "value": "нет доступа в интернет",
+          "polarity": 1,
+          "valid_from": "2026-04-10T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "приставка"
+          },
+          "attribute": "action",
+          "value": "перенастройка удалённо",
+          "polarity": 1,
+          "valid_from": "2026-04-17T14:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "5264"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-04-11T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "клиент"
+          },
+          "attribute": "tariff",
+          "value": "Пятёрочка",
+          "polarity": 1,
+          "valid_from": "2026-04-11T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00016:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00016:svc0",
+          "type": "service",
+          "name": "дополнительный пакет гигабайтов"
+        },
+        "attribute": "service_state",
+        "value": "средства списаны дважды",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2025-07-16T13:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            156,
+            180
+          ],
+          "quote": "средства списаны дважды"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Накониц-то дозвонилась! Это Марин Сергеевна, и у меня к вам сирьёзный разговор. Вы что там творите?! Я подключила дополнительный пакет гигабайтов, а у меня средства списуны дважды! Дважты, понимаете?"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "дополнительный пакет гигабайтов"
+          },
+          "attribute": "service_state",
+          "value": "подключен",
+          "polarity": 1,
+          "valid_from": "2026-04-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "дополнительный пакет гигабайтов"
+          },
+          "attribute": "action",
+          "value": "двойное списание средств",
+          "polarity": 1,
+          "valid_from": "2026-04-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марина Сергеевна"
+          },
+          "attribute": "action",
+          "value": "пополнение счёта",
+          "polarity": 1,
+          "valid_from": "2026-04-19T13:00:00",
+          "valid_to": "2026-04-19T13:00:00",
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на возврат за двойное списание"
+          },
+          "attribute": "agreement",
+          "value": "согласие на оформление заявки с возвратом средств в течение двух рабочих дней",
+          "polarity": 1,
+          "valid_from": "2026-04-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на возврат за двойное списание"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-04-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00017:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00017:client",
+          "type": "client",
+          "name": "Елене Викторовне"
+        },
+        "attribute": "agreement",
+        "value": "подтверждение заявки по смс",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-10-04T18:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 17,
+          "span": null,
+          "quote": "подтверждение заявки по смс, срок — через четыре дня после шести, вы подтвердили"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 17,
+        "speaker": "client",
+        "text": "так погодите... через четыре дня после шести... это я уже дома буду, да, после работы самое то. да, подходит. подтверждение по смс — это даже удабно."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "обрывы соединения, особенно вечером",
+          "polarity": 1,
+          "valid_from": "2026-09-30T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "мобильный интернет"
+          },
+          "attribute": "service_state",
+          "value": "низкая скорость",
+          "polarity": 1,
+          "valid_from": "2026-09-30T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "action",
+          "value": "подача заявки на обрывы интернета",
+          "polarity": 1,
+          "valid_from": "2026-09-21T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-09-21T00:00:00",
+          "valid_to": "2026-09-22T00:00:00",
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-09-22T00:00:00",
+          "valid_to": "2026-09-29T00:00:00",
+          "source": {
+            "turn_idx": 10
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "valid_from": "2026-09-29T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение по смс",
+          "polarity": 1,
+          "valid_from": "2026-10-04T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 17
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00017:call0001",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00017:client",
+          "type": "client",
+          "name": "Елене Викторовне"
+        },
+        "attribute": "action",
+        "value": "оператор перезвонит клиенту через два дня проверить работу",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-10-03T15:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 15,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 15,
+        "speaker": "client",
+        "text": "эээ... ну перезвоните сами да, через два дня падходит. только, чур, не забыть."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-10-03T15:00:00",
+          "valid_to": "2026-10-03T15:00:00",
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-09-21T00:00:00",
+          "valid_to": "2026-10-03T00:00:00",
+          "source": {
+            "turn_idx": 6
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "valid_from": "2026-10-03T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "роутер"
+          },
+          "attribute": "action",
+          "value": "перезагрузка выполнена",
+          "polarity": 1,
+          "valid_from": "2026-10-03T15:00:00",
+          "valid_to": "2026-10-03T15:00:00",
+          "source": {
+            "turn_idx": 11
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "работает медленно",
+          "polarity": 1,
+          "valid_from": "2026-10-03T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "agreement",
+          "value": "контрольный звонок через два дня; при повторных проблемах — повторная заявка вне очереди",
+          "polarity": 1,
+          "valid_from": "2026-10-05T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00017:call0002",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00017:ticket0",
+          "type": "ticket",
+          "name": "заявка 5252"
+        },
+        "attribute": "ticket_status",
+        "value": "принята",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-09-26T00:00:00",
+        "valid_to": "2026-10-03T00:00:00",
+        "source": {
+          "turn_idx": 6,
+          "span": [
+            44,
+            61
+          ],
+          "quote": "она была принята"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 6,
+        "speaker": "operator",
+        "text": "так, сейчас статус гляну... по заявке 5252: она была принята, и в это этом статуси стояла до вчерашнего дня, а вчера — выполнена. то есть вчера работы по кабелю до повъезда закрыли."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5252"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "valid_from": "2026-10-03T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-10-04T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "мобильный интернет"
+          },
+          "attribute": "service_state",
+          "value": "используется",
+          "polarity": 1,
+          "valid_from": "2026-10-04T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "мобильный интернет"
+          },
+          "attribute": "tariff",
+          "value": "Смарт+",
+          "polarity": 1,
+          "valid_from": "2026-10-04T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "action",
+          "value": "клиент вечером проверит подключение и перезвонит при отсутствии интернета",
+          "polarity": 1,
+          "valid_from": "2026-10-04T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00018:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00018:svc0",
+          "type": "service",
+          "name": "определитель номера"
+        },
+        "attribute": "service_state",
+        "value": "определитель номера подключён и активен",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-02-22T11:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 8,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 8,
+        "speaker": "operator",
+        "text": "определитель номера у вас подключённым, не переживайте. а видеорегистратор работает чирез ваш онт-терминал, это домашний интерщет — минуты тарифа на него не расходуюца, там лимит только на звонки."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "client",
+            "name": "Марина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "ГигаБИТ",
+          "polarity": 1,
+          "valid_from": "2026-02-22T11:00:00",
+          "valid_to": "2026-01-22T11:00:00",
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "продлён",
+          "polarity": 1,
+          "valid_from": "2026-01-22T11:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "Три тысячи минут",
+          "polarity": 1,
+          "valid_from": "2026-01-22T11:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "определитель номера"
+          },
+          "attribute": "service_state",
+          "value": "подключён",
+          "polarity": 1,
+          "valid_from": "2026-02-22T11:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "ОНТ-терминал"
+          },
+          "attribute": "service_state",
+          "value": "работает штатно",
+          "polarity": 1,
+          "valid_from": "2026-02-22T11:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00019:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00019:client",
+          "type": "client",
+          "name": "Марин Сергеевна"
+        },
+        "attribute": "agreement",
+        "value": "расширенный пакет каналов не подключать",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-02-05T17:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 10,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 10,
+        "speaker": "operator",
+        "text": "Хорошо, как скажете, ничиго не подключаю. Тогда подытожу: тариф «Премиум», переход в прошлом месяце, списания верные, пакет не добавляем. Всё так?"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "client",
+            "name": "Марин Сергеевна (счёт 247)"
+          },
+          "attribute": "tariff",
+          "value": "Премиум",
+          "polarity": 1,
+          "valid_from": "2026-01-01T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марин Сергеевна (счёт 247)"
+          },
+          "attribute": "tariff",
+          "value": "Для планшета",
+          "polarity": 1,
+          "valid_from": "2026-01-01T00:00:00",
+          "valid_to": "2026-01-31T23:59:59",
+          "source": {
+            "turn_idx": 5
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00020:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00020:ticket0",
+          "type": "ticket",
+          "name": "заявка 4620"
+        },
+        "attribute": "ticket_status",
+        "value": "принята",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-10-13T00:00:00",
+        "valid_to": "2026-10-15T00:00:00",
+        "source": {
+          "turn_idx": 9,
+          "span": [
+            67,
+            108
+          ],
+          "quote": "Со вторника она была в статусе «принята»"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 9,
+        "speaker": "operator",
+        "text": "понял... то есть вижу, вы уже писали по этому поводу — заявка 4620 со вторника она была в статусе «принята», но вчира хтетус уже сменился — то есть её взяли в работу."
+      },
+      "predictions": []
+    },
+    {
+      "call_id": "u2027_00020:call0002",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00020:svc0",
+          "type": "service",
+          "name": "мобильное приложение оператора"
+        },
+        "attribute": "service_state",
+        "value": "клиент подтвердил, что телевидение работает, каналы показывают",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-10-18T11:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 10,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 10,
+        "speaker": "client",
+        "text": "Секунту… ой, включилось. Ну вроде показывает, да. Слава богу. А если опять сломается — мне снова згонять или как?"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4620"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-10-18T11:00:00",
+          "valid_to": "2026-10-17T00:00:00",
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4620"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "valid_from": "2026-10-17T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "цифровое телевидение"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-10-18T11:00:00",
+          "valid_to": "2026-10-17T00:00:00",
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "цифровое телевидение"
+          },
+          "attribute": "service_state",
+          "value": "работает",
+          "polarity": 1,
+          "valid_from": "2026-10-18T11:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-10-18T11:00:00",
+          "valid_to": "2026-10-17T00:00:00",
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "работает",
+          "polarity": 1,
+          "valid_from": "2026-10-18T11:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "роутер"
+          },
+          "attribute": "action",
+          "value": "замена блока питания",
+          "polarity": 1,
+          "valid_from": "2026-10-17T00:00:00",
+          "valid_to": "2026-10-17T00:00:00",
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4620"
+          },
+          "attribute": "agreement",
+          "value": "закрытие заявки",
+          "polarity": 1,
+          "valid_from": "2026-10-18T11:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00021:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00021:svc0",
+          "type": "service",
+          "name": "конференц-связь"
+        },
+        "attribute": "service_state",
+        "value": "работает нормально",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-05-19T16:00:00",
+        "valid_to": "2026-09-03T00:00:00",
+        "source": {
+          "turn_idx": 3,
+          "span": [
+            21,
+            79
+          ],
+          "quote": "до этого, между прочим, всё работало нормально, стабильно"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "client",
+        "text": "Именно с четверга. А до этого, между прочим, всё работало нирмахьно, стабильно. И вообще я на Улучшенном сижу, не последние деньги плачу!"
+      },
+      "predictions": []
+    },
+    {
+      "call_id": "u2027_00022:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00022:ticket0",
+          "type": "ticket",
+          "name": "заявка 5826"
+        },
+        "attribute": "ticket_status",
+        "value": "принята",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-08-02T00:00:00",
+        "valid_to": "2026-08-04T00:00:00",
+        "source": {
+          "turn_idx": 5,
+          "span": null,
+          "quote": "Она была принята шесть дней назад"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 5,
+        "speaker": "operator",
+        "text": "фамилии достаточно марин олеговна вижу вас так по кешбэку вижу обращение —"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5826"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-08-08T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "tariff",
+          "value": "Триста каналов",
+          "polarity": 1,
+          "valid_from": "2026-08-08T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "кешбэк баллами"
+          },
+          "attribute": "service_state",
+          "value": "баллы не начислены",
+          "polarity": 1,
+          "valid_from": "2026-08-08T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 2
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00024:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00024:ticket0",
+          "type": "ticket",
+          "name": "заявка 5703"
+        },
+        "attribute": "ticket_status",
+        "value": "принята",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-10-04T00:00:00",
+        "valid_to": "2026-10-05T00:00:00",
+        "source": {
+          "turn_idx": 4,
+          "span": [
+            73,
+            108
+          ],
+          "quote": "на прошлой неделе она была принята"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 4,
+        "speaker": "operator",
+        "text": "Ничиго найду по номеру, с которого вы звоните... Так, вичу. Заявка 5703: на прошлой неделе она была принята, а сейчас статус уже сменилс — она в работе."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5703"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-10-08T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 4
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00026:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00026:svc0",
+          "type": "service",
+          "name": "мобильное приложение оператора"
+        },
+        "attribute": "service_state",
+        "value": "каналы не подключились после оплаты",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-10-18T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 4,
+          "span": null,
+          "quote": "платила, каналы не подключились после оплаты"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 4,
+        "speaker": "operator",
+        "text": "Спасибо, Марь Сергевна, нашла вас. Значит, неделю назад приложение работало нормально, а после оплаты каналы не подключились. А тариф у вас сейчас какой? Подскажите."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "мобильное приложение оператора"
+          },
+          "attribute": "service_state",
+          "value": "работало нормально",
+          "polarity": 1,
+          "valid_from": "2026-10-18T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "каналы"
+          },
+          "attribute": "service_state",
+          "value": "не подключились после оплаты (не работают)",
+          "polarity": 1,
+          "valid_from": "2026-10-18T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марья Сергевна"
+          },
+          "attribute": "tariff",
+          "value": "Полный безлимит",
+          "polarity": 1,
+          "valid_from": "2026-09-25T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марья Сергевна"
+          },
+          "attribute": "tariff",
+          "value": "ГигаБИТ (прежний тариф, отменён при переходе)",
+          "polarity": 1,
+          "valid_from": "2026-10-25T10:00:00",
+          "valid_to": "2026-09-25T10:00:00",
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "кабель"
+          },
+          "attribute": "action",
+          "value": "проверен клиентом: цел, подключён",
+          "polarity": 1,
+          "valid_from": "2026-10-25T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "роутер"
+          },
+          "attribute": "service_state",
+          "value": "работает: через него подключены телевизор и телефон",
+          "polarity": 1,
+          "valid_from": "2026-10-25T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "выезд специалиста на дом"
+          },
+          "attribute": "action",
+          "value": "выезд специалиста согласован на четверг (2026-10-29): проверка оборудования и кабеля до подъезда",
+          "polarity": 1,
+          "valid_from": "2026-10-29T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "251031"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "valid_from": "2026-10-25T10:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 14
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00027:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00027:dev1",
+          "type": "device",
+          "name": "медиаконвертер"
+        },
+        "attribute": "service_state",
+        "value": "не ловит вай-фай",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-02-07T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 0,
+          "span": null,
+          "quote": "медиаконвертер не ловит вай-фай"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 0,
+        "speaker": "operator",
+        "text": "техническая поддержка, здравствуйте! меня зовут ну анастасия валерьевна прохорова, слушаю фас."
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "device",
+            "name": "медиаконвертер"
+          },
+          "attribute": "service_state",
+          "value": "вай-фай не работает",
+          "polarity": 1,
+          "valid_from": "2026-02-01T00:00:00",
+          "valid_to": "2026-03-26T18:00:00",
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домофон"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-03-26T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "роутер TP-Link Archer"
+          },
+          "attribute": "service_state",
+          "value": "используется",
+          "polarity": 1,
+          "valid_from": "2026-03-26T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "медиаконвертер"
+          },
+          "attribute": "action",
+          "value": "удалённый перезапуск радиомодуля с перезаливкой конфигурации",
+          "polarity": 1,
+          "valid_from": "2026-03-26T18:00:00",
+          "valid_to": "2026-03-26T18:00:00",
+          "source": {
+            "turn_idx": 12
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "роутер TP-Link Archer"
+          },
+          "attribute": "action",
+          "value": "перезапуск",
+          "polarity": 1,
+          "valid_from": "2026-03-26T18:00:00",
+          "valid_to": "2026-03-26T18:00:00",
+          "source": {
+            "turn_idx": 12
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "медиаконвертер"
+          },
+          "attribute": "service_state",
+          "value": "работает",
+          "polarity": 1,
+          "valid_from": "2026-03-26T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "вопрос с медиаконвертером"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "valid_from": "2026-03-26T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 14
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00028:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00028:client",
+          "type": "client",
+          "name": "Марин Викторовна"
+        },
+        "attribute": "action",
+        "value": "перенос роутера к окну — не помогло",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-07-10T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 7,
+          "span": null,
+          "quote": "Я его уже к окну перенесла — не помогло"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 7,
+        "speaker": "client",
+        "text": "Ну лампочк пакие-то мигают я не знаю Я уже к окну перенесла  не помогло вот"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "интернет"
+          },
+          "attribute": "service_state",
+          "value": "не работает",
+          "polarity": 1,
+          "valid_from": "2026-07-08T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "перенос минут между месяцами"
+          },
+          "attribute": "service_state",
+          "value": "не используется",
+          "polarity": -1,
+          "valid_from": "2026-06-10T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Марина Викторовна"
+          },
+          "attribute": "tariff",
+          "value": "Экстра+",
+          "polarity": 1,
+          "valid_from": "2026-07-10T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "роутер"
+          },
+          "attribute": "action",
+          "value": "перенос к окну",
+          "polarity": 1,
+          "valid_from": "2026-07-10T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5941"
+          },
+          "attribute": "agreement",
+          "value": "согласие на оформление",
+          "polarity": 1,
+          "valid_from": "2026-07-10T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 23
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 5941"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-07-10T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 24
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00028:call0001",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00028:svc0",
+          "type": "service",
+          "name": "ожидание вызова"
+        },
+        "attribute": "service_state",
+        "value": "не подключается к сети",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-07-08T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            37,
+            75
+          ],
+          "quote": "Ожидание вызова — не подключается к сети"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Здравствуйте миня вот проблема ороче Ожидани вызова  не подключается к сети Вообще никак хоть обжмись"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "ожидание вызова"
+          },
+          "attribute": "service_state",
+          "value": "не подключается",
+          "polarity": 1,
+          "valid_from": "2026-07-13T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "5941"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-07-12T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "5941"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста на дом",
+          "polarity": 1,
+          "valid_from": "2026-07-20T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 17
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "5941"
+          },
+          "attribute": "agreement",
+          "value": "специалист позвонит перед выездом",
+          "polarity": 1,
+          "valid_from": "2026-07-20T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 17
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00029:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00029:dev0",
+          "type": "device",
+          "name": "смартфон"
+        },
+        "attribute": "service_state",
+        "value": "ошибка аутентификации",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-04-26T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            99,
+            127
+          ],
+          "quote": "пишет — ошибка аутентификации"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Наконец-то! Вы сколько можно ждать я двадцать минут на линии сижу! У меня смартфон не подключается пишет  ошибка аутентификации ещё вчера началось!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "device",
+            "name": "приставка"
+          },
+          "attribute": "service_state",
+          "value": "не подключается: ошибка аутентификации (смартфон не подключается к приставке)",
+          "polarity": 1,
+          "valid_from": "2026-04-26T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "кабель"
+          },
+          "attribute": "action",
+          "value": "замена кабеля (выполнена клиентом, не помогла)",
+          "polarity": 1,
+          "valid_from": "2026-04-27T13:00:00",
+          "valid_to": "2026-04-27T13:00:00",
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "приставка"
+          },
+          "attribute": "action",
+          "value": "удалённая перенастройка назначена на пятницу, окно до обеда",
+          "polarity": 1,
+          "valid_from": "2026-05-01T00:00:00",
+          "valid_to": "2026-05-01T12:00:00",
+          "source": {
+            "turn_idx": 10
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на удалённую перенастройку приставки"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-04-27T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка на удалённую перенастройку приставки"
+          },
+          "attribute": "agreement",
+          "value": "клиент подтвердил удалённую перенастройку в пятницу до обеда; связываться по номеру, с которого звонил",
+          "polarity": 1,
+          "valid_from": "2026-04-27T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00030:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00030:ticket0",
+          "type": "ticket",
+          "name": "заявка 4541"
+        },
+        "attribute": "ticket_status",
+        "value": "принята",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-09-24T00:00:00",
+        "valid_to": "2026-09-26T00:00:00",
+        "source": {
+          "turn_idx": 6,
+          "span": [
+            77,
+            109
+          ],
+          "quote": "Статус «принята» у неё значился"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 6,
+        "speaker": "operator",
+        "text": "Заявка Елена Петровна, вы её сами зявюмэли, когда звонили по деньгам. Так... Статус «принята» у неё значился, короче но это уже прошло — с четверга статус сменился, она двинулась дальше."
+      },
+      "predictions": []
+    },
+    {
+      "call_id": "u2027_00031:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00031:client",
+          "type": "client",
+          "name": "Катерина Сергеевна"
+        },
+        "attribute": "agreement",
+        "value": "выезд специалиста",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-08-16T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 8,
+          "span": [
+            43,
+            78
+          ],
+          "quote": "предлагаю оформить выезд специалиста"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 8,
+        "speaker": "operator",
+        "text": "хорошо это мэсрер на месте посмотрит тогда предлагаю оформить выезд специалист  могу дать через два дня окно с девяти утра и до обеда подойдёт"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "неисправен: работает очень медленно",
+          "polarity": 1,
+          "valid_from": "2026-08-14T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "device",
+            "name": "ТВ-приставка"
+          },
+          "attribute": "service_state",
+          "value": "неисправна: изображение рассыпается на квадраты",
+          "polarity": 1,
+          "valid_from": "2026-08-14T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "аренда ТВ-приставки"
+          },
+          "attribute": "service_state",
+          "value": "подключена",
+          "polarity": 1,
+          "valid_from": "2026-08-14T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний телефон"
+          },
+          "attribute": "service_state",
+          "value": "неисправен: сильный треск (радиотелефон), разговор затруднён",
+          "polarity": 1,
+          "valid_from": "2026-08-14T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "безлимит на соцсети"
+          },
+          "attribute": "service_state",
+          "value": "подключён, но не работает: соцсети не грузятся",
+          "polarity": 1,
+          "valid_from": "2026-08-13T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "Новый оптимальный",
+          "polarity": 1,
+          "valid_from": "2026-08-14T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4674"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "valid_from": "2026-08-03T00:00:00",
+          "valid_to": "2026-08-13T00:00:00",
+          "source": {
+            "turn_idx": 5
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4674"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-08-13T00:00:00",
+          "valid_to": "2026-08-14T19:00:00",
+          "source": {
+            "turn_idx": 4
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "заявка 4674"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "valid_from": "2026-08-14T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "выезд специалиста на дом"
+          },
+          "attribute": "action",
+          "value": "выезд назначен на 2026-08-16, окно с 09:00 до обеда, без звонков клиенту до 09:00",
+          "polarity": 1,
+          "valid_from": "2026-08-16T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00031:call0001",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00031:ticket0",
+          "type": "ticket",
+          "name": "заявка 4674"
+        },
+        "attribute": "ticket_status",
+        "value": "принята",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-08-11T00:00:00",
+        "valid_to": "2026-08-16T00:00:00",
+        "source": {
+          "turn_idx": 11,
+          "span": [
+            94,
+            136
+          ],
+          "quote": "номер заявки 4674, статус сейчас «принята»"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 11,
+        "speaker": "operator",
+        "text": "Сумма небольшая, помесячно. Точный расчёт сделает биллинг по итогам проверки. Заявку создаю — номер заявки 4674, татус сейчас «принята». Ранее, до вчерашнего дня, обращение по этому пущиду уже проходило со статусом «принята», потом оно сменилось, сейчас создала новое."
+      },
+      "predictions": []
+    },
+    {
+      "call_id": "u2027_00032:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00032:svc0",
+          "type": "service",
+          "name": "поиск по запросам"
+        },
+        "attribute": "service_state",
+        "value": "работает нормально",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-01-31T17:00:00",
+        "valid_to": "2026-06-18T00:00:00",
+        "source": {
+          "turn_idx": 5,
+          "span": [
+            118,
+            159
+          ],
+          "quote": "И всё работало нормально, замечаний ноль"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 5,
+        "speaker": "client",
+        "text": "Ну хоть какое-то совпадение хорошее за сегодня. А так — услуга ваша «поиск по запросам», я за неё каждый мисяц плачу. И всё работало нормально, замечаний ноль. А три дня назад — как отрезало!"
+      },
+      "predictions": []
+    },
+    {
+      "call_id": "u2027_00032:call0001",
+      "missed_gold": {
+        "object": {
+          "id": "u2027_00032:svc0",
+          "type": "service",
+          "name": "поиск по запросам"
+        },
+        "attribute": "service_state",
+        "value": "соединение только у части устройств",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-06-18T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 3,
+          "span": [
+            50,
+            92
+          ],
+          "quote": "у меня соединение только у части устройств"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "client",
+        "text": "Намер сейчас… четыреста восемьдесят один Слушайте у меня соединение только у части устройств  вот мини-приставка работает а смарт-телевизор нет Это что вообще такое"
+      },
+      "predictions": [
+        {
+          "object": {
+            "type": "service",
+            "name": "домашний интернет"
+          },
+          "attribute": "service_state",
+          "value": "неисправность: соединение только у части устройств (мини-приставка работает, смарт-телевизор сеть не видит)",
+          "polarity": 1,
+          "valid_from": "2026-06-16T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3
+          }
+        },
+        {
+          "object": {
+            "type": "ticket",
+            "name": "5705"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "valid_from": "2026-06-22T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8
+          }
+        },
+        {
+          "object": {
+            "type": "service",
+            "name": "выезд специалиста на дом"
+          },
+          "attribute": "action",
+          "value": "назначен выезд утром (специалист позвонит заранее)",
+          "polarity": 1,
+          "valid_from": "2026-06-25T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13
+          }
+        }
+      ]
+    }
+  ],
+  "diagnostics": {
+    "matched_pairs_passing_full_object_name_similarity": 275,
+    "official_matched_pairs": 459,
+    "full_name_agreement_among_official_matches": 0.599128540305011,
+    "correct_temporal_matches_divided_by_ALL_gold_facts": 0.1046070460704607,
+    "note": "Full-name agreement filters official matches; it is diagnostic, not an independent optimal rematching metric. Official temporal_recall is conditional on matched facts."
+  }
+}

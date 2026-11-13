@@ -1,0 +1,14 @@
+{
+  "engine": "hybrid",
+  "device": "cpu",
+  "quantized": false,
+  "max_length": null,
+  "calls": 383,
+  "mode": "balanced",
+  "latency_mean_ms": 166.86968589852034,
+  "latency_p50_ms": 125.56499999482185,
+  "latency_p95_ms": 442.17772993724776,
+  "max_sampled_rss_mb": 1246.16796875,
+  "gpu_peak_allocated_mb": null,
+  "note": "Sequential batch=one whole call; within-call turns batched for neural. First call included; load and IO excluded; CUDA synchronized."
+}

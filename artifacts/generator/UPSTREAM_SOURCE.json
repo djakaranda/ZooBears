@@ -1,0 +1,7 @@
+{
+  "model": "cointegrated/rut5-small",
+  "revision": "8d74f734a90cfb55f71d9792bfd446b0e9b5267b",
+  "card_url": "https://huggingface.co/cointegrated/rut5-small/raw/8d74f734a90cfb55f71d9792bfd446b0e9b5267b/README.md",
+  "license": "MIT per model card",
+  "card_sha256": "e660d000ab8d1f575857d60e6319e50fa1e0114f32010dc7f2339a98d7bbc048"
+}

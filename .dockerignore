@@ -4,3 +4,6 @@
 !src/**
 !artifacts/
 !artifacts/cpu_baseline.joblib
+!artifacts/neural/
+!artifacts/neural/**
+!Dockerfile.neural

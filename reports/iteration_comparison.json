@@ -1,0 +1,428 @@
+{
+  "baseline_recomputed": {
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 2097,
+    "fact_precision": 0.2189,
+    "fact_recall": 0.2488,
+    "temporal_recall": 0.4205,
+    "n_temporal": 459,
+    "state_accuracy": 0.3194,
+    "n_state": 623,
+    "grounding_turn": 0.6906,
+    "grounding_span": null,
+    "n_grounded": 459
+  },
+  "previous_v1": {
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 1336,
+    "fact_precision": 0.4334,
+    "fact_recall": 0.3138,
+    "temporal_recall": 0.3195,
+    "n_temporal": 579,
+    "state_accuracy": 0.2504,
+    "n_state": 623,
+    "grounding_turn": 0.734,
+    "grounding_span": 1.0,
+    "n_grounded": 579
+  },
+  "models": {
+    "encoder_cpu": {
+      "metrics": {
+        "n_calls": 383,
+        "n_gold_facts": 1845,
+        "n_pred_facts": 1553,
+        "fact_precision": 0.4784,
+        "fact_recall": 0.4027,
+        "temporal_recall": 0.3984,
+        "n_temporal": 743,
+        "state_accuracy": 0.3628,
+        "n_state": 623,
+        "grounding_turn": 0.8156,
+        "grounding_span": 0.9761,
+        "n_grounded": 743
+      },
+      "strict": {
+        "definition": "Full-name similarity >= .8, value >= .85; per-object state; not the official scorer",
+        "calls": 383,
+        "gold_facts": 1845,
+        "pred_facts": 1553,
+        "matched": 584,
+        "fact_precision": 0.3760463618802318,
+        "fact_recall": 0.3165311653116531,
+        "temporal_recall_over_ALL_gold": 0.11490514905149052,
+        "temporal_accuracy_among_matches": 0.363013698630137,
+        "grounding_turn_among_matches": 0.821917808219178,
+        "state_accuracy_per_object": 0.3113964686998395,
+        "state_static_vs_changed": {
+          "static": {
+            "total": 390,
+            "correct": 93,
+            "accuracy": 0.23846153846153847
+          },
+          "changed": {
+            "total": 233,
+            "correct": 101,
+            "accuracy": 0.4334763948497854
+          }
+        },
+        "per_attribute": {
+          "service_state": {
+            "gold": 453,
+            "pred": 312,
+            "matched": 157,
+            "correct_dates": 16,
+            "precision": 0.5032051282051282,
+            "recall": 0.3465783664459161
+          },
+          "action": {
+            "gold": 368,
+            "pred": 178,
+            "matched": 72,
+            "correct_dates": 58,
+            "precision": 0.4044943820224719,
+            "recall": 0.1956521739130435
+          },
+          "agreement": {
+            "gold": 478,
+            "pred": 650,
+            "matched": 59,
+            "correct_dates": 55,
+            "precision": 0.09076923076923077,
+            "recall": 0.12343096234309624
+          },
+          "tariff": {
+            "gold": 146,
+            "pred": 75,
+            "matched": 13,
+            "correct_dates": 1,
+            "precision": 0.17333333333333334,
+            "recall": 0.08904109589041095
+          },
+          "ticket_status": {
+            "gold": 400,
+            "pred": 338,
+            "matched": 283,
+            "correct_dates": 82,
+            "precision": 0.8372781065088757,
+            "recall": 0.7075
+          }
+        }
+      },
+      "resources": {
+        "engine": "hybrid",
+        "device": "cpu",
+        "quantized": false,
+        "max_length": null,
+        "calls": 383,
+        "mode": "balanced",
+        "latency_mean_ms": 166.86968589852034,
+        "latency_p50_ms": 125.56499999482185,
+        "latency_p95_ms": 442.17772993724776,
+        "max_sampled_rss_mb": 1246.16796875,
+        "gpu_peak_allocated_mb": null,
+        "note": "Sequential batch=one whole call; within-call turns batched for neural. First call included; load and IO excluded; CUDA synchronized."
+      }
+    },
+    "encoder_int8": {
+      "metrics": {
+        "n_calls": 383,
+        "n_gold_facts": 1845,
+        "n_pred_facts": 1532,
+        "fact_precision": 0.4778,
+        "fact_recall": 0.3967,
+        "temporal_recall": 0.3907,
+        "n_temporal": 732,
+        "state_accuracy": 0.3499,
+        "n_state": 623,
+        "grounding_turn": 0.8128,
+        "grounding_span": 0.9757,
+        "n_grounded": 732
+      },
+      "strict": {
+        "definition": "Full-name similarity >= .8, value >= .85; per-object state; not the official scorer",
+        "calls": 383,
+        "gold_facts": 1845,
+        "pred_facts": 1532,
+        "matched": 573,
+        "fact_precision": 0.37402088772845954,
+        "fact_recall": 0.3105691056910569,
+        "temporal_recall_over_ALL_gold": 0.10948509485094851,
+        "temporal_accuracy_among_matches": 0.3525305410122164,
+        "grounding_turn_among_matches": 0.8184991273996509,
+        "state_accuracy_per_object": 0.3001605136436597,
+        "state_static_vs_changed": {
+          "static": {
+            "total": 390,
+            "correct": 90,
+            "accuracy": 0.23076923076923078
+          },
+          "changed": {
+            "total": 233,
+            "correct": 97,
+            "accuracy": 0.41630901287553645
+          }
+        },
+        "per_attribute": {
+          "service_state": {
+            "gold": 453,
+            "pred": 306,
+            "matched": 154,
+            "correct_dates": 15,
+            "precision": 0.5032679738562091,
+            "recall": 0.33995584988962474
+          },
+          "action": {
+            "gold": 368,
+            "pred": 173,
+            "matched": 73,
+            "correct_dates": 58,
+            "precision": 0.42196531791907516,
+            "recall": 0.1983695652173913
+          },
+          "agreement": {
+            "gold": 478,
+            "pred": 650,
+            "matched": 56,
+            "correct_dates": 50,
+            "precision": 0.08615384615384615,
+            "recall": 0.11715481171548117
+          },
+          "tariff": {
+            "gold": 146,
+            "pred": 73,
+            "matched": 13,
+            "correct_dates": 1,
+            "precision": 0.1780821917808219,
+            "recall": 0.08904109589041095
+          },
+          "ticket_status": {
+            "gold": 400,
+            "pred": 330,
+            "matched": 277,
+            "correct_dates": 78,
+            "precision": 0.8393939393939394,
+            "recall": 0.6925
+          }
+        }
+      },
+      "resources": {
+        "engine": "hybrid",
+        "device": "cpu",
+        "quantized": true,
+        "max_length": null,
+        "calls": 383,
+        "mode": "balanced",
+        "latency_mean_ms": 153.55355692079033,
+        "latency_p50_ms": 116.52379995211959,
+        "latency_p95_ms": 382.86891001043836,
+        "max_sampled_rss_mb": 1403.86328125,
+        "gpu_peak_allocated_mb": null,
+        "note": "Sequential batch=one whole call; within-call turns batched for neural. First call included; load and IO excluded; CUDA synchronized."
+      }
+    },
+    "encoder_gpu": {
+      "metrics": {
+        "n_calls": 383,
+        "n_gold_facts": 1845,
+        "n_pred_facts": 1553,
+        "fact_precision": 0.4784,
+        "fact_recall": 0.4027,
+        "temporal_recall": 0.3984,
+        "n_temporal": 743,
+        "state_accuracy": 0.3628,
+        "n_state": 623,
+        "grounding_turn": 0.8156,
+        "grounding_span": 0.9761,
+        "n_grounded": 743
+      },
+      "strict": {
+        "definition": "Full-name similarity >= .8, value >= .85; per-object state; not the official scorer",
+        "calls": 383,
+        "gold_facts": 1845,
+        "pred_facts": 1553,
+        "matched": 584,
+        "fact_precision": 0.3760463618802318,
+        "fact_recall": 0.3165311653116531,
+        "temporal_recall_over_ALL_gold": 0.11490514905149052,
+        "temporal_accuracy_among_matches": 0.363013698630137,
+        "grounding_turn_among_matches": 0.821917808219178,
+        "state_accuracy_per_object": 0.3113964686998395,
+        "state_static_vs_changed": {
+          "static": {
+            "total": 390,
+            "correct": 93,
+            "accuracy": 0.23846153846153847
+          },
+          "changed": {
+            "total": 233,
+            "correct": 101,
+            "accuracy": 0.4334763948497854
+          }
+        },
+        "per_attribute": {
+          "service_state": {
+            "gold": 453,
+            "pred": 312,
+            "matched": 157,
+            "correct_dates": 16,
+            "precision": 0.5032051282051282,
+            "recall": 0.3465783664459161
+          },
+          "action": {
+            "gold": 368,
+            "pred": 178,
+            "matched": 72,
+            "correct_dates": 58,
+            "precision": 0.4044943820224719,
+            "recall": 0.1956521739130435
+          },
+          "agreement": {
+            "gold": 478,
+            "pred": 650,
+            "matched": 59,
+            "correct_dates": 55,
+            "precision": 0.09076923076923077,
+            "recall": 0.12343096234309624
+          },
+          "tariff": {
+            "gold": 146,
+            "pred": 75,
+            "matched": 13,
+            "correct_dates": 1,
+            "precision": 0.17333333333333334,
+            "recall": 0.08904109589041095
+          },
+          "ticket_status": {
+            "gold": 400,
+            "pred": 338,
+            "matched": 283,
+            "correct_dates": 82,
+            "precision": 0.8372781065088757,
+            "recall": 0.7075
+          }
+        }
+      },
+      "resources": {
+        "engine": "hybrid",
+        "device": "cuda",
+        "quantized": false,
+        "max_length": null,
+        "calls": 383,
+        "mode": "balanced",
+        "latency_mean_ms": 123.6163511764083,
+        "latency_p50_ms": 94.36170000117272,
+        "latency_p95_ms": 339.1844799625687,
+        "max_sampled_rss_mb": 1718.078125,
+        "gpu_peak_allocated_mb": 438.7666015625,
+        "note": "Sequential batch=one whole call; within-call turns batched for neural. First call included; load and IO excluded; CUDA synchronized."
+      }
+    },
+    "quality_gpu": {
+      "metrics": {
+        "n_calls": 383,
+        "n_gold_facts": 1845,
+        "n_pred_facts": 1548,
+        "fact_precision": 0.489,
+        "fact_recall": 0.4103,
+        "temporal_recall": 0.3963,
+        "n_temporal": 757,
+        "state_accuracy": 0.3724,
+        "n_state": 623,
+        "grounding_turn": 0.8164,
+        "grounding_span": 0.9744,
+        "n_grounded": 757
+      },
+      "strict": {
+        "definition": "Full-name similarity >= .8, value >= .85; per-object state; not the official scorer",
+        "calls": 383,
+        "gold_facts": 1845,
+        "pred_facts": 1548,
+        "matched": 590,
+        "fact_precision": 0.38113695090439276,
+        "fact_recall": 0.31978319783197834,
+        "temporal_recall_over_ALL_gold": 0.11653116531165311,
+        "temporal_accuracy_among_matches": 0.3644067796610169,
+        "grounding_turn_among_matches": 0.8203389830508474,
+        "state_accuracy_per_object": 0.31781701444622795,
+        "state_static_vs_changed": {
+          "static": {
+            "total": 390,
+            "correct": 94,
+            "accuracy": 0.24102564102564103
+          },
+          "changed": {
+            "total": 233,
+            "correct": 104,
+            "accuracy": 0.44635193133047213
+          }
+        },
+        "per_attribute": {
+          "service_state": {
+            "gold": 453,
+            "pred": 312,
+            "matched": 157,
+            "correct_dates": 16,
+            "precision": 0.5032051282051282,
+            "recall": 0.3465783664459161
+          },
+          "action": {
+            "gold": 368,
+            "pred": 178,
+            "matched": 72,
+            "correct_dates": 58,
+            "precision": 0.4044943820224719,
+            "recall": 0.1956521739130435
+          },
+          "agreement": {
+            "gold": 478,
+            "pred": 650,
+            "matched": 59,
+            "correct_dates": 55,
+            "precision": 0.09076923076923077,
+            "recall": 0.12343096234309624
+          },
+          "tariff": {
+            "gold": 146,
+            "pred": 70,
+            "matched": 19,
+            "correct_dates": 4,
+            "precision": 0.2714285714285714,
+            "recall": 0.13013698630136986
+          },
+          "ticket_status": {
+            "gold": 400,
+            "pred": 338,
+            "matched": 283,
+            "correct_dates": 82,
+            "precision": 0.8372781065088757,
+            "recall": 0.7075
+          }
+        }
+      },
+      "resources": {
+        "engine": "hybrid",
+        "device": "cuda",
+        "quantized": false,
+        "max_length": null,
+        "calls": 383,
+        "mode": "balanced",
+        "latency_mean_ms": 126.91986814868336,
+        "latency_p50_ms": 95.1676000840962,
+        "latency_p95_ms": 344.5004400447941,
+        "max_sampled_rss_mb": 2461.6640625,
+        "gpu_peak_allocated_mb": 685.9443359375,
+        "note": "Sequential batch=one whole call; within-call turns batched for neural. First call included; load and IO excluded; CUDA synchronized."
+      }
+    }
+  },
+  "quality_targets": {
+    "temporal": 0.4005,
+    "state": 0.3283
+  },
+  "quality_retention_met_against_both_supplied_and_recomputed_baselines": false,
+  "retention_against_supplied_baseline": true,
+  "retention_against_recomputed_baseline": false,
+  "cost_reduction_verified": false
+}

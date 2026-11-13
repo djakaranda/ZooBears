@@ -1,0 +1,3799 @@
+{
+  "official": {
+    "n_calls": 592,
+    "n_gold_facts": 2793,
+    "n_pred_facts": 2258,
+    "fact_precision": 0.4774,
+    "fact_recall": 0.386,
+    "temporal_recall": 0.3599,
+    "n_temporal": 1078,
+    "state_accuracy": 0.3246,
+    "n_state": 955,
+    "grounding_turn": 0.8006,
+    "grounding_span": 0.9526,
+    "n_grounded": 1078
+  },
+  "per_attribute": {
+    "service_state": {
+      "n_calls": 592,
+      "n_gold_facts": 651,
+      "n_pred_facts": 453,
+      "fact_precision": 0.574,
+      "fact_recall": 0.3994,
+      "temporal_recall": 0.1038,
+      "n_temporal": 260,
+      "state_accuracy": 0.1952,
+      "n_state": 456,
+      "grounding_turn": 0.8846,
+      "grounding_span": 0.9034,
+      "n_grounded": 260
+    },
+    "tariff": {
+      "n_calls": 592,
+      "n_gold_facts": 336,
+      "n_pred_facts": 200,
+      "fact_precision": 0.46,
+      "fact_recall": 0.2738,
+      "temporal_recall": 0.1087,
+      "n_temporal": 92,
+      "state_accuracy": 0.1623,
+      "n_state": 228,
+      "grounding_turn": 0.6304,
+      "grounding_span": 0.881,
+      "n_grounded": 92
+    },
+    "ticket_status": {
+      "n_calls": 592,
+      "n_gold_facts": 528,
+      "n_pred_facts": 459,
+      "fact_precision": 0.9346,
+      "fact_recall": 0.8125,
+      "temporal_recall": 0.2844,
+      "n_temporal": 429,
+      "state_accuracy": 0.679,
+      "n_state": 271,
+      "grounding_turn": 0.8765,
+      "grounding_span": 0.979,
+      "n_grounded": 429
+    },
+    "action": {
+      "n_calls": 592,
+      "n_gold_facts": 533,
+      "n_pred_facts": 229,
+      "fact_precision": 0.655,
+      "fact_recall": 0.2814,
+      "temporal_recall": 0.86,
+      "n_temporal": 150,
+      "state_accuracy": null,
+      "n_state": 0,
+      "grounding_turn": 0.9667,
+      "grounding_span": 0.9817,
+      "n_grounded": 150
+    },
+    "agreement": {
+      "n_calls": 592,
+      "n_gold_facts": 745,
+      "n_pred_facts": 917,
+      "fact_precision": 0.1603,
+      "fact_recall": 0.1973,
+      "temporal_recall": 0.6803,
+      "n_temporal": 147,
+      "state_accuracy": null,
+      "n_state": 0,
+      "grounding_turn": 0.3673,
+      "grounding_span": 1.0,
+      "n_grounded": 147
+    }
+  },
+  "errors": [
+    {
+      "call_id": "u101_00000:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00000:client",
+          "type": "client",
+          "name": "Елене Викторовне"
+        },
+        "attribute": "action",
+        "value": "замена батареек в пульте",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-05-19T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 7,
+          "span": null,
+          "quote": "я вчера, кстати, делала замену батареек в пульте"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 7,
+        "speaker": "client",
+        "text": "ой, я вчера, кстати, дофала замену в пульте, думала, в нём дело. нит, не помогло."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00000:service:ac83330f",
+            "type": "service",
+            "name": "подписка на сериалы"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-19T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1,
+            "span": [
+              51,
+              86
+            ],
+            "quote": "на прошло неделе работала норзащьно"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00000:client:f12a4884",
+            "type": "client",
+            "name": "Елене Викторовне"
+          },
+          "attribute": "action",
+          "value": "замена батареек в пульте — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-19T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              4,
+              80
+            ],
+            "quote": "я вчера, кстати, дофала замену в пульте, думала, в нём дело. нит, не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00000:client:f12a4884",
+            "type": "client",
+            "name": "Елене Викторовне"
+          },
+          "attribute": "agreement",
+          "value": "клиент ожидает звонок с результатом перерасчёта в четверг",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-19T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 14,
+            "span": [
+              37,
+              97
+            ],
+            "quote": "Оформляю обращение номир жаавки 85231 Подходит такой вариант"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00000:client:f12a4884",
+            "type": "client",
+            "name": "Елене Викторовне"
+          },
+          "attribute": "agreement",
+          "value": "завтра выезд специалиста, с утра до обеда — клиент подтвердил",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-19T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15,
+            "span": [
+              14,
+              21
+            ],
+            "quote": "спасиба"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00016:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00016:client",
+          "type": "client",
+          "name": "Марин Олеговна"
+        },
+        "attribute": "tariff",
+        "value": "Гранд-Люкс",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-03-09T18:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Здравствуйте Это Марин Олеговна Я вот эээ по баллам хотела спросить по тарифу Слушайте месяц назад у меня стоял Корпоративный всё равно работало месяц назад я сменила на Гранд-Люкс  и с тех пор тишина обещанные баллы не приходят"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00016:service:c0521d4d",
+            "type": "service",
+            "name": "кешбэк баллами"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-03-09T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1,
+            "span": [
+              112,
+              125
+            ],
+            "quote": "Корпоративный"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00016:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "tariff",
+          "value": "Корпоративный",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-03-09T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1,
+            "span": [
+              87,
+              180
+            ],
+            "quote": "месяц назад у меня стоял Корпоративный всё равно работало месяц назад я сменила на Гранд-Люкс"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00016:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "клиент подтвердила срок подтверждения по смс через пять дней",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-03-09T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13,
+            "span": [
+              37,
+              71
+            ],
+            "quote": "я уж тумала, опять в офис тащиться"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00020:call0001",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00020:ticket0",
+          "type": "other",
+          "name": "u101_00020:ticket0"
+        },
+        "attribute": "ticket_status",
+        "value": "в работе",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-05-27T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 5,
+          "span": null,
+          "quote": "а вчера статус уже сменился на «в работе»"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 5,
+        "speaker": "client",
+        "text": "«в работе» а толку-то? сижу без интернета и без уведомлений! мычя, между прочим, тариф расширенный, не бесплатный, между прочим!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00020:device:4037da5b",
+            "type": "device",
+            "name": "роутер"
+          },
+          "attribute": "service_state",
+          "value": "интернет не работает на всех устройствах (ноутбук, телефон), роутер перезагружен",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-28T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1,
+            "span": [
+              111,
+              163
+            ],
+            "quote": "роутер этот ваш, mikrotik, вон моргает без остановки"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00020:ticket:ddfc94f0",
+            "type": "ticket",
+            "name": "заявка 4868"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-27T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              61,
+              99
+            ],
+            "quote": "сначала она была со статусом «принята»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00020:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-28T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              14,
+              79
+            ],
+            "quote": "Дистанционно эту проблему не вылечить тут зулен выезд специалиста"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00020:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист придёт послезавтра с утра — клиент подтвердил",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-28T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9,
+            "span": [
+              64,
+              175
+            ],
+            "quote": "Послезавтра, значит. Да, подходит, давайте послезавтра. Только пусть мне смс какую-нибудь пришлют перед выездом"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00020:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист предварительно позвонит перед визитом",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-28T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              80,
+              118
+            ],
+            "quote": "фиксирую выезд специалиста послезавтра"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00020:call0002",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00020:svc0",
+          "type": "other",
+          "name": "u101_00020:svc0"
+        },
+        "attribute": "service_state",
+        "value": "плохо слышно собеседника",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-05-24T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            71,
+            95
+          ],
+          "quote": "плохо слышно собеседника"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Наконец-то! Я уже который раз набираю! У меня интернет-радио это самое пвихо слышно собеседника  еле-еле как из бочки! Уж я его и так крутила и эдак  ноль! Что у вас там вообще творится!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00020:ticket:ddfc94f0",
+            "type": "ticket",
+            "name": "заявка 4868"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-31T00:00:00",
+          "valid_to": "2026-05-31T20:00:00",
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              44,
+              74
+            ],
+            "quote": "заявка 4868 у вас была принята"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00020:ticket:ddfc94f0",
+            "type": "ticket",
+            "name": "заявка 4868"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-31T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              45,
+              83
+            ],
+            "quote": "заявку в работу подняли именно сегодня"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00020:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-06-02T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              94,
+              121
+            ],
+            "quote": "подтверждение заявки по смс"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00020:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист придёт послезавтра с утра — клиент подтвердил",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-31T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              28,
+              70
+            ],
+            "quote": "чтоб точно врюихал, а не как вчера, понял?"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00031:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00031:client",
+          "type": "client",
+          "name": "Марь Сергевна"
+        },
+        "attribute": "action",
+        "value": "претензия по списанию зафиксирована и передана в биллинг",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-04-04T16:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 10,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 10,
+        "speaker": "operator",
+        "text": "Поняла вас, оставляем как есть. Тогда подытожу: заяфка 4018 в ряботе, специалист приедет в четверг после трёх, по списанию я передала."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00031:ticket:31193750",
+            "type": "ticket",
+            "name": "заявка 4018"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-04T16:00:00",
+          "valid_to": "2026-04-04T16:00:00",
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              33,
+              65
+            ],
+            "quote": "на неделе она пыла у нас принята"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00031:ticket:31193750",
+            "type": "ticket",
+            "name": "заявка 4018"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-04T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              22,
+              83
+            ],
+            "quote": "Это ж капец какой-то, извините. А сколько ещё ждать, в работе"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00031:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-09T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              153,
+              180
+            ],
+            "quote": "предлагаю выезд специалиста"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00031:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "клиент будет дома в четверг после трёх",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-04T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              56,
+              89
+            ],
+            "quote": "я как раз дома буду. да, подходит"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00036:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00036:client",
+          "type": "client",
+          "name": "Елен Петровна"
+        },
+        "attribute": "tariff",
+        "value": "Двадцать гигабайт",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-01-18T17:00:00",
+        "valid_to": "2026-04-30T00:00:00",
+        "source": {
+          "turn_idx": 7,
+          "span": [
+            22,
+            98
+          ],
+          "quote": "«Двадцать гигабайт» — это мой старый тариф, он у меня до самого перехода стоял"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 7,
+        "speaker": "client",
+        "text": "да нет вы перепутали! «дватцать гигабайт»  это мой старый тариф он у меня до самого перехода стоял пять дний назад я от него ушла а взяла «триста каналов»"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00036:client:38622eba",
+            "type": "client",
+            "name": "Елен Петровна"
+          },
+          "attribute": "tariff",
+          "value": "Триста каналов",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-30T00:00:00",
+          "valid_to": "2026-05-05T17:00:00",
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              67,
+              154
+            ],
+            "quote": "у меня до самого перехода стоял пять дний назад я от него ушла а взяла «триста каналов»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00036:client:38622eba",
+            "type": "client",
+            "name": "Елен Петровна"
+          },
+          "attribute": "tariff",
+          "value": "Триста каналов",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-05T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              9,
+              50
+            ],
+            "quote": "До перехода у вас был «Двадцать гигабайт»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00036:client:38622eba",
+            "type": "client",
+            "name": "Елен Петровна"
+          },
+          "attribute": "agreement",
+          "value": "специалист приедет завтра в первой половине дня, за полчаса позвонит; клиентка подтвердила",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-05T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12,
+            "span": [
+              82,
+              140
+            ],
+            "quote": "через час перезагрузка, зафтра утром мой звонок. Подходит?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00036:client:38622eba",
+            "type": "client",
+            "name": "Елен Петровна"
+          },
+          "attribute": "agreement",
+          "value": "специалист заранее позвонит клиенту",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-05T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13,
+            "span": [
+              0,
+              98
+            ],
+            "quote": "Да подходит Только пусть абязательно заработает ладно Пять дней без сериалов  это уж выше моих сил"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00038:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00038:client",
+          "type": "client",
+          "name": "Елене Викторовне"
+        },
+        "attribute": "tariff",
+        "value": "тариф «Максимум», скорость клиента устраивает",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-07-01T20:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 15,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 15,
+        "speaker": "client",
+        "text": "Нит, спасибо, скорость меня устраиваит, у меня «Максимум», всё хвараат. Мне бы просто чтобы линия не отваливалась."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00038:ticket:c9041768",
+            "type": "ticket",
+            "name": "заявка 5953"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-06-25T00:00:00",
+          "valid_to": "2026-06-25T00:00:00",
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              26,
+              59
+            ],
+            "quote": "она была принята шесть дней назад"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00038:ticket:c9041768",
+            "type": "ticket",
+            "name": "заявка 5953"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-06-25T00:00:00",
+          "valid_to": "2026-07-01T20:00:00",
+          "source": {
+            "turn_idx": 18,
+            "span": [
+              32,
+              74
+            ],
+            "quote": "заяфка 5953 — принималась шесть дней назад"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00038:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "повторный выезд вне очереди при повторных сбоях",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-01T20:00:00",
+          "valid_to": "2026-07-02T00:00:00",
+          "source": {
+            "turn_idx": 22,
+            "span": [
+              108,
+              152
+            ],
+            "quote": "мы открываем повторный выезд по той же линии"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00038:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "клиент будет наблюдать за сигналом два дня и позвонит при повторном ослаблении",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-01T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 23,
+            "span": [
+              39,
+              70
+            ],
+            "quote": "до читверга понаблюдаю и позвон"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00038:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-01T20:00:00",
+          "valid_to": "2026-07-02T00:00:00",
+          "source": {
+            "turn_idx": 24,
+            "span": [
+              62,
+              119
+            ],
+            "quote": "повторное обращение по воявке 5953. Сетевую розетку при —"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00038:ticket:c9041768",
+            "type": "ticket",
+            "name": "заявка 5953"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-01T20:00:00",
+          "valid_to": "2026-07-01T20:00:00",
+          "source": {
+            "turn_idx": 28,
+            "span": [
+              75,
+              114
+            ],
+            "quote": "Ранее по ней лэзночен выезд специалиста"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00038:ticket:c9041768",
+            "type": "ticket",
+            "name": "заявка 5953"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-01T20:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 30,
+            "span": [
+              48,
+              81
+            ],
+            "quote": "по заявке 5953 статус — выполнена"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00039:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00039:dev0",
+          "type": "device",
+          "name": "медиаконвертер"
+        },
+        "attribute": "service_state",
+        "value": "медиаконвертер новый, куплен месяц назад",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-07-25T09:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 14,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 14,
+        "speaker": "client",
+        "text": "да нет, у меня он новый вроде, месяц всего! не нада ничего менять, вы там у себя разбирайтесь!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00039:service:df68ce3d",
+            "type": "service",
+            "name": "второй телевизор по договору"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 2,
+            "span": [
+              27,
+              48
+            ],
+            "quote": "телевизор не работаит"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:ticket:144a8e82",
+            "type": "ticket",
+            "name": "заявка 5371"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": "2026-07-25T09:00:00",
+          "source": {
+            "turn_idx": 9,
+            "span": [
+              139,
+              177
+            ],
+            "quote": "она была принята ещё на прошлой неделе"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "мастер приедет в четверг до обеда",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16,
+            "span": [
+              23,
+              96
+            ],
+            "quote": "я одна дома, муж на работе. ладно, подходит, но чтабы пришли не среди дня"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "Кибер",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": "2026-07-25T09:00:00",
+          "source": {
+            "turn_idx": 21,
+            "span": [
+              17,
+              62
+            ],
+            "quote": "Вижу у вас подключён тариф Кибер он действует"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "мастер придёт в четверг во второй половине дня",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 23,
+            "span": [
+              54,
+              156
+            ],
+            "quote": "Итого: специалист в четверг во второй половине дня, заявка актуализирована, смс придёт. Подтверждаете?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "перенастройка приставки удалённо в пятницу после двух",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 24,
+            "span": [
+              14,
+              97
+            ],
+            "quote": "Только пусть не опаздывают, а то я вам тогда уже точно не буду так вежлива звонить!"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "тариф Стодвадцать исправно",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": "2026-07-25T09:00:00",
+          "source": {
+            "turn_idx": 28,
+            "span": [
+              32,
+              220
+            ],
+            "quote": "у меня вообщи со вторника не показывает я уже не знаю что делать всё у вас виснет интернет тоже еле ползает капец какой-то а я плачу между прочим за тариф стодвадцать исправно каждый мисяц"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:ticket:144a8e82",
+            "type": "ticket",
+            "name": "заявка 5371"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": "2026-07-25T09:00:00",
+          "source": {
+            "turn_idx": 31,
+            "span": [
+              23,
+              122
+            ],
+            "quote": "она была в работе, но по ней цтятус уже сменился — как раз до девятнадцатого июля она была в работе"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "выезд мастера с новым блоком питания через два дня с 12 до 14 — клиент согласился",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 37,
+            "span": [
+              15,
+              149
+            ],
+            "quote": "могу согласовать визит Дешайте  ближайшее окно у нас через два дня утрам с девяти до двенадцати Мастер приедет проверит медиаконвертер"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "мастер позвонит перед выездом",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 41,
+            "span": [
+              167,
+              213
+            ],
+            "quote": "Подписку на аудиокниги пока не трогаем, верно?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:ticket:144a8e82",
+            "type": "ticket",
+            "name": "заявка 5371"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 48,
+            "span": [
+              143,
+              193
+            ],
+            "quote": "по заявке 5371 статус — назначен выезд специалиста"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист проверит линию, медиаконвертер и роутер клиента",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 60,
+            "span": [
+              44,
+              140
+            ],
+            "quote": "четверг до обеда выезд по заявки 5371, кпыцыилист проверит медиаконвертер и линию. Вам подходит?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист приедет в четверг с утра до обеда",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 61,
+            "span": [
+              14,
+              42
+            ],
+            "quote": "В четверг до обеда буду дома"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "клиент подтвердил время визита мастера: через четыре дня после шести вечера",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 72,
+            "span": [
+              0,
+              141
+            ],
+            "quote": "чего? после шести? через четыре дня? так ну да, позходит, после шести я дома. смс тюлько пришлит нормальное, а то у вас эти цифры непонятные."
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "мастер приедет через два дня, до обеда — клиент подтвердил",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 76,
+            "span": [
+              18,
+              126
+            ],
+            "quote": "Только скажите ему, пусть сразу кабель посмотрит, а то второй эээ раз ждать не собираюсь, у меня и так нервы"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "мастер приедет послезавтра после шести",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 96,
+            "span": [
+              8,
+              84
+            ],
+            "quote": "четверг пасле шести... у меня как раз сидить буду, внэков ждать да, подходит"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "тариф «Стодвадцать», подписка на аудиокники идёт с тарифом «Кибер»",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 114,
+            "span": [
+              0,
+              151
+            ],
+            "quote": "Вижу по системе, что у вас тариф «Стодвадцать», а подписка на аудиокники идёт с тарифом «Кибер». Возможно, был сбой привязки после переключения тарифа."
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:service:cd7f37b9",
+            "type": "service",
+            "name": "подписка на аудиокниги"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 115,
+            "span": [
+              53,
+              196
+            ],
+            "quote": "на прошлой неделе даже дакли второй телевизар по договору нармально настроить, теперь ещё и это. у вас там вообще кто-нибудь рабатает нормально"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста через два дня после трёх",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 117,
+            "span": [
+              3,
+              66
+            ],
+            "quote": "добавляйте, там. Только чтоб не через мэсяц, а нормально. И смс"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист придёт в четверг после трёх",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 121,
+            "span": [
+              29,
+              117
+            ],
+            "quote": "я хоть дома буду а не как ваш мастер который в четверг должен был приехать и не приехал!"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00039:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 122,
+            "span": [
+              0,
+              262
+            ],
+            "quote": "подключения в четверг я в таячке не вижу но если хастер не приехал  это в общем отдельное нярумямие приношу извинения звук на втором телевизоре по договору восстановлен заявку 5371 обновили смс-подтверждение придёт примерно через четыре дня после шести всё верно"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00053:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00053:client",
+          "type": "client",
+          "name": "Елен Петровна"
+        },
+        "attribute": "action",
+        "value": "проверка кабеля — не помогло",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-04-28T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 7,
+          "span": [
+            110,
+            187
+          ],
+          "quote": "я два дня назад сама этот кабель проверила, туда-сюда подёргала — не помогло"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 7,
+        "speaker": "client",
+        "text": "Что-что? Какой ещё индикатор? Я при чём тут ваш системный блок?! У меня, ожет, деньги ушли, а вы мне... Блин, я два дня назад сама этот кабель проверила, туда-сюда падёргала — не помогло, хоть бы что поменялось!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00053:service:c0521d4d",
+            "type": "service",
+            "name": "кешбэк баллами"
+          },
+          "attribute": "service_state",
+          "value": "больше не используется",
+          "polarity": -1,
+          "speaker": "client",
+          "valid_from": "2026-04-30T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3,
+            "span": [
+              95,
+              179
+            ],
+            "quote": "ещё мэшяц назад я вам говорила  вашим приложением этим мобильным больше не пользуюсь"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00053:service:c0521d4d",
+            "type": "service",
+            "name": "кешбэк баллами"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-03-30T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              98,
+              150
+            ],
+            "quote": "спирва ано, скажем, работает нормально, всё цивильно"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00053:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "action",
+          "value": "проверка платы за услугу — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-28T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              110,
+              186
+            ],
+            "quote": "я два дня назад сама этот кабель проверила, туда-сюда падёргала — не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00053:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "action",
+          "value": "проверка на другом устройстве — не помогло",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-30T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              65,
+              108
+            ],
+            "quote": "два дня назад кабель проверяли и не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00053:ticket:03c8112a",
+            "type": "ticket",
+            "name": "заявка 5176"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-30T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              10,
+              50
+            ],
+            "quote": "Заявка 5176 на возврат, статус — принята"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00053:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-05-07T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              0,
+              133
+            ],
+            "quote": "Оформила. Заявка 5176 на возврат, статус — принята, она у нас сегодня зарегистрирована. Дальше вам придёт подтверждение заявки по смс"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00053:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "срок ожидания по заявке — около недели, клиенту подходит",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-30T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              0,
+              99
+            ],
+            "quote": "Через неделю?.. Пф. Ну латно. Да, подходит. Только чтобы деньгами мне вернули, а не баллами вашими!"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00054:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00054:svc0",
+          "type": "service",
+          "name": "мультирум"
+        },
+        "attribute": "service_state",
+        "value": "двойное списание",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2025-01-12T16:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 3,
+          "span": [
+            14,
+            41
+          ],
+          "quote": "У меня там двойное списание"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "client",
+        "text": "За мультирум! У меня там двойное списании сами смотрите! Я вчера упедула  капец просто"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "блокировка списаний ставится в субботу к обеду (не с завтрашнего дня)",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-01-02T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 24,
+            "span": [
+              62,
+              119
+            ],
+            "quote": "Возврат оформим примерно в понедельник к обеду. Подходит?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "итог придёт в СМС в течение трёх дней, клиент подтвердил",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-01-02T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 25,
+            "span": [
+              4,
+              40
+            ],
+            "quote": "падходит. Только чтаб точно вернули!"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "разбор назначен через неделю утром",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-01-02T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 49,
+            "span": [
+              28,
+              69
+            ],
+            "quote": "падходит только чтоб ни-че-го не списали!"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "tariff",
+          "value": "тариф Джаз-Мини",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-01-02T16:00:00",
+          "valid_to": "2026-01-02T16:00:00",
+          "source": {
+            "turn_idx": 60,
+            "span": [
+              58,
+              80
+            ],
+            "quote": "У меня тариф Джаз-Мини"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "блокировка списаний до разбора",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-01-05T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 69,
+            "span": [
+              47,
+              162
+            ],
+            "quote": "бжокирывку списаний ставим в понедельник обеду, параллельно запускаем разбор, и когда станет ясно, куда ушли деньги"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "блокировка списаний до разбора с понедельника",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-01-02T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 70,
+            "span": [
+              4,
+              71
+            ],
+            "quote": "в понедельник к обеду. Да, подходит. Только ну чтоб больше ни рубля"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "tariff",
+          "value": "тариф Джаз-Мини",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-01-02T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 80,
+            "span": [
+              17,
+              72
+            ],
+            "quote": "У меня на этом Джаз-Мини на этом тарифе платёж один был"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00054:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "разбор и перезвонок специалиста в пятницу после шести",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-01-02T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 92,
+            "span": [
+              0,
+              49
+            ],
+            "quote": "Да, подходит. Но деньги верните, смотрите у миня!"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00061:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00061:dev0",
+          "type": "device",
+          "name": "старая сим-карта"
+        },
+        "attribute": "service_state",
+        "value": "постоянно просит пароль от вай-фай",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-08-18T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            95,
+            147
+          ],
+          "quote": "старая сим-карта постоянно просит пароль от вай-фай"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "здравствуйте, эээ, вот у меня, панимаете, ерунда такая... не то чтобы беца, но... это самое... старая сим-карта постоянно просит пырэль от вай-фай. ну прям кумушюла. со вторника, как отрезало — со вторника."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00061:client:05bad69e",
+            "type": "client",
+            "name": "Анастасия Валерьевна Прохорова"
+          },
+          "attribute": "action",
+          "value": "обращение в чат поддержки — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-08-20T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              31,
+              123
+            ],
+            "quote": "вводила и перезагружала я ещё в чат писала у меня обращение в чат поддержки было  не помогло"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00062:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00062:client",
+          "type": "client",
+          "name": "Елене Викторовне"
+        },
+        "attribute": "action",
+        "value": "синхронизация времени",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-03-23T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 8,
+          "span": [
+            9,
+            42
+          ],
+          "quote": "синхронизация с понедельника была"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 8,
+        "speaker": "client",
+        "text": "Да точно синхронизация с понедельника была Ну и что теперь из-за этого всё слетело"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00062:service:fb2b489d",
+            "type": "service",
+            "name": "антивирус для дома"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-03-23T00:00:00",
+          "valid_to": "2026-03-27T14:00:00",
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              0,
+              36
+            ],
+            "quote": "В абщем, антивирус рапотал нормально"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00062:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "tariff",
+          "value": "Импульс",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-02-01T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              61,
+              81
+            ],
+            "quote": "Теперь у меня «Мини»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00062:service:fb2b489d",
+            "type": "service",
+            "name": "антивирус для дома"
+          },
+          "attribute": "service_state",
+          "value": "уведомления с камер не приходят",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-03-27T14:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12,
+            "span": [
+              36,
+              101
+            ],
+            "quote": "телевизор у меня через него рабатает, картинку с камер показывает"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00062:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-03-27T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15,
+            "span": [
+              40,
+              154
+            ],
+            "quote": "выезд специалиста — он на месте посмотрит и камеры, и приложение. Можем, жкилым, через нюмэлю после шести, удобно?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00062:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста назначен на среду после шести, клиент будет дома",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-03-27T14:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16,
+            "span": [
+              0,
+              12
+            ],
+            "quote": "Через неделю"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00062:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "звонок накануне выезда для подтверждения",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-03-27T14:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 17,
+            "span": [
+              23,
+              93
+            ],
+            "quote": "выезд через неделю после шести номер заявки 9083 Ждите звонка накануни"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00068:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00068:client",
+          "type": "client",
+          "name": "Марин Олеговна"
+        },
+        "attribute": "tariff",
+        "value": "тариф Пульс",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-04-06T16:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 6,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 6,
+        "speaker": "operator",
+        "text": "Нашла фас. Да, договор на домашний имтихдет, тариф Пульс. По какой заявке уточняете?"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00068:ticket:039416c4",
+            "type": "ticket",
+            "name": "заявка 5160"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-03-31T00:00:00",
+          "valid_to": "2026-04-06T16:00:00",
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              51,
+              86
+            ],
+            "quote": "аявка была принята шесть дней назад"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00068:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-11T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              102,
+              129
+            ],
+            "quote": "подтверждение заявки по смс"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00068:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "перенастройка назначена на субботу",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              22,
+              41
+            ],
+            "quote": "я как раз дома буду"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00068:ticket:039416c4",
+            "type": "ticket",
+            "name": "заявка 5160"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16,
+            "span": [
+              24,
+              65
+            ],
+            "quote": "по заявке 5160 назначен выезд специалиста"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00068:call0002",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00068:client",
+          "type": "client",
+          "name": "Марин Олеговна"
+        },
+        "attribute": "agreement",
+        "value": "клиент отказался от подключения пакета дополнительных гигабайтов, ничего дополнительно не оформляется",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-04-12T16:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 13,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 13,
+        "speaker": "client",
+        "text": "Ой, ну не сейчас, не сейчас. Спасибо, тэнечно, я подумаю... пока вот не надо, ладно?"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00068:ticket:039416c4",
+            "type": "ticket",
+            "name": "заявка 5160"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-11T00:00:00",
+          "valid_to": "2026-04-12T16:00:00",
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              95,
+              128
+            ],
+            "quote": "она значилась в статусе «принята»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00068:ticket:039416c4",
+            "type": "ticket",
+            "name": "заявка 5160"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-12T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              39,
+              69
+            ],
+            "quote": "статус сменился на «выполнена»"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00074:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00074:svc1",
+          "type": "service",
+          "name": "программа обмена устройств"
+        },
+        "attribute": "service_state",
+        "value": "не доходят звонки",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-10-16T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 8,
+          "span": [
+            36,
+            65
+          ],
+          "quote": "началось — не доходят звонки"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 8,
+        "speaker": "client",
+        "text": "Да, но потом, на прошлой неделе же, началось — не доходят звонки. То есть людям зфонят, у меня тишина, капец просто."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00074:service:5a5295ad",
+            "type": "service",
+            "name": "программа обмена устройств"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-10-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              40,
+              76
+            ],
+            "quote": "на прошлой неделе рабятэла нормально"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00074:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "action",
+          "value": "проверка платы за услугу — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-10-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              0,
+              42
+            ],
+            "quote": "Вчер проверяла плату за услугу  не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00074:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "инженер приедет в четверг",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-10-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15,
+            "span": [
+              34,
+              179
+            ],
+            "quote": "я аформлю заявку инженерам на перенастройку коммутатора, срок — в четверг должно быть гытобо. Заяфку поставлю, номер — 4517. Подходит тыкой срок?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00074:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "мастер приедет в четверг, клиента это устраивает",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-10-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16,
+            "span": [
+              36,
+              74
+            ],
+            "quote": "вы перезвоните, кагда сделаете, ладна?"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00074:client:3e2bb033",
+            "type": "client",
+            "name": "Марин Олеговна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-10-19T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 17,
+            "span": [
+              8,
+              164
+            ],
+            "quote": "я подключу смс-уветомления по заявки  придёт сообщение когда её закроем Итого: заявка 84517 на сбой входящих вызовов гатовность в четверг уведомление по смс"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00082:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00082:client",
+          "type": "client",
+          "name": "Анастасия Валерьевна Прохорова"
+        },
+        "attribute": "tariff",
+        "value": "Стандарт",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2025-07-25T08:00:00",
+        "valid_to": "2026-06-27T00:00:00",
+        "source": {
+          "turn_idx": 4,
+          "span": null,
+          "quote": "Стандарт у меня был раньше, и меня он, между прочим, устраивал"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 4,
+        "speaker": "operator",
+        "text": "Так, смотрю ваш профиль... То есть месяц назат вы подключили тариф Стандарт, и вот цогда всё лачались — я правильна понимаю?"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00082:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "tariff",
+          "value": "Максимум",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-06-25T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              22,
+              121
+            ],
+            "quote": "Стантарт у меня был раньше, и меня он, между прочим, устраивал. А месяц назад я перешла на Максимум"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00082:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "определитель заработает в течение часа, максимум к вечеру",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-25T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 14,
+            "span": [
+              129,
+              238
+            ],
+            "quote": "оформляю обращение на проверку про кабель передам замечание И в течение двух дней вам перезвоню с чезяпьхатом"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00082:client:74c41b5a",
+            "type": "client",
+            "name": "Марин Андреевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист выйдет в четверг",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-25T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15,
+            "span": [
+              21,
+              66
+            ],
+            "quote": "вы перезвоните! а то я знаю ваше «перезвоним»"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00089:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00089:client",
+          "type": "client",
+          "name": "Марин Олеговна"
+        },
+        "attribute": "agreement",
+        "value": "оператор перезвонит накануне перенастройки",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-07-21T17:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 12,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 12,
+        "speaker": "operator",
+        "text": "Обязательно напомним накануне Итак: перенастройка приставки удалённо срок  чурез пять дней заявку 4072 оформила на ваш телефон Всё верно Марина Олеговна"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00089:device:73a45342",
+            "type": "device",
+            "name": "точка доступа"
+          },
+          "attribute": "service_state",
+          "value": "точка доступа не видна",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-06-01T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              32,
+              107
+            ],
+            "quote": "точка доступа не видна. то есть на экране это пишется, и телек не цепляется"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00089:service:d3e7d85b",
+            "type": "service",
+            "name": "Проверила, канечно, первое же дело. Плату за услугу проверила — оплачено, всё сп"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-21T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9,
+            "span": [
+              36,
+              97
+            ],
+            "quote": "Плату за услугу проверила — оплачено, всё списалось корректно"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00089:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "action",
+          "value": "проверка платы за услугу — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-21T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9,
+            "span": [
+              36,
+              109
+            ],
+            "quote": "Плату за услугу проверила — оплачено, всё списалось корректно. Не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00089:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "agreement",
+          "value": "перенастройка приставки удалённо",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-21T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              0,
+              97
+            ],
+            "quote": "Через пять дней... ну подходит. Только вы уж позвоните перед этим, а то я на дачу собраться могу."
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00093:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00093:client",
+          "type": "client",
+          "name": "Елен Петровна"
+        },
+        "attribute": "tariff",
+        "value": "Комбо",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-01-17T17:00:00",
+        "valid_to": "2026-10-09T00:00:00",
+        "source": {
+          "turn_idx": 3,
+          "span": [
+            64,
+            111
+          ],
+          "quote": "я на прошлой неделе ещё сидела на тарифе Комбо"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "client",
+        "text": "Да, я, кто ж ещё-то с этого номера позвонит. Так вот, смотрите: я на прошлой неделе ещё сидела на тарифе Комбо, меня всё, скажу вам, охтриэвало, а теперь — понятно, сами понимаете, всё поменялось и всё стало сюже."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00093:service:c9bfa54c",
+            "type": "service",
+            "name": "определитель номера"
+          },
+          "attribute": "service_state",
+          "value": "тариф Квант закрыт, активен Семейный XL, двойного списания нет",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-10-15T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              71,
+              138
+            ],
+            "quote": "на прошлой неделе у вас закрылся Комбо, и теперь действует Горизонт"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00093:device:a8692838",
+            "type": "device",
+            "name": "база радиотелефона"
+          },
+          "attribute": "service_state",
+          "value": "приставка Android TV Box зависает, картинка останавливается",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-10-15T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              0,
+              241
+            ],
+            "quote": "«Корректно»!.. Хрен там корректно. Плата другая, через приставку Android TV Box в телевизоре всё тормозит, телефон — эта база радиотелефона вообще трещит, я уж молчу про то, что я вчера... ну, в общим, на днях, полдня продержали на ожидании."
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00093:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "перезвонок специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-10-15T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              28,
+              138
+            ],
+            "quote": "я уфоцмлю заявку на проверку начислений за переход а чтобы убедиться что всё лузотает наберу вам через два дня"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00093:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "специалист перезвонит через два дня",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-10-15T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              0,
+              13
+            ],
+            "quote": "Через два дня"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00104:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00104:client",
+          "type": "client",
+          "name": "Марь Сергевна"
+        },
+        "attribute": "agreement",
+        "value": "клиент подтвердил срок связи в течение двух дней",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-07-06T19:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 12,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 12,
+        "speaker": "client",
+        "text": "Да подходит Только чтобы в течение двух дней не дольше!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00104:service:13144663",
+            "type": "service",
+            "name": "второй номер"
+          },
+          "attribute": "service_state",
+          "value": "средства списаны дважды",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-06T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 2,
+            "span": [
+              11,
+              65
+            ],
+            "quote": "У меня с вашего второго номера средства списаны дважды"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00104:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "клиент подтвердил: заявка на разбор двойного списания, ответ через два дня",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-06T19:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12,
+            "span": [
+              19,
+              55
+            ],
+            "quote": "чтобы в течение двух дней не дольше!"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00110:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00110:client",
+          "type": "client",
+          "name": "Катерина Сергеевна"
+        },
+        "attribute": "action",
+        "value": "кабель в разъём LAN1 вставлен (подключение в порядке)",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-05-26T12:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 9,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 9,
+        "speaker": "client",
+        "text": "Так... погоди, поворачиваю эту хрень... ой, чёрт, тяжёлый какой... ну вот, написана LAN1, и кабель в него фоткнут, беленький чящой. Дальше-то что?"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00110:device:2ece3d90",
+            "type": "device",
+            "name": "оптический терминал"
+          },
+          "attribute": "service_state",
+          "value": "не подключается к сети",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-24T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1,
+            "span": [
+              131,
+              171
+            ],
+            "quote": "гыческий терминал не подключается к сети"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00110:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "action",
+          "value": "перезагрузка модема — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-26T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              42,
+              84
+            ],
+            "quote": "перезагрузку модема делала уже, не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00110:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "перенастройка назначена на четверг, через три дня",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-26T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              107,
+              130
+            ],
+            "quote": "падходит, через два дня"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00110:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "перенастройка приставки удалённо",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-05-26T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15,
+            "span": [
+              12,
+              40
+            ],
+            "quote": "я же сказала — подходит. Всё"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00124:call0001",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00124:ticket0",
+          "type": "other",
+          "name": "u101_00124:ticket0"
+        },
+        "attribute": "ticket_status",
+        "value": "выполнена",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-04-30T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 6,
+          "span": [
+            43,
+            95
+          ],
+          "quote": "сегодня её уже закрыли: статус — «выполнена»"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 6,
+        "speaker": "operator",
+        "text": "Заявка стояла как принятая до секодняшнего дня, а сечохня её уже закрыли: статус — «выполнена». Мастер сегодня установил вам точку доступа Ubiquiti."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00124:service:628db7a0",
+            "type": "service",
+            "name": "дополнительный пакет гигабайтов"
+          },
+          "attribute": "service_state",
+          "value": "пришёл счёт больше обычного",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-30T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3,
+            "span": [
+              0,
+              225
+            ],
+            "quote": "Да срилько можно эти «секунды»! У меня тариф Сотка, я за него плачу не малинькие диньги, а скорость — как в прошлом веке! Я ещё и дополнительный пакет гигабайтов подключала, чтобы хватало, — и всё хавно эта хрень еле ползает!"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00124:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "tariff",
+          "value": "тариф Сотка",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-04-30T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3,
+            "span": [
+              0,
+              225
+            ],
+            "quote": "Да срилько можно эти «секунды»! У меня тариф Сотка, я за него плачу не малинькие диньги, а скорость — как в прошлом веке! Я ещё и дополнительный пакет гигабайтов подключала, чтобы хватало, — и всё хавно эта хрень еле ползает!"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00124:ticket:5e025edc",
+            "type": "ticket",
+            "name": "заявка 4402"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-04-30T09:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              0,
+              94
+            ],
+            "quote": "Заявка стояла как принятая до секодняшнего дня, а сечохня её уже закрыли: статус — «выполнена»"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00138:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00138:svc1",
+          "type": "service",
+          "name": "расширенное облако"
+        },
+        "attribute": "service_state",
+        "value": "двойное списание",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2025-09-01T12:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 1,
+          "span": null,
+          "quote": "по нему действительно прошло двойное списание"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Да, да, здравствуйте, хватит представляться! Вот вы мне лучше абъясните — чего вы там творите? За расширенное облако у меня двойное прошло! Я вчера проверку баланса сделала — и ибюхдела, честное слово! Деньки верните!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00138:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "возврат средств поступит послезавтра после двух на основной счёт",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-24T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              0,
+              143
+            ],
+            "quote": "Возврат средств, значит, послезавтра... Ну да, подходит. Давайти послезавтра, только чтоб тачно, а то я вам не это... следить за вами тут буду."
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00138:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "возврат средств поступит в среду",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-24T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 12,
+            "span": [
+              24,
+              111
+            ],
+            "quote": "заявка на возврат средств по расширенному убпаку оформлена, деньги поступят послезавтра"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00156:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00156:svc1",
+          "type": "service",
+          "name": "семейная подписка на облако"
+        },
+        "attribute": "service_state",
+        "value": "чёрный экран на приставке",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-06-28T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 3,
+          "span": [
+            28,
+            54
+          ],
+          "quote": "чёрный экран на приставке"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "client",
+        "text": "Пять дней назад включаю — и чёрный экран на приставке. Просто чёрный, и всё. Хотя сам подписка, облако, работает нормально, я файлы на месте."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00156:service:0fe18177",
+            "type": "service",
+            "name": "семейная подписка на облако"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-06-28T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3,
+            "span": [
+              96,
+              122
+            ],
+            "quote": "облако, работает нормально"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00156:client:38622eba",
+            "type": "client",
+            "name": "Елен Петровна"
+          },
+          "attribute": "action",
+          "value": "заявка через приложение — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-03T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              12,
+              69
+            ],
+            "quote": "Вчера ещё заявку через приложение отправляла — не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00156:ticket:672e2704",
+            "type": "ticket",
+            "name": "заявка"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-03T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              94,
+              108
+            ],
+            "quote": "статус принята"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00156:client:38622eba",
+            "type": "client",
+            "name": "Елен Петровна"
+          },
+          "attribute": "agreement",
+          "value": "специалист придёт в четверг",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-03T12:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 11,
+            "span": [
+              0,
+              20
+            ],
+            "quote": "Да, хорошо, подходит"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00160:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00160:client",
+          "type": "client",
+          "name": "Елене Викторовне"
+        },
+        "attribute": "tariff",
+        "value": "Для планшета",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2025-09-25T15:00:00",
+        "valid_to": "2026-07-01T00:00:00",
+        "source": {
+          "turn_idx": 1,
+          "span": [
+            75,
+            108
+          ],
+          "quote": "Сижу себе на тарифе Для планшета"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 1,
+        "speaker": "client",
+        "text": "Здщавссвейте, это Елена Викторовна. Вот вы мне объясните, что творится-то? Сижу себе на тащафе Для планшита, всё меня устраивало, а со среды смотрю стоит какой-то Быстрый! Я его не подключала!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00160:client:f12a4884",
+            "type": "client",
+            "name": "Елене Викторовне"
+          },
+          "attribute": "tariff",
+          "value": "Быстрый",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-07T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 2,
+            "span": [
+              29,
+              95
+            ],
+            "quote": "Сейчас проверю Да вижу: со среды у вас действительно тариф Быстрый"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00160:client:f12a4884",
+            "type": "client",
+            "name": "Елене Викторовне"
+          },
+          "attribute": "agreement",
+          "value": "вернуть клиенту прежний тариф Пять гигабайт",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-07T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              0,
+              113
+            ],
+            "quote": "Возврыщаю вам тариф Для планшета  он применится уже завтра и без вашего ведома смен больше будет Так вам подходит"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00160:client:f12a4884",
+            "type": "client",
+            "name": "Елене Викторовне"
+          },
+          "attribute": "agreement",
+          "value": "срок возврата — во вторник к обеду, клиент подтвердил",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-07T15:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9,
+            "span": [
+              26,
+              96
+            ],
+            "quote": "Только вы там всё запишите, чтоб никаких таких фокусов больше не была!"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00170:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00170:dev1",
+          "type": "device",
+          "name": "сим-карта"
+        },
+        "attribute": "service_state",
+        "value": "невозможность подключить новые устройства",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-02-06T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 6,
+          "span": [
+            32,
+            85
+          ],
+          "quote": "сим-карта просто не даёт подключить новые устройства"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 6,
+        "speaker": "client",
+        "text": "да вот два дня назад заметила — сим-карта просто не даёт подключить новые устройства. ну вообще никак! планшет хочу подключить — не даёт, телевизор — не даёт."
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00170:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "action",
+          "value": "обновление приложения — не помогло",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-02-08T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              3,
+              72
+            ],
+            "quote": "Я уж и приложиние обновила, обновление сделала — не это самое помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00170:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "специалист приедет в пятницу",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-02-08T17:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 22,
+            "span": [
+              11,
+              28
+            ],
+            "quote": "да подходит орошо"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00179:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00179:svc0",
+          "type": "service",
+          "name": "киноканал про сериалы"
+        },
+        "attribute": "service_state",
+        "value": "видео грузится рывками",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-02-28T00:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 3,
+          "span": [
+            35,
+            58
+          ],
+          "quote": "видео грузится рывками"
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 3,
+        "speaker": "operator",
+        "text": "** Марина Андреевна я. И я вам так видео грузится рывками, это на прошлой неделе ещё началось! Сидишь смотришь — картинка дёргаеця и дёргается. А я, мяжду прочим, за Премиум плачу, за Премиум!"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00179:service:4142723d",
+            "type": "service",
+            "name": "киноканал про сериалы"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-03-07T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 1,
+            "span": [
+              159,
+              201
+            ],
+            "quote": "на прошлой неделе он ещё работал нормально"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00179:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "action",
+          "value": "протирка камеры объектива — не помогло",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-03-07T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              31,
+              72
+            ],
+            "quote": "Объектив камеры протирала эээ  не помогло"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00179:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "оба пункта (время и списание) зафиксированы в заявке 5714, клиент подтвердил",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-03-07T18:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 15,
+            "span": [
+              0,
+              115
+            ],
+            "quote": "** ну хоть что-то, да, подходит. только чтоб быстра, а то я без своих сериальчиков тут совсем, и вообще у меня всё…"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00185:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00185:svc0",
+          "type": "service",
+          "name": "музыкальная подписка"
+        },
+        "attribute": "service_state",
+        "value": "музыкальная подписка отключена (деактивирована)",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-09-20T13:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 11,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 11,
+        "speaker": "operator",
+        "text": "сейчас отключаю… готово музыкальная подписка деактивирована по возврату оформляю заявку номер 4070 она —"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00185:service:d9f669bb",
+            "type": "service",
+            "name": "музыкальная подписка"
+          },
+          "attribute": "service_state",
+          "value": "больше не используется",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-09-20T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              10,
+              73
+            ],
+            "quote": "на аккаунти активна музыкальная подписка, и с неё было списание"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00185:ticket:165130fa",
+            "type": "ticket",
+            "name": "заявка 4070"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-09-20T13:00:00",
+          "valid_to": "2026-09-20T13:00:00",
+          "source": {
+            "turn_idx": 15,
+            "span": [
+              76,
+              118
+            ],
+            "quote": "на прошлой неделе была в статусе «принята»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00185:ticket:165130fa",
+            "type": "ticket",
+            "name": "заявка 4070"
+          },
+          "attribute": "ticket_status",
+          "value": "в работе",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-09-20T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 16,
+            "span": [
+              0,
+              17
+            ],
+            "quote": "В рапоте в работе"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00185:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-09-20T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 19,
+            "span": [
+              46,
+              137
+            ],
+            "quote": "я поставлю в заявке отметку о вашем зфонке и попрошу ускорить рассмотрение а вам придёт смс"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00185:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста назначен через неделю, клиент подтвердила",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-09-20T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 20,
+            "span": [
+              20,
+              30
+            ],
+            "quote": "Только смс"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00185:client:f30ada2e",
+            "type": "client",
+            "name": "Марин Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "уведомление о заявке придёт клиенту в смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-09-20T13:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 21,
+            "span": [
+              42,
+              173
+            ],
+            "quote": "музыкальная подписка отключена, по заывке 4070, которая хэйчас в работи, поставлена отметка об ускорении, уведомление придёт по смс"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00190:call0001",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00190:svc0",
+          "type": "other",
+          "name": "u101_00190:svc0"
+        },
+        "attribute": "service_state",
+        "value": "архив передач за неделю открывается и показывает список",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-02-17T08:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 7,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 7,
+        "speaker": "client",
+        "text": "Секундочку я щас вот захожу Ой! Работает список за неделю показывает Ну надо же А я уже настроилась перезванивать по-хорошему в смысле по-плохому"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00190:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "tariff",
+          "value": "тариф «Местный»",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-02-17T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 3,
+            "span": [
+              17,
+              66
+            ],
+            "quote": "у меня всё на бумажке было... а тариф — «местный»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00190:ticket:e60f1d3a",
+            "type": "ticket",
+            "name": "заявка 4571"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-02-17T00:00:00",
+          "valid_to": "2026-02-17T08:00:00",
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              101,
+              187
+            ],
+            "quote": "сначала она стояла в статусе как бы «срищета», а сегодня стату обновился — «выполнена»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00190:ticket:e60f1d3a",
+            "type": "ticket",
+            "name": "заявка 4571"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-02-17T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              31,
+              66
+            ],
+            "quote": "Тогда заявка 4571 выполнена сегодня"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00190:call0002",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00190:client",
+          "type": "other",
+          "name": "u101_00190:client"
+        },
+        "attribute": "tariff",
+        "value": "клиент платит за тариф «Местный» каждый месяц",
+        "polarity": 1,
+        "speaker": "client",
+        "valid_from": "2026-02-19T08:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 9,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 9,
+        "speaker": "client",
+        "text": "Рабатает работает но я из-за вас всё пропустила! Плачу за «Местный» исправно каждый месяц а в итоге сидила без сего Одни расстройства честное слово"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00190:ticket:e60f1d3a",
+            "type": "ticket",
+            "name": "заявка 4571"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-02-19T08:00:00",
+          "valid_to": "2026-02-19T08:00:00",
+          "source": {
+            "turn_idx": 6,
+            "span": [
+              92,
+              131
+            ],
+            "quote": "Заявка у вас молго стояла как «принята»"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00190:ticket:e60f1d3a",
+            "type": "ticket",
+            "name": "заявка 4571"
+          },
+          "attribute": "ticket_status",
+          "value": "выполнена",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-02-19T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              0,
+              9
+            ],
+            "quote": "Выполнена"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00190:client:304f7282",
+            "type": "client",
+            "name": "Катерина Сергеевна"
+          },
+          "attribute": "agreement",
+          "value": "перерасчёт счёта",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-02-19T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13,
+            "span": [
+              0,
+              22
+            ],
+            "quote": "Да, подходит, дихтуйте"
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u101_00193:call0000",
+      "missed_gold": {
+        "object": {
+          "id": "u101_00193:client",
+          "type": "client",
+          "name": "Марин Олеговна"
+        },
+        "attribute": "agreement",
+        "value": "заявку заводить не будем, по связи всё исправно",
+        "polarity": 1,
+        "speaker": "operator",
+        "valid_from": "2026-09-13T16:00:00",
+        "valid_to": null,
+        "source": {
+          "turn_idx": 10,
+          "span": null,
+          "quote": null
+        },
+        "confirmed": true
+      },
+      "source_turn": {
+        "idx": 10,
+        "speaker": "operator",
+        "text": "конечно как сочтёте нужным  просто наберите нас в любое время значит договорились так: заявку мы не заводем по связи всё исправно а по гололёду вы звоните в управляющую компэлию вам такой вариант подходит"
+      },
+      "predictions": [
+        {
+          "object": {
+            "id": "u101_00193:service:b1c28f24",
+            "type": "service",
+            "name": "конференц-связь"
+          },
+          "attribute": "service_state",
+          "value": "работает нормально",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-09-13T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 7,
+            "span": [
+              36,
+              79
+            ],
+            "quote": "конференц-связь работает работает нормально"
+          }
+        },
+        {
+          "object": {
+            "id": "u101_00193:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "agreement",
+          "value": "по гололёду во дворе клиент обращается в управляющую компанию",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-09-13T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 10,
+            "span": [
+              0,
+              204
+            ],
+            "quote": "конечно как сочтёте нужным  просто наберите нас в любое время значит договорились так: заявку мы не заводем по связи всё исправно а по гололёду вы звоните в управляющую компэлию вам такой вариант подходит"
+          }
+        }
+      ]
+    }
+  ],
+  "diagnostics": {
+    "matched_pairs_passing_full_object_name_similarity": 839,
+    "official_matched_pairs": 1078,
+    "full_name_agreement_among_official_matches": 0.7782931354359925,
+    "correct_temporal_matches_divided_by_ALL_gold_facts": 0.1389187253848908,
+    "note": "Full-name agreement filters official matches; it is diagnostic, not an independent optimal rematching metric. Official temporal_recall is conditional on matched facts."
+  }
+}

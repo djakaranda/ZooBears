@@ -1,0 +1,11 @@
+{
+  "passed": [
+    "labels_ignored",
+    "input_immutable",
+    "empty_call",
+    "nonconsecutive_turn_indices",
+    "literal_grounding"
+  ],
+  "model": "artifacts/neural",
+  "generator": "artifacts/generator"
+}

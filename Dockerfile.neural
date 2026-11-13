@@ -1,0 +1,13 @@
+FROM python:3.13-slim
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir torch==2.9.1 --index-url https://download.pytorch.org/whl/cpu && \
+    pip install --no-cache-dir transformers==4.57.1 safetensors==0.8.0 sentencepiece==0.2.3 'protobuf>=5,<8'
+COPY src ./src
+COPY artifacts/cpu_baseline.joblib ./artifacts/cpu_baseline.joblib
+COPY artifacts/neural ./artifacts/neural
+ENV PYTHONPATH=/app/src
+ENV HF_HUB_OFFLINE=1
+EXPOSE 8000
+CMD ["python", "-m", "compactfacts.api", "--engine", "hybrid", "--model", "artifacts/neural", "--host", "0.0.0.0"]

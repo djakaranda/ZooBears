@@ -4,6 +4,7 @@ from datetime import datetime
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import traceback
+from pathlib import Path
 from .model import Extractor
 
 
@@ -23,8 +24,17 @@ def validate_call(call):
     return {k:v for k,v in call.items() if k!='facts'}
 
 
-def serve(model_path, host='127.0.0.1', port=8000):
-    model=Extractor.load(model_path)
+def serve(model_path, host='127.0.0.1', port=8000, engine='baseline', device='cpu', normalizer='artifacts/cpu_baseline.joblib', generator=None):
+    if engine=='hybrid':
+        from .hybrid import HybridExtractor
+        model=HybridExtractor(model_path,normalizer,device,generator)
+    elif engine=='neural':
+        from .neural import NeuralExtractor
+        model=NeuralExtractor(model_path,normalizer,device)
+    elif engine=='temporal':
+        from .pipeline import TemporalExtractor
+        model=TemporalExtractor(model_path)
+    else:model=Extractor.load(model_path)
     class Handler(BaseHTTPRequestHandler):
         def respond(self, status, data):
             body=json.dumps(data,ensure_ascii=False).encode('utf-8')
@@ -32,7 +42,11 @@ def serve(model_path, host='127.0.0.1', port=8000):
             self.send_header('Content-Length',str(len(body))); self.end_headers(); self.wfile.write(body)
 
         def do_GET(self):
-            if self.path=='/health': self.respond(200,{'status':'ok','model':'cpu_baseline','device':'CPU'})
+            if self.path=='/':
+                body=Path(__file__).with_name('demo.html').read_bytes()
+                self.send_response(200);self.send_header('Content-Type','text/html; charset=utf-8')
+                self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
+            elif self.path=='/health': self.respond(200,{'status':'ok','model':engine,'device':device})
             else: self.respond(404,{'error':'Use POST /extract or GET /health'})
 
         def do_POST(self):
@@ -56,5 +70,8 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--model',default='artifacts/cpu_baseline.joblib')
     parser.add_argument('--host',default='127.0.0.1'); parser.add_argument('--port',type=int,default=8000)
+    parser.add_argument('--engine',choices=['baseline','temporal','neural','hybrid'],default='baseline')
+    parser.add_argument('--device',default='cpu');parser.add_argument('--normalizer',default='artifacts/cpu_baseline.joblib')
+    parser.add_argument('--generator',help='Optional saved ruT5 value normalizer (hybrid engine)')
     args=parser.parse_args()
-    serve(args.model,args.host,args.port)
+    serve(args.model,args.host,args.port,args.engine,args.device,args.normalizer,args.generator)

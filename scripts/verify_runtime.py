@@ -1,5 +1,6 @@
 """Integration verification against a real HTTP process and saved weights."""
 import copy
+import argparse
 import json
 import os
 from pathlib import Path
@@ -17,7 +18,13 @@ from compactfacts.model import Extractor
 
 
 if __name__=='__main__':
-    model=Extractor.load(ROOT/'artifacts/cpu_baseline.joblib')
+    parser=argparse.ArgumentParser();parser.add_argument('--engine',choices=['baseline','hybrid'],default='baseline')
+    parser.add_argument('--model',default='artifacts/cpu_baseline.joblib');parser.add_argument('--normalizer',default='artifacts/cpu_baseline.joblib')
+    parser.add_argument('--generator');parser.add_argument('--output',default='reports/runtime_check.json');args=parser.parse_args()
+    if args.engine=='hybrid':
+        from compactfacts.hybrid import HybridExtractor
+        model=HybridExtractor(args.model,args.normalizer,'cpu',args.generator)
+    else:model=Extractor.load(ROOT/args.model)
     original=read_jsonl(ROOT/'data/raw/val.jsonl')[0]
     clean={k:v for k,v in original.items() if k!='facts'}
     poisoned=copy.deepcopy(clean)
@@ -33,7 +40,9 @@ if __name__=='__main__':
     with socket.socket() as sock:
         sock.bind(('127.0.0.1',0)); port=sock.getsockname()[1]
     env={**os.environ,'PYTHONPATH':str(ROOT/'src'),'PYTHONIOENCODING':'utf-8'}
-    process=subprocess.Popen([sys.executable,'-m','compactfacts.api','--port',str(port)],cwd=ROOT,env=env,
+    command=[sys.executable,'-m','compactfacts.api','--port',str(port),'--engine',args.engine,'--model',args.model,'--normalizer',args.normalizer]
+    if args.generator:command+=['--generator',args.generator]
+    process=subprocess.Popen(command,cwd=ROOT,env=env,
         stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     base=f'http://127.0.0.1:{port}'
     try:
@@ -47,6 +56,9 @@ if __name__=='__main__':
         else: raise RuntimeError('HTTP server did not start')
         request=urllib.request.Request(base+'/extract',data=json.dumps(clean,ensure_ascii=False).encode(),headers={'Content-Type':'application/json'})
         with urllib.request.urlopen(request,timeout=30) as response: assert json.load(response)==expected
+        with urllib.request.urlopen(base+'/',timeout=5) as response:
+            assert response.headers['Content-Type'].startswith('text/html')
+            assert b'ZooBears' in response.read()
         for payload in [b'{}',b'{broken']:
             request=urllib.request.Request(base+'/extract',data=payload,headers={'Content-Type':'application/json'})
             try:
@@ -58,7 +70,8 @@ if __name__=='__main__':
     write_json(ROOT/'reports/demo_input.json',clean)
     write_json(ROOT/'reports/demo_output.json',expected)
     result={'passed':['saved_model_load','gold_label_independence','empty_transcript','nonconsecutive_turn_ids',
-                      'http_health','http_extraction_matches_cli','http_invalid_payloads_rejected'],
+                      'http_health','http_extraction_matches_cli','http_invalid_payloads_rejected','http_demo_page'],
             'http_process_stopped':process.poll() is not None}
-    write_json(ROOT/'reports/runtime_check.json',result)
+    result['engine']=args.engine;result['model']=args.model
+    write_json(ROOT/args.output,result)
     print(result)

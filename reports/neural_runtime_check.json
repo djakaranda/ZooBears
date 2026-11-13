@@ -1,0 +1,15 @@
+{
+  "passed": [
+    "saved_model_load",
+    "gold_label_independence",
+    "empty_transcript",
+    "nonconsecutive_turn_ids",
+    "http_health",
+    "http_extraction_matches_cli",
+    "http_invalid_payloads_rejected",
+    "http_demo_page"
+  ],
+  "http_process_stopped": true,
+  "engine": "hybrid",
+  "model": "artifacts/neural"
+}

@@ -2,8 +2,38 @@
 
 Рабочая CPU-цепочка извлечения фактов из русскоязычных звонков поддержки.
 Код, обученные веса, валидационные предсказания и отчёты находятся в этом проекте.
-Подробный результат первого запуска — [reports/START_REPORT.md](reports/START_REPORT.md).
+Текущая нейросетевая итерация — [reports/ITERATION_2_REPORT.md](reports/ITERATION_2_REPORT.md).
+Первый CPU-прототип — [reports/START_REPORT.md](reports/START_REPORT.md).
 План дальнейшего решения и ограничения метрик — [docs/PLAN.md](docs/PLAN.md).
+Презентация текущих результатов — [ZooBears_progress.pptx](output/presentation/ZooBears_progress.pptx).
+
+## Нейросетевая версия
+
+Малый русский энкодер выделяет факты, затем правила восстанавливают даты и
+переходы. В quality-режиме дополнительная модель нормализует тарифы, включая
+формулировки вне обучающего словаря. Выбор компонентов зафиксирован на внутреннем
+dev до итоговой проверки внешнего val. Подробности — [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md).
+
+```powershell
+# Для RTX 3060 используется официальный CUDA 12.6 wheel.
+.\.venv\Scripts\python.exe -m pip install torch==2.9.1 --index-url https://download.pytorch.org/whl/cu126
+.\.venv\Scripts\python.exe -m pip install -r requirements-neural.txt
+$env:PYTHONPATH = "$PWD/src"
+.\.venv\Scripts\python.exe -m compactfacts.api --engine hybrid --model artifacts/neural
+```
+
+Демонстрация открывается по адресу `http://127.0.0.1:8000/`. JSON API:
+`POST /extract`, состояние сервера: `GET /health`.
+
+Quality-режим на GPU:
+
+```powershell
+.\.venv\Scripts\python.exe -m compactfacts.api --engine hybrid --model artifacts/neural --generator artifacts/generator --device cuda
+```
+
+Указывать оба запуска одновременно на одном порту не нужно: выберите один режим.
+Для CPU без NVIDIA установите torch из официального CPU-индекса вместо CUDA.
+Скачивать исходные модели при запуске API не требуется: веса и токенизаторы в репозитории.
 
 ## Запуск на Windows / PowerShell
 
@@ -53,6 +83,9 @@ docker build -t compactfacts .
 docker run --rm -p 8000:8000 compactfacts
 ```
 
+Для нейросетевого CPU-режима: `docker build -f Dockerfile.neural -t zoobears-neural .`
+и `docker run --rm -p 8000:8000 zoobears-neural`.
+
 Образ включает только исходники, зависимости и обученные веса. Dockerfile подготовлен;
 факт сборки и запуска нужно проверять отдельно на машине с Docker.
 
@@ -75,7 +108,7 @@ docker run --rm -p 8000:8000 compactfacts
 .\.venv\Scripts\python.exe scripts/summarize.py
 ```
 
-Этот прототип выбирает значения из train и ограниченно обобщает на новые
+Базовый CPU-прототип выбирает значения из train и ограниченно обобщает на новые
 формулировки. Словарь имён, отрицания и переходы пока требуют улучшения; старые
 даты без явного текстового указания не восстанавливаются. Это стартовая точка
 с измеренными результатами, а не готовое конкурсное решение.

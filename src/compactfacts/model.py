@@ -5,7 +5,7 @@ from datetime import datetime
 
 import joblib
 import numpy as np
-from rapidfuzz import fuzz
+from rapidfuzz import fuzz,process
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import fbeta_score
 from sklearn.model_selection import GroupShuffleSplit
@@ -90,7 +90,7 @@ class Extractor:
     def load(path):
         return joblib.load(path)
 
-    def resolve_object(self, call, i, kind):
+    def resolve_object(self, call, i, kind, cache=None):
         turns = call["turns"]
         if kind == "ticket":
             for distance in sorted(range(len(turns)), key=lambda n: abs(n-i)):
@@ -101,17 +101,19 @@ class Extractor:
         vocabulary = self.names.get(kind, [])
         if not vocabulary: return "клиент", "client"
         # Match names to the input; never reuse a training account's object IDs.
-        scored = []
-        for name in vocabulary:
-            normalized = normalize(name)
-            best = 0
-            for j, turn in enumerate(turns):
-                text = normalize(turn["text"])
-                score = fuzz.partial_ratio(normalized, text)/100
-                score -= min(abs(j-i), 20)*.003 if kind != "client" else 0
-                if kind == "client" and turn["speaker"] == "client": score += .015
-                best = max(best, score)
-            scored.append((best, len(normalized), name))
+        if cache is None:cache={}
+        key=('name_scores',kind)
+        if key not in cache:
+            names=[normalize(name) for name in vocabulary]
+            texts=[normalize(turn['text']) for turn in turns]
+            matrix=process.cdist(names,texts,scorer=fuzz.partial_ratio,dtype=np.float64)/100
+            cache[key]=(names,matrix)
+        names,matrix=cache[key]
+        adjusted=matrix.copy()
+        if kind!='client':adjusted-=np.minimum(np.abs(np.arange(len(turns))-i),20)[None,:]*.003
+        else:adjusted+=np.array([.015 if t['speaker']=='client' else 0 for t in turns])[None,:]
+        bests=np.maximum(adjusted.max(axis=1),0)
+        scored=[(float(score),len(normalized),name) for score,normalized,name in zip(bests,names,vocabulary)]
         score, _, name = max(scored)
         if score < .68: return ("клиент", "client") if kind == "client" else (turns[i]["text"][:80], kind)
         return name, kind
@@ -120,7 +122,7 @@ class Extractor:
         if not call.get("turns"):
             return {"call_id": call["call_id"], "facts": []}
         x = self.vectorizer.transform([turn_text(call, i) for i in range(len(call["turns"]))])
-        facts, object_cache = [], {}
+        facts, object_cache, resolver_cache = [], {}, {}
         delta = {"precise": .2, "balanced": 0., "recall": -.2}[mode]
         for attr in ATTRIBUTES:
             scores = self.classifiers[attr].decision_function(x)
@@ -138,7 +140,7 @@ class Extractor:
                 turn = call["turns"][int(i)]
                 cache_key = (int(i), kind)
                 if cache_key not in object_cache:
-                    object_cache[cache_key] = self.resolve_object(call, int(i), kind)
+                    object_cache[cache_key] = self.resolve_object(call, int(i), kind,resolver_cache)
                 name, kind = object_cache[cache_key]
                 date_text = turn["text"]
                 valid_from, explicit = normalize_date(date_text, call["started_at"], future=attr == "agreement")

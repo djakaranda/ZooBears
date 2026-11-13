@@ -1,0 +1,30 @@
+{
+  "split": "frozen internal train dev",
+  "logit_grid": [
+    -4,
+    6,
+    0.2
+  ],
+  "metrics": {
+    "service_state": {
+      "turn_f0.8": 0.553260728077407,
+      "value_accuracy_at_gold_turn": 0.8022690437601296
+    },
+    "tariff": {
+      "turn_f0.8": 0.5011514614703277,
+      "value_accuracy_at_gold_turn": 0.44761904761904764
+    },
+    "ticket_status": {
+      "turn_f0.8": 0.7925679162952189,
+      "value_accuracy_at_gold_turn": 0.9208494208494209
+    },
+    "action": {
+      "turn_f0.8": 0.5580001410337776,
+      "value_accuracy_at_gold_turn": 0.8126272912423625
+    },
+    "agreement": {
+      "turn_f0.8": 0.3607434454079822,
+      "value_accuracy_at_gold_turn": 0.8542568542568543
+    }
+  }
+}

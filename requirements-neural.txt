@@ -1,0 +1,6 @@
+-r requirements.txt
+torch==2.9.1
+transformers==4.57.1
+safetensors==0.8.0
+sentencepiece==0.2.3
+protobuf>=5,<8

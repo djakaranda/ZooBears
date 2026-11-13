@@ -1,0 +1,20 @@
+{
+  "fast": {
+    "engine": "hybrid",
+    "model": "artifacts/neural",
+    "normalizer": "artifacts/cpu_baseline.joblib",
+    "device": "cpu"
+  },
+  "quality": {
+    "engine": "hybrid",
+    "model": "artifacts/neural",
+    "normalizer": "artifacts/cpu_baseline.joblib",
+    "generator": "artifacts/generator",
+    "device": "cuda"
+  },
+  "temporal_policy": "rules with ASR date aliases",
+  "generator_attributes": [
+    "tariff"
+  ],
+  "selected_on": "internal account-disjoint train dev"
+}

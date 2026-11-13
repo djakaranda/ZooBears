@@ -1,0 +1,29 @@
+{
+  "models": {
+    "artifacts/neural/config.json": "ccc7a4ba8138b28ff218b6892d666ff6dba8fed11fda7cbe05c280cb63480d67",
+    "artifacts/neural/experiment.json": "9027853c946e55aa4f7790192c9108a8315b796a07fd57e075434f69f70d03d2",
+    "artifacts/neural/history.json": "283d09f595af77b46fb915377f91829f1da73298604cc20d9aabb959ff59884d",
+    "artifacts/neural/model.safetensors": "30922cd327dd04a2f9ace13da0d75c9aa3c70d0d871acd2f513e033bda6c772b",
+    "artifacts/neural/special_tokens_map.json": "5d5b662e421ea9fac075174bb0688ee0d9431699900b90662acd44b2a350503a",
+    "artifacts/neural/tokenizer.json": "bd32746ccdda6227fcdbbdab1090c734a3590da2b51c25ee57093f804eb263ed",
+    "artifacts/neural/tokenizer_config.json": "71b22b163773e6d2a3bc53236a6dca9245f2e0422b09e2d9597dbf02825c7135",
+    "artifacts/neural/UPSTREAM_MODEL_CARD.md": "6eec7047e9db76ee30e4c9dd542a25cf0c4f1f93a2119db56cd10f0c393fc00f",
+    "artifacts/neural/UPSTREAM_SOURCE.json": "c922f0d6fc225005a0ebab1b065c33a7e798bff5b3981c287491988990b93caa",
+    "artifacts/neural/vocab.txt": "f056a69b097422652053bf87565c35543e5d81540ca4b7dddd28de4157a969e0",
+    "artifacts/generator/config.json": "386b7b75e7f9f5d92a87fb53a306a607c37400bd603dfbfee5ee488f72a9331c",
+    "artifacts/generator/experiment.json": "c387caf70e4ef1bf86075b86f448a5673bc1cf69313f22b3e7ef3e0c10dc4662",
+    "artifacts/generator/generation_config.json": "f4027a34899341b7fb5f81f1e9134b88d5b616a1a65959f772e2afdb01edbe10",
+    "artifacts/generator/history.json": "256e3a66ef979cc03a42e9748cabea28bf086fc6f685c74b96a75af3fea86ad1",
+    "artifacts/generator/model-00001-of-00003.safetensors": "6cecb6d3f07b94386d4abd5710723ea4dbc48eb1f481d3277efdce2664148fec",
+    "artifacts/generator/model-00002-of-00003.safetensors": "91bbfa21f8eaebeab86ec0fbd547e5174ed9a72dcb89203f318ed4c37f74411d",
+    "artifacts/generator/model-00003-of-00003.safetensors": "45576bf2b09b448793f8d04cd261ae76d811452e7080c59d24ff58810c925bca",
+    "artifacts/generator/model.safetensors.index.json": "60f308fa17df99d024ad05da2fb9a876b3137a93cd02e274181984305ea0d76b",
+    "artifacts/generator/special_tokens_map.json": "7a1985a994c41886db38c719d2a3d2f40606663cc19d7c5d6a85d349320e06d2",
+    "artifacts/generator/spiece.model": "d6afde64def093a9d493d1f4254768c2e842ed45bcc9c184233f245cb29d2a31",
+    "artifacts/generator/tokenizer.json": "7a04c9d41f3c0b65f9d733e9cc2e0142da135b5ff471b14eb49d2510e0d59571",
+    "artifacts/generator/tokenizer_config.json": "2d6c176dfcc53eac1ab2dc1813e17ff00bd434a80cd2a3195772f18ddd461edc",
+    "artifacts/generator/UPSTREAM_MODEL_CARD.md": "e660d000ab8d1f575857d60e6319e50fa1e0114f32010dc7f2339a98d7bbc048",
+    "artifacts/generator/UPSTREAM_SOURCE.json": "7bd0ebe1a14de7dd7b053d78683f6b3fcbd10a82f612e48cad4637288e32d19f"
+  },
+  "selection": "reports/frozen_selection.json"
+}

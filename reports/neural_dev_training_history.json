@@ -1,0 +1,86 @@
+[
+  {
+    "epoch": 1,
+    "loss": 3.218232866715575,
+    "seconds": 133.4902573999716,
+    "metrics": {
+      "service_state": {
+        "turn_f0.8": 0.5285752259436469,
+        "value_accuracy_at_gold_turn": 0.7439222042139384
+      },
+      "tariff": {
+        "turn_f0.8": 0.5019734192509062,
+        "value_accuracy_at_gold_turn": 0.3873015873015873
+      },
+      "ticket_status": {
+        "turn_f0.8": 0.7486988513998565,
+        "value_accuracy_at_gold_turn": 0.8918918918918919
+      },
+      "action": {
+        "turn_f0.8": 0.5464413300357241,
+        "value_accuracy_at_gold_turn": 0.6109979633401222
+      },
+      "agreement": {
+        "turn_f0.8": 0.34375083976029885,
+        "value_accuracy_at_gold_turn": 0.8124098124098124
+      }
+    },
+    "score": 0.5338879332780865
+  },
+  {
+    "epoch": 2,
+    "loss": 2.0715301365467687,
+    "seconds": 145.92616889998317,
+    "metrics": {
+      "service_state": {
+        "turn_f0.8": 0.5397497325208168,
+        "value_accuracy_at_gold_turn": 0.7909238249594813
+      },
+      "tariff": {
+        "turn_f0.8": 0.4920787325972156,
+        "value_accuracy_at_gold_turn": 0.39365079365079364
+      },
+      "ticket_status": {
+        "turn_f0.8": 0.7905058219016642,
+        "value_accuracy_at_gold_turn": 0.9131274131274131
+      },
+      "action": {
+        "turn_f0.8": 0.5483688344773902,
+        "value_accuracy_at_gold_turn": 0.7617107942973523
+      },
+      "agreement": {
+        "turn_f0.8": 0.36021103638792656,
+        "value_accuracy_at_gold_turn": 0.84992784992785
+      }
+    },
+    "score": 0.5461828315770026
+  },
+  {
+    "epoch": 3,
+    "loss": 1.629628768372261,
+    "seconds": 142.91789380006958,
+    "metrics": {
+      "service_state": {
+        "turn_f0.8": 0.553260728077407,
+        "value_accuracy_at_gold_turn": 0.8022690437601296
+      },
+      "tariff": {
+        "turn_f0.8": 0.5011514614703277,
+        "value_accuracy_at_gold_turn": 0.44761904761904764
+      },
+      "ticket_status": {
+        "turn_f0.8": 0.7832662627692036,
+        "value_accuracy_at_gold_turn": 0.9208494208494209
+      },
+      "action": {
+        "turn_f0.8": 0.5580001410337776,
+        "value_accuracy_at_gold_turn": 0.8126272912423625
+      },
+      "agreement": {
+        "turn_f0.8": 0.36097226803339005,
+        "value_accuracy_at_gold_turn": 0.8556998556998557
+      }
+    },
+    "score": 0.5513301722768212
+  }
+]
