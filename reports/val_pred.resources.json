@@ -1,0 +1,12 @@
+{
+  "mode": "balanced",
+  "calls": 383,
+  "device": "CPU",
+  "latency_mean_ms": 103.64185926576167,
+  "latency_p50_ms": 78.86719994712621,
+  "latency_p95_ms": 242.85164001630594,
+  "calls_per_hour": 34735.00017757081,
+  "max_sampled_rss_mb": 281.03125,
+  "model_bytes": 61023666,
+  "notes": "Sequential batch=1; includes first call, excludes model load and JSON IO. RSS sampled after calls, not continuous peak."
+}

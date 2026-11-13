@@ -1,0 +1,116 @@
+{
+  "supplied_baseline": {
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 2097,
+    "fact_precision": 0.2074,
+    "fact_recall": 0.2358,
+    "temporal_recall": 0.4161,
+    "n_temporal": 435,
+    "state_accuracy": 0.3483,
+    "n_state": 623,
+    "grounding_turn": 0.6759,
+    "grounding_span": null,
+    "n_grounded": 435
+  },
+  "recomputed_baseline": {
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 2097,
+    "fact_precision": 0.2189,
+    "fact_recall": 0.2488,
+    "temporal_recall": 0.4205,
+    "n_temporal": 459,
+    "state_accuracy": 0.3194,
+    "n_state": 623,
+    "grounding_turn": 0.6906,
+    "grounding_span": null,
+    "n_grounded": 459
+  },
+  "modes": {
+    "balanced": {
+      "metrics": {
+        "n_calls": 383,
+        "n_gold_facts": 1845,
+        "n_pred_facts": 1336,
+        "fact_precision": 0.4334,
+        "fact_recall": 0.3138,
+        "temporal_recall": 0.3195,
+        "n_temporal": 579,
+        "state_accuracy": 0.2504,
+        "n_state": 623,
+        "grounding_turn": 0.734,
+        "grounding_span": 1.0,
+        "n_grounded": 579
+      },
+      "resources": {
+        "mode": "balanced",
+        "calls": 383,
+        "device": "CPU",
+        "latency_mean_ms": 103.64185926576167,
+        "latency_p50_ms": 78.86719994712621,
+        "latency_p95_ms": 242.85164001630594,
+        "calls_per_hour": 34735.00017757081,
+        "max_sampled_rss_mb": 281.03125,
+        "model_bytes": 61023666,
+        "notes": "Sequential batch=1; includes first call, excludes model load and JSON IO. RSS sampled after calls, not continuous peak."
+      }
+    },
+    "precise": {
+      "metrics": {
+        "n_calls": 383,
+        "n_gold_facts": 1845,
+        "n_pred_facts": 892,
+        "fact_precision": 0.5269,
+        "fact_recall": 0.2547,
+        "temporal_recall": 0.2979,
+        "n_temporal": 470,
+        "state_accuracy": 0.2071,
+        "n_state": 623,
+        "grounding_turn": 0.7489,
+        "grounding_span": 1.0,
+        "n_grounded": 470
+      },
+      "resources": {
+        "mode": "precise",
+        "calls": 383,
+        "device": "CPU",
+        "latency_mean_ms": 74.71684516862268,
+        "latency_p50_ms": 63.60510003287345,
+        "latency_p95_ms": 174.5524699217639,
+        "calls_per_hour": 48181.905859052764,
+        "max_sampled_rss_mb": 281.52734375,
+        "model_bytes": 61023666,
+        "notes": "Sequential batch=1; includes first call, excludes model load and JSON IO. RSS sampled after calls, not continuous peak."
+      }
+    },
+    "recall": {
+      "metrics": {
+        "n_calls": 383,
+        "n_gold_facts": 1845,
+        "n_pred_facts": 1957,
+        "fact_precision": 0.3439,
+        "fact_recall": 0.3648,
+        "temporal_recall": 0.3299,
+        "n_temporal": 673,
+        "state_accuracy": 0.2873,
+        "n_state": 623,
+        "grounding_turn": 0.7147,
+        "grounding_span": 1.0,
+        "n_grounded": 673
+      },
+      "resources": {
+        "mode": "recall",
+        "calls": 383,
+        "device": "CPU",
+        "latency_mean_ms": 148.6075122712433,
+        "latency_p50_ms": 110.13739998452365,
+        "latency_p95_ms": 346.4304900728165,
+        "calls_per_hour": 24224.885707185258,
+        "max_sampled_rss_mb": 280.62890625,
+        "model_bytes": 61023666,
+        "notes": "Sequential batch=1; includes first call, excludes model load and JSON IO. RSS sampled after calls, not continuous peak."
+      }
+    }
+  }
+}

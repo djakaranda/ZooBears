@@ -1,0 +1,6 @@
+*
+!requirements.txt
+!src/
+!src/**
+!artifacts/
+!artifacts/cpu_baseline.joblib

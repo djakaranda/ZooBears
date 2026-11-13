@@ -1,0 +1,12 @@
+{
+  "passed": [
+    "saved_model_load",
+    "gold_label_independence",
+    "empty_transcript",
+    "nonconsecutive_turn_ids",
+    "http_health",
+    "http_extraction_matches_cli",
+    "http_invalid_payloads_rejected"
+  ],
+  "http_process_stopped": true
+}

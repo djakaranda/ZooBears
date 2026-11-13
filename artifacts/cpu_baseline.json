@@ -1,0 +1,33 @@
+{
+  "seed": 42,
+  "calls": 3926,
+  "turns": 93434,
+  "facts": 18475,
+  "features": 100000,
+  "calibration": {
+    "service_state": {
+      "threshold": -0.20000000000000018,
+      "turn_f0.8": 0.5423627958072046
+    },
+    "tariff": {
+      "threshold": -0.20000000000000018,
+      "turn_f0.8": 0.5050863275781615
+    },
+    "ticket_status": {
+      "threshold": -2.220446049250313e-16,
+      "turn_f0.8": 0.7808330787249211
+    },
+    "action": {
+      "threshold": -0.1000000000000002,
+      "turn_f0.8": 0.502065506048982
+    },
+    "agreement": {
+      "threshold": -0.40000000000000013,
+      "turn_f0.8": 0.31963898683401804
+    }
+  },
+  "call_ids_sha256": "4aa57757f34c02f34be09404a9ad6c5a0c8dc1e07cd05e79ce2c46729bc7fce3",
+  "seconds": 115.65499690000433,
+  "model_bytes": 61023666,
+  "train_sha256": "62cb4af045ab12dbc854d71532b3b796ef501f4a232359e98549863ae0476fcb"
+}
