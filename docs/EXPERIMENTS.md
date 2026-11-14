@@ -67,6 +67,28 @@ fast-токенизатор работает из обычного катало�
 
 ## Дополнительный ASR-шум
 
+Для эксперимента с аугментацией сначала подготовьте групповой split и обучите
+нормализатор на fit. Затем сравните два запуска энкодера с одинаковыми настройками
+на одном dev и на его зашумлённой копии.
+
+```powershell
+python scripts/prepare_dev.py
+python scripts/train.py --train tmp/splits/fit.jsonl --output tmp/dev_baseline.joblib
+python scripts/train_neural.py --output tmp/neural_control --epochs 3 --asr-fraction 0.25 --asr-rate 0.15 --asr-clean-control
+python scripts/train_neural.py --output tmp/neural_asr --epochs 3 --asr-fraction 0.25 --asr-rate 0.15
+python scripts/make_stress.py --input tmp/splits/dev.jsonl --output tmp/splits/dev_stress.jsonl --rate 0.08 --seed 43
+```
+
+Аугментация добавляет копии случайно выбранных fit-звонков. Разметка, роли,
+индексы реплик и словарь значений сохраняются. Подмены не затрагивают слова
+отрицания и подтверждения, числа и фрагменты с распознанными датами. Если
+подмена меняет результат разбора даты, исходная реплика сохраняется.
+Флаг `--asr-clean-control` повторяет те же fit-звонки с исходным текстом.
+При одинаковых seed, batch size и числе эпох оба запуска делают одинаковое
+число шагов. Проверяйте обе модели на одних и тех же звонках через
+`predict_experiment.py` с `--engine hybrid`, `--normalizer tmp/dev_baseline.joblib`
+и одним генератором тарифов, обученным на fit.
+
 ```powershell
 .\.venv\Scripts\python.exe scripts/make_stress.py --input data/raw/val.jsonl --output tmp/val_stress.jsonl --rate 0.08 --seed 43
 .\.venv\Scripts\python.exe scripts/predict_experiment.py --engine hybrid --input tmp/val_stress.jsonl --output reports/val_stress_pred.jsonl --model artifacts/neural --normalizer artifacts/cpu_baseline.joblib --generator artifacts/generator --device cuda
@@ -79,10 +101,10 @@ fast-токенизатор работает из обычного катало�
 
 ## Что пока не подтверждено
 
-Docker/Podman не установлен, поэтому образы здесь не проверялись. GPU-замеры
-модели-учителя отсутствуют. Из малых размеров наших моделей нельзя выводить
-конкретную экономию или стоимость звонка. Неоднозначные и отсутствующие точные
-даты требуют уточнения правил эталона у организаторов.
+GPU-замеры модели-учителя и правила интерпретации неоднозначных дат остаются
+открытыми вопросами. Формулировки для организаторов собраны в
+[QUESTIONS_FOR_ORGANIZERS.md](QUESTIONS_FOR_ORGANIZERS.md). Для защиты доступны
+[сценарии репетиции](DEFENSE.md).
 
 ## История нескольких звонков
 
@@ -97,3 +119,15 @@ Ledger хранится отдельно от JSONL-предсказаний з�
 улучшает искусственно метрики отдельного звонка. Пока он опирается на стабильные
 ID объектов экстрактора, разрешение неоднозначных алиасов между звонками требует
 официального каталога и отдельного эксперимента.
+
+## Выбор дат по соседним репликам
+
+```bash
+python scripts/train_date_ranker.py --train tmp/splits/fit.jsonl --output artifacts/date_ranker.joblib
+python scripts/predict_experiment.py --engine hybrid --input data/raw/val.jsonl --output tmp/val_candidate.jsonl --model artifacts/neural --normalizer artifacts/cpu_baseline.joblib --generator artifacts/generator --date-ranker artifacts/date_ranker.joblib
+```
+
+Классификатор ранжирует время звонка и даты, найденные в реплике-источнике и двух
+соседних репликах. Явно подтверждённое окно выезда сохраняет обе границы.
+Цепочки переходов с несколькими состояниями сохраняют общую границу, которую
+рассчитал основной экстрактор.
