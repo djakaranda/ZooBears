@@ -1,0 +1,343 @@
+[
+  {
+    "stage": "train",
+    "status": "complete",
+    "command": [
+      "scripts/train_qwen.py",
+      "--epochs",
+      "2"
+    ],
+    "elapsed_seconds": 10608.943447700003,
+    "exit_code": 0
+  },
+  {
+    "stage": "dev_predict",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts/qwen",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--input",
+      "tmp/splits/dev.jsonl",
+      "--output",
+      "tmp/qwen_dev_raw_pred.jsonl",
+      "--candidate-output",
+      "tmp/qwen_dev_candidates.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "elapsed_seconds": 14913.557965900007,
+    "exit_code": 0
+  },
+  {
+    "stage": "dev_select_dates",
+    "status": "complete",
+    "command": [
+      "scripts/select_qwen_dates.py"
+    ],
+    "elapsed_seconds": 14926.733222199997,
+    "exit_code": 0
+  },
+  {
+    "stage": "dev_score",
+    "status": "complete",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/splits/dev.jsonl",
+      "reports/qwen_dev_pred.jsonl",
+      "--output",
+      "reports/qwen_dev_metrics.json"
+    ],
+    "elapsed_seconds": 14929.136901799997,
+    "exit_code": 0
+  },
+  {
+    "stage": "dev_schema",
+    "status": "complete",
+    "command": [
+      "scripts/check_predictions.py",
+      "tmp/splits/dev.jsonl",
+      "reports/qwen_dev_pred.jsonl",
+      "--output",
+      "reports/qwen_dev_schema.json"
+    ],
+    "elapsed_seconds": 14929.337245999996,
+    "exit_code": 0
+  },
+  {
+    "stage": "val_predict",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts/qwen",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker.joblib",
+      "--input",
+      "data/raw/val.jsonl",
+      "--output",
+      "reports/qwen_val_pred.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "elapsed_seconds": 16024.070298799998,
+    "exit_code": 0
+  },
+  {
+    "stage": "val_score",
+    "status": "complete",
+    "command": [
+      "scripts/evaluate.py",
+      "data/raw/val.jsonl",
+      "reports/qwen_val_pred.jsonl",
+      "--output",
+      "reports/qwen_val_metrics.json"
+    ],
+    "elapsed_seconds": 16025.552743299995,
+    "exit_code": 0
+  },
+  {
+    "stage": "val_schema",
+    "status": "complete",
+    "command": [
+      "scripts/check_predictions.py",
+      "data/raw/val.jsonl",
+      "reports/qwen_val_pred.jsonl",
+      "--output",
+      "reports/qwen_val_schema.json"
+    ],
+    "elapsed_seconds": 16025.6964935,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_cuda",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts/qwen",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker.joblib",
+      "--input",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "--output",
+      "reports/qwen_benchmark_cuda_pred.jsonl",
+      "--device",
+      "cuda"
+    ],
+    "elapsed_seconds": 16192.113478700005,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_cuda_score",
+    "status": "complete",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "reports/qwen_benchmark_cuda_pred.jsonl",
+      "--output",
+      "reports/qwen_benchmark_cuda_metrics.json"
+    ],
+    "elapsed_seconds": 16192.311616699997,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_cuda_batch4",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts/qwen",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker.joblib",
+      "--input",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "--output",
+      "reports/qwen_benchmark_cuda_batch4_pred.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "elapsed_seconds": 16262.973067800005,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_cuda_batch4_score",
+    "status": "complete",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "reports/qwen_benchmark_cuda_batch4_pred.jsonl",
+      "--output",
+      "reports/qwen_benchmark_cuda_batch4_metrics.json"
+    ],
+    "elapsed_seconds": 16263.168764700007,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_cpu",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts/qwen",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker.joblib",
+      "--input",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "--output",
+      "reports/qwen_benchmark_cpu_pred.jsonl",
+      "--device",
+      "cpu"
+    ],
+    "elapsed_seconds": 16821.431699000008,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_cpu_score",
+    "status": "complete",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "reports/qwen_benchmark_cpu_pred.jsonl",
+      "--output",
+      "reports/qwen_benchmark_cpu_metrics.json"
+    ],
+    "elapsed_seconds": 16821.603231300003,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_int8",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts/qwen",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker.joblib",
+      "--input",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "--output",
+      "reports/qwen_benchmark_int8_pred.jsonl",
+      "--device",
+      "cpu",
+      "--quantized"
+    ],
+    "elapsed_seconds": 17610.721151200007,
+    "exit_code": 0
+  },
+  {
+    "stage": "benchmark_int8_score",
+    "status": "complete",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "reports/qwen_benchmark_int8_pred.jsonl",
+      "--output",
+      "reports/qwen_benchmark_int8_metrics.json"
+    ],
+    "elapsed_seconds": 17610.831653500005,
+    "exit_code": 0
+  },
+  {
+    "stage": "baseline_val",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "hybrid",
+      "--model",
+      "artifacts/neural",
+      "--normalizer",
+      "artifacts/cpu_baseline.joblib",
+      "--generator",
+      "artifacts/generator",
+      "--date-ranker",
+      "artifacts/date_ranker.joblib",
+      "--input",
+      "data/raw/val.jsonl",
+      "--output",
+      "reports/qwen_reference_val_pred.jsonl",
+      "--device",
+      "cuda"
+    ],
+    "elapsed_seconds": 17670.390815699997,
+    "exit_code": 0
+  },
+  {
+    "stage": "baseline_val_score",
+    "status": "complete",
+    "command": [
+      "scripts/evaluate.py",
+      "data/raw/val.jsonl",
+      "reports/qwen_reference_val_pred.jsonl",
+      "--output",
+      "reports/qwen_reference_val_metrics.json"
+    ],
+    "elapsed_seconds": 17671.735314000005,
+    "exit_code": 0
+  },
+  {
+    "stage": "baseline_benchmark",
+    "status": "complete",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "hybrid",
+      "--model",
+      "artifacts/neural",
+      "--normalizer",
+      "artifacts/cpu_baseline.joblib",
+      "--generator",
+      "artifacts/generator",
+      "--date-ranker",
+      "artifacts/date_ranker.joblib",
+      "--input",
+      "tmp/qwen_benchmark_calls.jsonl",
+      "--output",
+      "reports/qwen_reference_benchmark_pred.jsonl",
+      "--device",
+      "cuda"
+    ],
+    "elapsed_seconds": 17682.497555099995,
+    "exit_code": 0
+  },
+  {
+    "stage": "report",
+    "status": "complete",
+    "command": [
+      "scripts/write_qwen_report.py"
+    ],
+    "elapsed_seconds": 17683.342598200004,
+    "exit_code": 0
+  }
+]

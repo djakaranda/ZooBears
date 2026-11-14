@@ -1,0 +1,12 @@
+{
+  "epoch": 2,
+  "step": 910,
+  "total_steps": 910,
+  "samples": 3635,
+  "epoch_samples": 3635,
+  "loss": 0.21141162714920939,
+  "elapsed_seconds": 10557.555372600007,
+  "eta_seconds": 0.0,
+  "tokens_per_second": 958.7338775668941,
+  "gpu_peak_mb": 3614.14306640625
+}

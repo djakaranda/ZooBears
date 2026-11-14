@@ -1,0 +1,20 @@
+{
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "logical_cpus": 20,
+  "ram_total_bytes": 16870297600,
+  "packages": {
+    "torch": "2.9.1+cu126",
+    "transformers": "4.57.1",
+    "peft": "0.17.1",
+    "accelerate": "1.15.0",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.22.2",
+    "huggingface_hub": "0.36.2"
+  },
+  "torch_cuda": "12.6",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "gpu_total_bytes": 6441926656,
+  "cpu_threads_in_model": 6
+}

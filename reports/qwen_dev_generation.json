@@ -1,0 +1,8 @@
+{
+  "windows": 650,
+  "invalid_json_windows": 1,
+  "invalid_rows": 0,
+  "truncated_windows": 1,
+  "generated_tokens": 79710,
+  "short_rule_fallback": 0
+}

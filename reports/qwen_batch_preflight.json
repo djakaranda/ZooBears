@@ -1,0 +1,10 @@
+{
+  "calls": 8,
+  "batch_size": 4,
+  "seconds": 16.902937999999267,
+  "amortized_ms": 2112.8672499999084,
+  "facts": 40,
+  "invalid_json_windows": 0,
+  "schema_valid": true,
+  "short_rule_cases_passed": true
+}

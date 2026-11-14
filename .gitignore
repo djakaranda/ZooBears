@@ -9,3 +9,7 @@ tmp/
 *.key
 .chart-data-*/
 .codex-finalizer/
+artifacts/qwen_base/
+artifacts/qwen_merged/
+*.~lock.*#
+.~lock.*#

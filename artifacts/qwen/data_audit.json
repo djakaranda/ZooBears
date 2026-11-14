@@ -1,0 +1,18 @@
+{
+  "fit_calls": 3334,
+  "fit_windows": 3635,
+  "dev_calls": 592,
+  "dev_loss_calls": 96,
+  "dev_loss_windows": 106,
+  "account_overlap": 0,
+  "train_sha256": "e4adff2e4e21e2f3dc4d5e3cb662eb4fc84947ccf6e0bbee4b87e3f2bbeedaa3",
+  "dev_sha256": "a532294aba15c02cc15d22894d489e0e0dfee996ce925db379e4e7fdf9eb4f00",
+  "fit_tokens": 5060943,
+  "fit_target_tokens": 477252,
+  "max_sequence_tokens": 2853,
+  "fit_ids_sha256": "29457b6ac59fd7fa3b3c0b1eaaf4853882cab29ffa157ee64fb0f0f6f164f1ea",
+  "dev_ids_sha256": "068a4cb9bfe02ca5768a725647ddd7832235c61bf4a3e71057422da7faef647c",
+  "truncated_training_examples": 0,
+  "smoke_limit": null,
+  "canonicalized_training_objects": 616
+}

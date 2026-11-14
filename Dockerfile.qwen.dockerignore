@@ -1,0 +1,12 @@
+*
+!requirements.txt
+!src/
+!src/**
+!artifacts/
+!artifacts/qwen_base/
+!artifacts/qwen_base/**
+artifacts/qwen_base/.cache/
+!artifacts/qwen/
+!artifacts/qwen/**
+!artifacts/date_ranker.joblib
+!Dockerfile.qwen

@@ -1,0 +1,52 @@
+{
+  "split": "internal account-disjoint dev",
+  "calls": 592,
+  "objective": "temporal_recall + state_accuracy; fact F1 breaks ties",
+  "metrics": {
+    "rules": {
+      "n_calls": 592,
+      "n_gold_facts": 2793,
+      "n_pred_facts": 2562,
+      "fact_precision": 0.5094,
+      "fact_recall": 0.4672,
+      "temporal_recall": 0.3831,
+      "n_temporal": 1305,
+      "state_accuracy": 0.4618,
+      "n_state": 955,
+      "grounding_turn": 0.8084,
+      "grounding_span": 0.9686,
+      "n_grounded": 1305
+    },
+    "date_ranker": {
+      "n_calls": 592,
+      "n_gold_facts": 2793,
+      "n_pred_facts": 2550,
+      "fact_precision": 0.511,
+      "fact_recall": 0.4665,
+      "temporal_recall": 0.4167,
+      "n_temporal": 1303,
+      "state_accuracy": 0.4607,
+      "n_state": 955,
+      "grounding_turn": 0.8104,
+      "grounding_span": 0.9688,
+      "n_grounded": 1303
+    },
+    "ranker_with_agreement_evidence": {
+      "n_calls": 592,
+      "n_gold_facts": 2793,
+      "n_pred_facts": 2562,
+      "fact_precision": 0.5094,
+      "fact_recall": 0.4672,
+      "temporal_recall": 0.4146,
+      "n_temporal": 1305,
+      "state_accuracy": 0.4618,
+      "n_state": 955,
+      "grounding_turn": 0.8084,
+      "grounding_span": 0.9686,
+      "n_grounded": 1305
+    }
+  },
+  "selected": "date_ranker",
+  "date_ranker": "artifacts/date_ranker.joblib",
+  "agreement_evidence": false
+}

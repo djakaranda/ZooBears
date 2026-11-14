@@ -1,0 +1,41 @@
+{
+  "backbone": "Qwen/Qwen3-0.6B",
+  "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "license": "Apache-2.0",
+  "transport_format_version": 1,
+  "format_code_sha256": "a5eb45c6b6c9f7211236244068871b317df4b256990e815b1b5fec2f5a80029c",
+  "training_code_sha256": "005e3bebf1758ffba5af180ebc8a2c750e80ee49fa682bb7ec2dbe5380bd091a",
+  "base_parameters": 596049920,
+  "trainable_adapter_parameters": 10092544,
+  "total_parameters_with_adapter": 606142464,
+  "size_requirement_satisfied": true,
+  "fit_calls": 3334,
+  "dev_calls": 592,
+  "fit_windows": 3635,
+  "epochs_requested": 2,
+  "best_epoch": 2,
+  "max_prompt_tokens": 2560,
+  "max_target_tokens": 512,
+  "lora_rank": 16,
+  "learning_rate": 0.0002,
+  "accumulation": 8,
+  "seed": 42,
+  "training_seconds": 10603.231847700008,
+  "selection": "response token loss on first 96 internal dev calls; no external val selection",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss_per_window": 0.393916683843956,
+      "dev_response_token_loss": 0.30781123720445336,
+      "seconds": 5342.380414600004
+    },
+    {
+      "epoch": 2,
+      "train_loss_per_window": 0.22893067436962355,
+      "dev_response_token_loss": 0.28401276031907613,
+      "seconds": 10602.882569299996
+    }
+  ],
+  "smoke_limit": null,
+  "cuda_peak_allocated_mb": 3614.14306640625
+}

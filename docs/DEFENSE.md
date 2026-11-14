@@ -1,11 +1,23 @@
 # Репетиция защиты ZooBears
 
-Запустите CPU-версию API из собранного образа с пробросом порта на localhost. В браузере откройте `http://127.0.0.1:8000/` или отправьте в `POST /extract` файлы из `reports/defense`.
+Основная модель — Qwen3-0.6B, 596 049 920 параметров, две эпохи LoRA.
+Все три сценария ниже, неточный месяц и неизвестное начало проверены через
+настоящий API с выбранным на dev ranker дат: [qwen_api_check.json](../reports/qwen_api_check.json).
+Короткий подтверждённый выезд и короткий тариф обслуживает явно отмеченный резерв
+правил после пустого ответа Qwen. Переход статуса извлекает сама Qwen.
+Внешние метрики и ресурсы — [QWEN_REPORT.md](../reports/QWEN_REPORT.md).
 
-```bash
-docker build -f Dockerfile.neural -t zoobears-neural .
-docker run --rm -p 127.0.0.1:8000:8000 zoobears-neural python -m compactfacts.api --engine hybrid --model artifacts/neural --date-ranker artifacts/date_ranker.joblib --host 0.0.0.0
+Запустите API локально. В браузере откройте `http://127.0.0.1:8000/` или отправьте
+в `POST /extract` файлы из `reports/defense`. Для CPU замените `cuda` на `cpu`.
+
+```powershell
+$env:PYTHONPATH='src'
+.venv/Scripts/python.exe -m compactfacts.api --engine qwen --model artifacts/qwen --base-model artifacts/qwen_base --date-ranker artifacts/date_ranker.joblib --device cuda
+.venv/Scripts/python.exe scripts/check_qwen_api.py
 ```
+
+Qwen Dockerfile подготовлен, но на текущей Windows-машине Docker отсутствует:
+проверка старого гибрида в контейнере не является проверкой Qwen-образа.
 
 1. **Переход статуса** — `transition.json`. Найдите два факта одной заявки. Статус «принята» закрывается 4 апреля, в момент начала статуса «назначен выезд специалиста». У нового статуса `valid_to = null`. Назовите реплики 8 и 16 как источники фактов.
 2. **Относительный срок и подтверждение** — `appointment.json`. Звонок состоялся в субботу 14 ноября. «В четверг после двух до 18:00» превращается в окно 19 ноября с 14:00 до 18:00. При повторном подтверждении API возвращает один факт с этим окном.

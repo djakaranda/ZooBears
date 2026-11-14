@@ -8,10 +8,11 @@
 <header><h1>ZooBears</h1><span id="engine">Локальный экстрактор фактов</span></header>
 <p>Транскрипт звонка становится набором фактов с датами и ссылками на реплики.</p>
 <label for="input">Звонок в формате JSON</label><textarea id="input" spellcheck="false"></textarea>
-<div><button id="run">Извлечь факты</button><button class="secondary" id="example">Загрузить пример</button><span id="status" role="status"></span></div>
+<div><button id="run">Извлечь факты</button><button class="secondary" id="example">Загрузить пример</button><button class="secondary" id="uncertain-example">Пример с неточной датой</button><span id="status" role="status"></span></div>
 <div id="error" role="alert"></div>
 <h2>Извлечённые факты</h2><p id="empty">Результат появится после обработки звонка.</p>
 <div class="scroll"><table id="table" hidden><thead><tr><th>Объект</th><th>Атрибут</th><th>Значение</th><th>С</th><th>По</th><th>Реплика</th></tr></thead><tbody id="facts"></tbody></table></div>
+<p class="note" id="date-note" hidden>Диапазон в колонке «С» — возможная дата начала, а не срок действия факта. Если начало не озвучено, показываем дату наблюдения отдельно. Конкурсные точечные даты сохранены в полном JSON.</p>
 <details id="raw"><summary>Полный JSON ответа</summary><pre id="json"></pre></details>
 <p class="note">Прототип может ошибаться. Проверяйте значения и даты по исходному разговору. Обработка идёт на локальном сервере, без отправки транскрипта внешней языковой модели.</p>
 </main>
@@ -27,11 +28,27 @@ const example={call_id:'demo:call0001',started_at:'2026-11-14T15:00:00',series:n
 {idx:7,speaker:'client',text:'Да, подходит, завтра буду дома.'},
 {idx:8,speaker:'operator',text:'Подтверждаю выезд специалиста завтра после 14:00.'}]};
 const el=id=>document.getElementById(id);const labels={service_state:'Состояние',ticket_status:'Статус заявки',tariff:'Тариф',action:'Действие',agreement:'Договорённость'};
+function startLabel(fact,evidence){
+if(!evidence)return fact.valid_from||'Начало неизвестно';
+if(evidence.kind==='range'){
+const first=new Date(evidence.earliest.slice(0,10)+'T00:00:00Z');
+if(evidence.precision==='month')return `${new Intl.DateTimeFormat('ru-RU',{month:'long',year:'numeric',timeZone:'UTC'}).format(first)} · точный день неизвестен`;
+const last=new Date(Date.parse(evidence.latest_exclusive.slice(0,10)+'T00:00:00Z')-86400000);
+return `${evidence.earliest.slice(0,10)} — ${last.toISOString().slice(0,10)} · точный день неизвестен`;
+}
+if(evidence.kind==='unknown')return `${evidence.reason==='ambiguous_dates'?'Дата неоднозначна':'Начало неизвестно'} · наблюдение ${evidence.observed_at.slice(0,10)}`;
+return evidence.precision==='time'?evidence.value:evidence.value.slice(0,10);
+}
 function reset(){el('input').value=JSON.stringify(example,null,2);el('error').textContent=''}reset();el('example').onclick=reset;
-fetch('/health').then(r=>r.json()).then(data=>{el('engine').textContent=`${data.model} / ${data.device}`}).catch(()=>{});
+el('uncertain-example').onclick=()=>{el('input').value=JSON.stringify({call_id:'demo:uncertain',started_at:'2026-11-14T15:00:00',turns:[{idx:0,speaker:'client',text:'В прошлом месяце мне подключили тариф Гранд.'}]},null,2);el('error').textContent=''};
+fetch('/health').then(r=>r.json()).then(data=>{el('engine').textContent=data.backbone?`${data.backbone} · ${(data.base_parameters/1e6).toFixed(1)} млн параметров · ${data.device}${data.quantized?' INT8':''}`:`${data.model} / ${data.device}`}).catch(()=>{});
 el('run').onclick=async()=>{el('error').textContent='';el('status').textContent='Обрабатываю…';el('run').disabled=true;
 try{const payload=JSON.parse(el('input').value);const start=performance.now();const response=await fetch('/extract',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await response.json();if(!response.ok)throw new Error(data.error||'Ошибка сервера');const elapsed=performance.now()-start;
-el('facts').replaceChildren();for(const fact of data.facts){const row=document.createElement('tr');for(const value of [fact.object.name,labels[fact.attribute]||fact.attribute,(fact.polarity<0?'Отрицание: ':'')+fact.value,fact.valid_from||'Неизвестно',fact.valid_to||'Открыт',fact.source.turn_idx]){const cell=document.createElement('td');cell.textContent=String(value);row.append(cell)}el('facts').append(row)}
-el('empty').hidden=data.facts.length>0;el('empty').textContent='Подтверждённых фактов не найдено.';el('table').hidden=!data.facts.length;el('json').textContent=JSON.stringify(data,null,2);el('status').textContent=`${data.facts.length} фактов, ${Math.round(elapsed)} мс с учётом HTTP`;
+const evidence=new Map((data.temporal_evidence||[]).map(item=>[item.fact_index,item.start]));
+el('facts').replaceChildren();for(const [index,fact] of data.facts.entries()){const row=document.createElement('tr');for(const value of [fact.object.name,labels[fact.attribute]||fact.attribute,(fact.polarity<0?'Отрицание: ':'')+fact.value,startLabel(fact,evidence.get(index)),fact.valid_to||'Открыт',fact.source.turn_idx]){const cell=document.createElement('td');cell.textContent=String(value);row.append(cell)}el('facts').append(row)}
+el('date-note').hidden=!data.facts.length;
+const diagnostics=data.generation_diagnostics;
+if(diagnostics&&(diagnostics.invalid_json_windows||diagnostics.invalid_rows||diagnostics.truncated_windows))el('error').textContent='Часть ответа модели не прошла проверку или не была завершена. Результат может быть неполным.';
+el('empty').hidden=data.facts.length>0;el('empty').textContent='Подтверждённых фактов не найдено.';el('table').hidden=!data.facts.length;el('json').textContent=JSON.stringify(data,null,2);el('status').textContent=`${data.facts.length} фактов, ${Math.round(elapsed)} мс с учётом HTTP${data.generation_diagnostics?.short_rule_fallback?' · короткий фрагмент: правила':''}`;
 }catch(error){el('error').textContent=error.message;el('status').textContent='Ошибка'}finally{el('run').disabled=false}};
 </script></html>

@@ -1,0 +1,14 @@
+FROM python:3.13-slim
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir torch==2.9.1 --index-url https://download.pytorch.org/whl/cpu && \
+    pip install --no-cache-dir transformers==4.57.1 safetensors==0.8.0 peft==0.17.1 'accelerate>=1,<2'
+COPY src ./src
+COPY artifacts/qwen_base ./artifacts/qwen_base
+COPY artifacts/qwen ./artifacts/qwen
+COPY artifacts/date_ranker.joblib ./artifacts/date_ranker.joblib
+ENV PYTHONPATH=/app/src
+ENV HF_HUB_OFFLINE=1
+EXPOSE 8000
+CMD ["python", "-m", "compactfacts.api", "--engine", "qwen", "--model", "artifacts/qwen", "--base-model", "artifacts/qwen_base", "--date-ranker", "artifacts/date_ranker.joblib", "--device", "cpu", "--host", "0.0.0.0"]

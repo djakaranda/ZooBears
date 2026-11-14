@@ -1,0 +1,6 @@
+{
+  "selected_on": "internal account-disjoint dev",
+  "variant": "date_ranker",
+  "date_ranker": "artifacts/date_ranker.joblib",
+  "agreement_evidence": false
+}

@@ -1,0 +1,16 @@
+{
+  "base_parameters": 596049920,
+  "prediction": {
+    "call_id": "qwen:smoke",
+    "facts": [],
+    "generation_diagnostics": {
+      "windows": 1,
+      "invalid_json_windows": 0,
+      "invalid_rows": 0,
+      "truncated_windows": 0,
+      "generated_tokens": 2
+    }
+  },
+  "schema_valid": true,
+  "training": "32 fit calls / one smoke epoch; not a quality evaluation"
+}

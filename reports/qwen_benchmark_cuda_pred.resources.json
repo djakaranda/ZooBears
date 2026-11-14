@@ -1,0 +1,30 @@
+{
+  "engine": "qwen",
+  "device": "cuda",
+  "quantized": false,
+  "max_length": null,
+  "calls": 24,
+  "mode": "balanced",
+  "quantization_scheme": null,
+  "base_parameters": 596049920,
+  "batch_size": 1,
+  "latency_unit": "request wall time",
+  "hardware_start": {
+    "power_plugged": true,
+    "nvidia_smi": "P0, 1425 MHz, 7001 MHz, 29.51 W, 78"
+  },
+  "hardware_end": {
+    "power_plugged": true,
+    "nvidia_smi": "P0, 1912 MHz, 7001 MHz, 71.40 W, 86"
+  },
+  "latency_mean_ms": 6562.272104166671,
+  "latency_p50_ms": 6460.920550001902,
+  "calls_per_hour": 548.5904794643008,
+  "wall_seconds_per_1000_calls": 6562.272104166671,
+  "gpu_seconds_per_1000_calls_proxy": 6562.272104166671,
+  "latency_p95_ms": 8975.146030001633,
+  "max_sampled_rss_mb": 1688.0859375,
+  "process_peak_rss_mb": 2014.68359375,
+  "gpu_peak_allocated_mb": 2473.8779296875,
+  "note": "Call batch=1; Qwen batches independent windows with left padding. For batch>1 reported time/call is amortized wall time, not online latency. First call included; latency excludes load and IO; CUDA synchronized. Process peak RSS includes model loading; sampled RSS measured after calls. GPU seconds proxy is synchronized wall time on a dedicated GPU, not a kernel profiler measurement."
+}

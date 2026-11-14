@@ -1,0 +1,19 @@
+{
+  "0.25": {
+    "calls": 383,
+    "official": {
+      "n_calls": 383,
+      "n_gold_facts": 1845,
+      "n_pred_facts": 1655,
+      "fact_precision": 0.5233,
+      "fact_recall": 0.4694,
+      "temporal_recall": 0.4065,
+      "n_temporal": 866,
+      "state_accuracy": 0.4398,
+      "n_state": 623,
+      "grounding_turn": 0.8349,
+      "grounding_span": 0.9729,
+      "n_grounded": 866
+    }
+  }
+}

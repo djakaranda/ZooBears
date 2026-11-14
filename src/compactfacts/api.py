@@ -6,6 +6,7 @@ import json
 import traceback
 from pathlib import Path
 from .model import Extractor
+from .date_evidence import with_date_evidence
 
 
 def validate_call(call):
@@ -25,8 +26,13 @@ def validate_call(call):
 
 
 def serve(model_path, host='127.0.0.1', port=8000, engine='baseline', device='cpu', normalizer='artifacts/cpu_baseline.joblib', generator=None,
-          date_ranker=None):
-    if engine=='hybrid':
+          date_ranker=None, base_model='artifacts/qwen_base', quantized=False):
+    if quantized and engine!='qwen':
+        raise ValueError('--quantized API mode currently requires --engine qwen')
+    if engine=='qwen':
+        from .qwen import QwenExtractor
+        model=QwenExtractor(model_path,base_model,device,date_ranker,quantized=quantized)
+    elif engine=='hybrid':
         from .hybrid import HybridExtractor
         model=HybridExtractor(model_path,normalizer,device,generator,date_ranker=date_ranker)
     elif engine=='neural':
@@ -47,7 +53,9 @@ def serve(model_path, host='127.0.0.1', port=8000, engine='baseline', device='cp
                 body=Path(__file__).with_name('demo.html').read_bytes()
                 self.send_response(200);self.send_header('Content-Type','text/html; charset=utf-8')
                 self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
-            elif self.path=='/health': self.respond(200,{'status':'ok','model':engine,'device':device})
+            elif self.path=='/health': self.respond(200,{'status':'ok','model':engine,'device':device,
+                **({'base_parameters':model.base_parameters,'adapter':str(model_path),
+                    'backbone':model.metadata['backbone'],'quantized':quantized} if engine=='qwen' else {})})
             else: self.respond(404,{'error':'Use POST /extract or GET /health'})
 
         def do_POST(self):
@@ -59,7 +67,7 @@ def serve(model_path, host='127.0.0.1', port=8000, engine='baseline', device='cp
                 call=validate_call(payload)
             except (ValueError,TypeError,UnicodeDecodeError) as exc:
                 return self.respond(400,{'error':str(exc)})
-            try: self.respond(200,model.predict(call))
+            try: self.respond(200,with_date_evidence(call,model.predict(call)))
             except Exception:
                 traceback.print_exc()
                 self.respond(500,{'error':'Inference failed'})
@@ -71,9 +79,11 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--model',default='artifacts/cpu_baseline.joblib')
     parser.add_argument('--host',default='127.0.0.1'); parser.add_argument('--port',type=int,default=8000)
-    parser.add_argument('--engine',choices=['baseline','temporal','neural','hybrid'],default='baseline')
+    parser.add_argument('--engine',choices=['baseline','temporal','neural','hybrid','qwen'],default='baseline')
     parser.add_argument('--device',default='cpu');parser.add_argument('--normalizer',default='artifacts/cpu_baseline.joblib')
     parser.add_argument('--generator',help='Optional saved ruT5 value normalizer (hybrid engine)')
     parser.add_argument('--date-ranker',help='Optional fit-trained date ranker (hybrid engine)')
+    parser.add_argument('--base-model',default='artifacts/qwen_base',help='Local pinned base weights for Qwen')
+    parser.add_argument('--quantized',action='store_true',help='Qwen CPU dynamic INT8')
     args=parser.parse_args()
-    serve(args.model,args.host,args.port,args.engine,args.device,args.normalizer,args.generator,args.date_ranker)
+    serve(args.model,args.host,args.port,args.engine,args.device,args.normalizer,args.generator,args.date_ranker,args.base_model,args.quantized)

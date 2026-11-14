@@ -24,5 +24,15 @@
   "generator_attributes": [
     "tariff"
   ],
-  "selected_on": "internal account-disjoint train dev"
+  "selected_on": "internal account-disjoint train dev",
+  "qwen": {
+    "engine": "qwen",
+    "model": "artifacts/qwen",
+    "base_model": "artifacts/qwen_base",
+    "device": "cuda",
+    "date_ranker": "artifacts/date_ranker.joblib",
+    "agreement_evidence": false,
+    "base_parameters": 596049920,
+    "selected_on": "internal train dev"
+  }
 }

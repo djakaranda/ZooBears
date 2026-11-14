@@ -1,0 +1,10 @@
+{
+  "input": "data/raw/val.jsonl",
+  "stored_predictions": "reports/val_pred.jsonl",
+  "calls": 383,
+  "facts": 1336,
+  "facts_unchanged": true,
+  "official_metrics_unchanged": true,
+  "schema_valid": true,
+  "note": "Metadata compatibility regression on stored predictions; no model rerun or quality improvement claim."
+}

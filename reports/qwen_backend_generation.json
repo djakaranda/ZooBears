@@ -1,0 +1,22 @@
+{
+  "cuda": {
+    "invalid_json_windows": 0,
+    "invalid_rows": 0,
+    "truncated_windows": 0
+  },
+  "cuda_batch4": {
+    "invalid_json_windows": 0,
+    "invalid_rows": 0,
+    "truncated_windows": 0
+  },
+  "cpu": {
+    "invalid_json_windows": 0,
+    "invalid_rows": 0,
+    "truncated_windows": 0
+  },
+  "int8": {
+    "invalid_json_windows": 16,
+    "invalid_rows": 1,
+    "truncated_windows": 8
+  }
+}

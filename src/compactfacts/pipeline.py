@@ -64,6 +64,11 @@ def assemble_facts(call,candidates,normalizer,temporal=True,confirmation=True, *
     for item in sorted(candidates, key=lambda candidate: candidate['index']):
         i=item['index'];turn=call['turns'][i];attr=item['attribute'];text=turn['text'];value=item['value']
         if not text.strip():continue
+        # A description of rejecting an offer is not a positive agreement.
+        if (confirmation and attr=='agreement' and turn['speaker']=='client'
+                and item.get('polarity',1)>0 and not CONFIRMED.search(text)
+                and re.match(r'\s*(?:клиент\w*\s+)?отказал(?:ся|ась|ись)\b',value,re.I)):
+            continue
         after=call['turns'][i+1] if i+1<len(call['turns']) else None
         if confirmation and attr == 'agreement' and turn['speaker'] == 'client' and REFUSED.search(text):
             continue

@@ -1,14 +1,41 @@
 # ZooBears — CompactFactExtraction
 
-Рабочая CPU-цепочка извлечения фактов из русскоязычных звонков поддержки.
-Код, обученные веса, валидационные предсказания и отчёты находятся в этом проекте.
-Последние проверки дат, ASR и Docker — [reports/ITERATION_4_REPORT.md](reports/ITERATION_4_REPORT.md).
-Исходные замеры нейросетевой версии — [reports/ITERATION_2_REPORT.md](reports/ITERATION_2_REPORT.md).
-Первый CPU-прототип — [reports/START_REPORT.md](reports/START_REPORT.md).
-План дальнейшего решения и ограничения метрик — [docs/PLAN.md](docs/PLAN.md).
-Презентация текущих результатов — [ZooBears_progress.pptx](output/presentation/ZooBears_progress.pptx).
+Извлечение фактов из русскоязычных звонков поддержки. Основная модель —
+**Qwen3-0.6B, 596 049 920 параметров**, с LoRA после двух эпох обучения.
+Диапазон 0,5–1,5 млрд параметров, уточнённый менторами, соблюдён.
+Обучение и выбор дат проводятся на fit/dev с разделением по аккаунтам;
+внешний val используется для итоговой оценки.
 
-## Нейросетевая версия
+На всех 383 звонках внешнего val: precision **0,5233**, recall **0,4694**,
+temporal recall **0,4065**, state accuracy **0,4398**.
+Пороги temporal/state относительно обеих версий LLM-бейзлайна пройдены;
+сокращение затрат относительно учителя пока не подтверждено.
+Результат оценщика: [qwen_val_metrics.json](reports/qwen_val_metrics.json).
+Полный отчёт с CUDA/CPU/INT8 и сравнением с прежним гибридом:
+[QWEN_REPORT.md](reports/QWEN_REPORT.md).
+
+Установка, загрузка публичной базы и методика: [docs/QWEN.md](docs/QWEN.md).
+LoRA-адаптер включён в репозиторий; базовые веса скачиваются отдельно
+скриптом с проверкой закреплённой версии и SHA-256.
+
+```powershell
+$env:PYTHONPATH='src'
+.venv/Scripts/python.exe -m compactfacts.api --engine qwen --model artifacts/qwen --base-model artifacts/qwen_base --date-ranker artifacts/date_ranker.joblib --device cuda
+```
+
+Для CPU замените `cuda` на `cpu`. Демо: `http://127.0.0.1:8000/`.
+Короткие положительные фрагменты имеют ограниченный резерв правил,
+явно отмеченный в ответе API и демо. Экспериментальный INT8 пока не рекомендован.
+
+План дальнейшего решения и ограничения метрик — [docs/PLAN.md](docs/PLAN.md).
+Последняя презентация прежней модели — [ZooBears_defense.pptx](output/presentation/ZooBears_defense.pptx).
+
+Прежний гибрид сохранён для сравнения. Его отчёты:
+[проверки дат, ASR и Docker](reports/ITERATION_4_REPORT.md),
+[нейросетевая версия](reports/ITERATION_2_REPORT.md),
+[первый CPU-прототип](reports/START_REPORT.md).
+
+## Прежний гибрид: запуск и воспроизведение
 
 Малый русский энкодер выделяет факты, затем правила восстанавливают даты и
 переходы. В quality-режиме дополнительная модель нормализует тарифы, включая
@@ -103,6 +130,11 @@ docker run --rm -p 127.0.0.1:8000:8000 zoobears-neural python -m compactfacts.ap
 проверен на Apple GPU с `--device mps`.
 
 ## Воспроизводимость и ограничения
+
+API и демо поддерживают [неточную дату начала](docs/UNCERTAIN_DATES.md):
+«в прошлом месяце» отображается как месяц без выдуманного дня, неозвученное
+начало — как неизвестное. Метаданные `temporal_evidence` отделены от конкурсных
+точечных дат. В демо есть кнопка «Пример с неточной датой».
 
 Хэши исходников пакета — `reports/data_audit.json`, параметры и хэш train —
 `artifacts/cpu_baseline.json`. Официальный скрипт метрик сохранён без изменений.

@@ -1,0 +1,35 @@
+{
+  "scope": "single fixed internal-dev call, epoch1 checkpoint; not aggregate quality",
+  "call_id": "u101_00000:call0000",
+  "fp32": {
+    "facts": 5,
+    "diagnostics": {
+      "windows": 1,
+      "invalid_json_windows": 0,
+      "invalid_rows": 0,
+      "truncated_windows": 0,
+      "generated_tokens": 141
+    }
+  },
+  "int8_per_tensor": {
+    "facts": 0,
+    "diagnostics": {
+      "windows": 1,
+      "invalid_json_windows": 1,
+      "invalid_rows": 0,
+      "truncated_windows": 0,
+      "generated_tokens": 277
+    }
+  },
+  "int8_per_channel": {
+    "facts": 2,
+    "diagnostics": {
+      "windows": 1,
+      "invalid_json_windows": 0,
+      "invalid_rows": 1,
+      "truncated_windows": 0,
+      "generated_tokens": 134
+    }
+  },
+  "conclusion": "Per-tensor INT8 lost JSON compliance; per-channel restored JSON but content/rows degraded. Keep INT8 experimental; benchmark separately."
+}
