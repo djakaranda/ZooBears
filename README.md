@@ -2,7 +2,8 @@
 
 Рабочая CPU-цепочка извлечения фактов из русскоязычных звонков поддержки.
 Код, обученные веса, валидационные предсказания и отчёты находятся в этом проекте.
-Текущая нейросетевая итерация — [reports/ITERATION_2_REPORT.md](reports/ITERATION_2_REPORT.md).
+Последние проверки дат, ASR и Docker — [reports/ITERATION_4_REPORT.md](reports/ITERATION_4_REPORT.md).
+Исходные замеры нейросетевой версии — [reports/ITERATION_2_REPORT.md](reports/ITERATION_2_REPORT.md).
 Первый CPU-прототип — [reports/START_REPORT.md](reports/START_REPORT.md).
 План дальнейшего решения и ограничения метрик — [docs/PLAN.md](docs/PLAN.md).
 Презентация текущих результатов — [ZooBears_progress.pptx](output/presentation/ZooBears_progress.pptx).
@@ -86,8 +87,20 @@ docker run --rm -p 8000:8000 compactfacts
 Для нейросетевого CPU-режима: `docker build -f Dockerfile.neural -t zoobears-neural .`
 и `docker run --rm -p 8000:8000 zoobears-neural`.
 
-Образ включает только исходники, зависимости и обученные веса. Dockerfile подготовлен;
-факт сборки и запуска нужно проверять отдельно на машине с Docker.
+Образ включает исходники, зависимости и обученные веса CPU-режима. Нейросетевой
+CPU-образ собран на Docker Desktop (Apple Silicon). Ответы на 24 запроса совпали
+с локальным CPU API. [Результат проверки](reports/docker_parity.json) ·
+[Сценарии для защиты](docs/DEFENSE.md).
+
+Проверенный CPU-режим с ранжированием дат:
+
+```bash
+docker run --rm -p 127.0.0.1:8000:8000 zoobears-neural python -m compactfacts.api --engine hybrid --model artifacts/neural --date-ranker artifacts/date_ranker.joblib --host 0.0.0.0
+```
+
+Для конфигурации `quality` из отчёта добавьте `--date-ranker artifacts/date_ranker.joblib`
+к локальному запуску API с генератором тарифов. Внешний val для этой конфигурации
+проверен на Apple GPU с `--device mps`.
 
 ## Воспроизводимость и ограничения
 

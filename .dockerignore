@@ -4,6 +4,7 @@
 !src/**
 !artifacts/
 !artifacts/cpu_baseline.joblib
+!artifacts/date_ranker.joblib
 !artifacts/neural/
 !artifacts/neural/**
 !Dockerfile.neural
