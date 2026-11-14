@@ -171,11 +171,18 @@ def save_checkpoint(model,tokenizer,directory,vocabulary,metadata):
     write_json(directory/'experiment.json',{**metadata,'vocabulary':vocabulary})
 
 
-def fit_neural(fit_calls,dev_calls,output,epochs=3,batch_size=32,max_length=256,seed=42,backbone=BACKBONE,calibration=None):
+def fit_neural(fit_calls,dev_calls,output,epochs=3,batch_size=32,max_length=256,seed=42,backbone=BACKBONE,
+               calibration=None, *, device_name=None, asr_fraction=0., asr_rate=.15, asr_clean_control=False):
+    if not 0 <= asr_fraction <= 1 or not 0 <= asr_rate <= 1:
+        raise ValueError('ASR fraction and rate must be between 0 and 1')
+    def account(call):
+        return (call.get('series') or {}).get('account_id') or call['call_id'].split(':')[0]
+    if {account(call) for call in fit_calls} & {account(call) for call in dev_calls}:
+        raise ValueError('Fit and dev must be account-disjoint')
     random.seed(seed);np.random.seed(seed);torch.manual_seed(seed)
     if torch.cuda.is_available():torch.cuda.manual_seed_all(seed)
     torch.set_num_threads(6)
-    device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device=torch.device(device_name or ('cuda' if torch.cuda.is_available() else 'cpu'))
     revision=calibration.get('revision') if calibration else None
     tokenizer=AutoTokenizer.from_pretrained(backbone,revision=revision)
     config=AutoConfig.from_pretrained(backbone,revision=revision)
@@ -183,7 +190,12 @@ def fit_neural(fit_calls,dev_calls,output,epochs=3,batch_size=32,max_length=256,
     for a in ATTRIBUTES:
         counts=Counter(f['value'] for c in fit_calls for f in c['facts'] if f['attribute']==a)
         vocabulary[a]=sorted(v for v,n in counts.items() if n>=3)
-    fit_data=TurnDataset(fit_calls,tokenizer,vocabulary,max_length)
+    training_calls = fit_calls
+    if asr_fraction and asr_rate:
+        from .asr import augment_calls
+        training_calls = fit_calls + augment_calls(fit_calls, asr_fraction, asr_rate, seed,
+                                                   clean_control=asr_clean_control)
+    fit_data=TurnDataset(training_calls,tokenizer,vocabulary,max_length)
     dev_data=TurnDataset(dev_calls,tokenizer,vocabulary,max_length) if dev_calls else None
     fit_loader=DataLoader(fit_data,batch_size=batch_size,shuffle=True,collate_fn=collate,num_workers=0,
                           generator=torch.Generator().manual_seed(seed))
@@ -199,6 +211,8 @@ def fit_neural(fit_calls,dev_calls,output,epochs=3,batch_size=32,max_length=256,
     metadata={'backbone':backbone,'revision':getattr(config,'_commit_hash',None),'license':'MIT (base model card)',
         'seed':seed,'fit_calls':len(fit_calls),'dev_calls':len(dev_calls),'fit_turns':len(fit_data),
         'batch_size':batch_size,'max_length':max_length,'epochs_requested':epochs,'device':str(device),
+        'asr_fraction':asr_fraction,'asr_rate':asr_rate,'asr_augmented_calls':len(training_calls)-len(fit_calls),
+        'asr_clean_control':asr_clean_control,
         'parameters':sum(p.numel() for p in model.parameters()),'value_counts':{a:len(vocabulary[a]) for a in ATTRIBUTES},
         'fit_ids_sha256':hashlib.sha256('\n'.join(sorted(c['call_id'] for c in fit_calls)).encode()).hexdigest()}
     history=[];best=-1;start=time.perf_counter()
@@ -244,7 +258,12 @@ class NeuralExtractor:
     @torch.inference_mode()
     def predict(self,call,mode='balanced'):
         from .pipeline import assemble_facts
-        if not call.get('turns'):return {'call_id':call['call_id'],'facts':[]}
+        return assemble_facts(call, self.collect_candidates(call, mode), self.normalizer)
+
+    @torch.inference_mode()
+    def collect_candidates(self, call, mode='balanced'):
+        if not call.get('turns'):
+            return []
         inputs=[]
         for i in range(len(call['turns'])):
             centre,side,_=context(call,i);inputs.append((centre,side))
@@ -285,4 +304,4 @@ class NeuralExtractor:
                 span=[lo,hi] if 0<=lo<hi<=len(text) and hi-lo<350 else None
                 candidates.append({'index':int(i),'attribute':a,'value':value,'polarity':polarity,
                     'kind':kind,'confidence':float(scores[i,j]),'date_policy':int(out['dates'][i,j].argmax()),'span':span})
-        return assemble_facts(call,candidates,self.normalizer)
+        return candidates

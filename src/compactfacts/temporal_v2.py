@@ -67,16 +67,16 @@ def find_dates(text,started_at,future=False,asr=True):
     for match in re.finditer(r'\b(\d{1,2})\s+('+'|'.join(MONTHS)+r')(?:\s+(20\d{2}))?\b',lower):
         try:add(match,midnight.replace(year=int(match[3] or anchor.year),month=MONTHS[match[2]],day=int(match[1])))
         except ValueError:pass
-    for match in re.finditer(r'\b(?:(через)\s+)?('+NUMBER+r')\s+(день|дня|дней|недел\w*|месяц\w*|час\w*)\s*(назад)?\b',lower):
+    for match in re.finditer(r'\b(?:(через)\s+)?('+NUMBER+r')\s+(день|дня|дн[еи]й|недел\w*|нетел\w*|месяц\w*|час\w*)\s*(назад)?\b',lower):
         if not match[1] and not match[4]:continue
         raw=match[2];n=int(raw) if raw.isdigit() else NUMBERS[raw];direction=-1 if match[4] else 1
         unit=match[3]
         if unit.startswith('месяц'):value=_shift_month(midnight,direction*n)
-        elif unit.startswith('недел'):value=midnight+timedelta(weeks=direction*n)
+        elif unit.startswith(('недел', 'нетел')):value=midnight+timedelta(weeks=direction*n)
         elif unit.startswith('час'):value=anchor+timedelta(hours=direction*n)
         else:value=midnight+timedelta(days=direction*n)
         add(match,value)
-    for phrase,delta in [('через неделю',7),('неделю назад',-7)]:
+    for phrase,delta in [('через не[дт]елю',7),('не[дт]елю назад',-7)]:
         for match in re.finditer(r'\b'+phrase+r'\b',lower):add(match,midnight+timedelta(days=delta))
     for phrase,n in [('месяц назад',-1),('через месяц',1)]:
         for match in re.finditer(r'\b'+phrase+r'\b',lower):add(match,_shift_month(midnight,n))
@@ -89,7 +89,10 @@ def find_dates(text,started_at,future=False,asr=True):
     specials={'послезавтра':2,'позавчера':-2,'завтра':1,'вчера':-1,'сегодня':0,
               'вчерашнего дня':-1,'сегодняшнего дня':0}
     for phrase,delta in specials.items():
-        for match in re.finditer(r'\b'+phrase+r'\b',lower):add(match,midnight+timedelta(days=delta))
+        for match in re.finditer(r'\b'+phrase+r'\b',lower):
+            if phrase == 'вчера' and re.match(r'\s+родил(?:ся|ась|ись)\b', lower[match.end():]):
+                continue
+            add(match,midnight+timedelta(days=delta))
     for stem,weekday in DAYS.items():
         pattern=r'\b(?:(со?|в|на|до)\s+)?(?:(следующ\w+|прошл\w+)\s+)?'+WEEKDAY_FORMS[stem]+r'\b'
         for match in re.finditer(pattern,lower):
@@ -100,16 +103,24 @@ def find_dates(text,started_at,future=False,asr=True):
             if modifier.startswith('прошл') and offset==0:offset=-7
             add(match,midnight+timedelta(days=offset))
     # Clock expressions attach only to a nearby date, not to every event in a turn.
-    clock_pattern=r'\b(?:после|в)\s+(\d{1,2})(?::(\d{2}))?\s*(час\w*|вечера|утра)?\b|\bпосле\s+(двух|трех|четырех|пяти|шести)\b'
+    clock_pattern=r'\b(после|до|в)\s+(?:(\d{1,2})(?::(\d{2}))?[ \t]*(час\w*|вечера|утра)?|('+NUMBER+r'))\b'
     for match in re.finditer(clock_pattern,lower):
-        if not match.group().startswith('после') and not match[2] and not match[3]:continue
-        hour=NUMBERS[match[4]] if match[4] else int(match[1]);minute=int(match[2] or 0)
-        if ('после' in match.group() or match[3]=='вечера') and hour<12:hour+=12
+        prep, digits, minutes, qualifier, word = match.groups()
+        if prep == 'в' and not minutes and not qualifier:continue
+        if digits is None and word not in NUMBERS:continue
+        if re.match(r'[:./\-]\d|\d|\s*(?:раз\w*|дн\w*|недел\w*|месяц\w*)\b', lower[match.end():]):continue
+        hour=int(digits) if digits else NUMBERS[word];minute=int(minutes or 0)
+        if (prep in ('после', 'до') or qualifier=='вечера') and qualifier!='утра' and 1<=hour<12:hour+=12
         if hour>=24 or minute>=60:continue
-        nearby=[m for m in mentions if m.value and abs(match.start()-m.end)<=45 and m.precision=='day']
+        nearby=[m for m in mentions if m.value and 0<=match.start()-m.end<=45
+                and not re.search(r'[.!?;\n]',lower[m.end:match.start()])]
         if nearby:
-            m=min(nearby,key=lambda m:abs(match.start()-m.end))
-            m.value=_iso(datetime.fromisoformat(m.value).replace(hour=hour,minute=minute));m.precision='time';m.end=max(m.end,match.end())
+            m=max(nearby,key=lambda m:m.end)
+            clock=datetime.fromisoformat(m.value).replace(hour=hour,minute=minute,second=0)
+            if prep=='до' and m.relation!='until':
+                add(match,clock,'time')
+            elif m.precision=='day':
+                m.value=_iso(clock);m.precision='time';m.end=match.end()
         else:add(match,midnight.replace(hour=hour,minute=minute),'time')
     if asr:
         for token in re.finditer(r'[а-я]+',lower):
@@ -134,7 +145,12 @@ def choose_date(text,started_at,attribute,event_span=None):
     centre=(event_span[0]+event_span[1])/2 if event_span else len(text)/2
     starts=[m for m in mentions if m.value and m.relation!='until']
     ends=[m for m in mentions if m.value and m.relation=='until']
-    distance=lambda m:0 if m.start<=centre<=m.end else min(abs(centre-m.start),abs(centre-m.end))
+    def distance(mention):
+        if mention.start<=centre<=mention.end:
+            return (False, 0)
+        near = mention.end if mention.end<centre else mention.start
+        between = text[int(min(centre,near)):int(max(centre,near))]
+        return (bool(event_span and re.search(r'[.!?;\n]',between)), abs(centre-near))
     first=min(starts,key=distance).value if starts else None
     last=min(ends,key=distance).value if ends else None
     return first,last,bool(starts)

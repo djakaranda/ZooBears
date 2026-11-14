@@ -19,11 +19,13 @@ def prompt(call,index,attribute):
 
 
 class ValueDataset(Dataset):
-    def __init__(self,calls,tokenizer):
+    def __init__(self,calls,tokenizer,attribute=None):
         texts=[];values=[]
         for c in calls:
             indices={t['idx']:i for i,t in enumerate(c['turns'])}
             for f in c['facts']:
+                if attribute and f['attribute'] != attribute:
+                    continue
                 texts.append(prompt(c,indices[f['source']['turn_idx']],f['attribute']));values.append(f['value'])
         self.inputs=tokenizer(texts,truncation=True,max_length=256,padding=False)
         self.labels=tokenizer(text_target=values,truncation=True,max_length=64,padding=False)['input_ids']
@@ -32,15 +34,17 @@ class ValueDataset(Dataset):
     def __getitem__(self,i):return {**{k:v[i] for k,v in self.inputs.items()},'labels':self.labels[i]}
 
 
-def train_generator(fit,dev,output,epochs=3,batch_size=16,seed=42):
+def train_generator(fit,dev,output,epochs=3,batch_size=16,seed=42, *,
+                    device_name=None, backbone=GENERATOR, attribute=None):
     random.seed(seed);np.random.seed(seed);torch.manual_seed(seed);torch.set_num_threads(6)
-    device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device=torch.device(device_name or ('cuda' if torch.cuda.is_available() else 'cpu'))
+    revision = GENERATOR_REVISION if backbone == GENERATOR else None
     # SentencePiece on Windows cannot open some Unicode filenames. Convert once
     # from a public-weight cache with an ASCII path; exported fast tokenizer is
     # self-contained and works in the Cyrillic project directory.
-    tokenizer=AutoTokenizer.from_pretrained(GENERATOR,revision=GENERATOR_REVISION,use_fast=True,cache_dir='C:/Users/Public/ZooBearsCache' if __import__('os').name=='nt' else None)
-    model=AutoModelForSeq2SeqLM.from_pretrained(GENERATOR,revision=GENERATOR_REVISION).to(device)
-    fit_data=ValueDataset(fit,tokenizer);dev_data=ValueDataset(dev,tokenizer) if dev else None
+    tokenizer=AutoTokenizer.from_pretrained(backbone,revision=revision,use_fast=True,cache_dir='C:/Users/Public/ZooBearsCache' if __import__('os').name=='nt' else None)
+    model=AutoModelForSeq2SeqLM.from_pretrained(backbone,revision=revision).to(device)
+    fit_data=ValueDataset(fit,tokenizer,attribute);dev_data=ValueDataset(dev,tokenizer,attribute) if dev else None
     collator=DataCollatorForSeq2Seq(tokenizer,model,padding=True)
     loader=DataLoader(fit_data,batch_size=batch_size,shuffle=True,collate_fn=collator,num_workers=0,generator=torch.Generator().manual_seed(seed))
     dev_loader=DataLoader(dev_data,batch_size=batch_size*2,collate_fn=collator,num_workers=0) if dev_data else None
@@ -70,7 +74,8 @@ def train_generator(fit,dev,output,epochs=3,batch_size=16,seed=42):
             best=score;output.mkdir(parents=True,exist_ok=True)
             state={k:v.detach().cpu().half() if v.is_floating_point() else v.detach().cpu() for k,v in model.state_dict().items()}
             model.save_pretrained(output,state_dict=state,safe_serialization=True,max_shard_size='80MB');tokenizer.save_pretrained(output)
-            write_json(output/'experiment.json',{'backbone':GENERATOR,'revision':getattr(model.config,'_commit_hash',None),'license':'MIT (upstream card)',
+            write_json(output/'experiment.json',{'backbone':backbone,'revision':getattr(model.config,'_commit_hash',None),'license':'MIT (upstream card)',
+                'training_attribute':attribute,
                 'parameters':sum(p.numel() for p in model.parameters()),'fit_calls':len(fit),'dev_calls':len(dev),'fit_facts':len(fit_data),
                 'seed':seed,'epochs_requested':epochs,'best_epoch':epoch,'history':history,'train_seconds':time.perf_counter()-start,
                 'fit_ids_sha256':hashlib.sha256('\n'.join(sorted(c['call_id'] for c in fit)).encode()).hexdigest(),

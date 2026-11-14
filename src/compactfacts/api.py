@@ -24,10 +24,11 @@ def validate_call(call):
     return {k:v for k,v in call.items() if k!='facts'}
 
 
-def serve(model_path, host='127.0.0.1', port=8000, engine='baseline', device='cpu', normalizer='artifacts/cpu_baseline.joblib', generator=None):
+def serve(model_path, host='127.0.0.1', port=8000, engine='baseline', device='cpu', normalizer='artifacts/cpu_baseline.joblib', generator=None,
+          date_ranker=None):
     if engine=='hybrid':
         from .hybrid import HybridExtractor
-        model=HybridExtractor(model_path,normalizer,device,generator)
+        model=HybridExtractor(model_path,normalizer,device,generator,date_ranker=date_ranker)
     elif engine=='neural':
         from .neural import NeuralExtractor
         model=NeuralExtractor(model_path,normalizer,device)
@@ -73,5 +74,6 @@ if __name__=='__main__':
     parser.add_argument('--engine',choices=['baseline','temporal','neural','hybrid'],default='baseline')
     parser.add_argument('--device',default='cpu');parser.add_argument('--normalizer',default='artifacts/cpu_baseline.joblib')
     parser.add_argument('--generator',help='Optional saved ruT5 value normalizer (hybrid engine)')
+    parser.add_argument('--date-ranker',help='Optional fit-trained date ranker (hybrid engine)')
     args=parser.parse_args()
-    serve(args.model,args.host,args.port,args.engine,args.device,args.normalizer,args.generator)
+    serve(args.model,args.host,args.port,args.engine,args.device,args.normalizer,args.generator,args.date_ranker)
