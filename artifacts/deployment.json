@@ -12,6 +12,14 @@
     "generator": "artifacts/generator",
     "device": "cuda"
   },
+  "quality_candidate": {
+    "engine": "hybrid",
+    "model": "artifacts/neural",
+    "normalizer": "artifacts/cpu_baseline.joblib",
+    "generator": "artifacts/generator",
+    "date_ranker": "artifacts/date_ranker.joblib",
+    "device": "mps"
+  },
   "temporal_policy": "rules with ASR date aliases",
   "generator_attributes": [
     "tariff"
