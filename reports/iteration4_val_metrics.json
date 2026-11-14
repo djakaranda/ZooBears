@@ -1,0 +1,37 @@
+{
+  "original": {
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 1548,
+    "fact_precision": 0.489,
+    "fact_recall": 0.4103,
+    "temporal_recall": 0.3963,
+    "n_temporal": 757,
+    "state_accuracy": 0.374,
+    "n_state": 623,
+    "grounding_turn": 0.8177,
+    "grounding_span": 0.9744,
+    "n_grounded": 757
+  },
+  "candidate": {
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 1537,
+    "fact_precision": 0.4925,
+    "fact_recall": 0.4103,
+    "temporal_recall": 0.4042,
+    "n_temporal": 757,
+    "state_accuracy": 0.3724,
+    "n_state": 623,
+    "grounding_turn": 0.8177,
+    "grounding_span": 0.9744,
+    "n_grounded": 757
+  },
+  "schema": {
+    "calls": 383,
+    "facts": 1537,
+    "missing_calls": 0,
+    "errors": [],
+    "valid": true
+  }
+}
