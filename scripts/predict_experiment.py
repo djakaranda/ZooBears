@@ -16,10 +16,12 @@ if __name__=='__main__':
     parser.add_argument('--device',default='cpu');parser.add_argument('--quantized',action='store_true')
     parser.add_argument('--max-length',type=int);parser.add_argument('--mode',default='balanced')
     parser.add_argument('--generator',help='Optional generator directory for hybrid engine')
+    parser.add_argument('--date-ranker', help='Optional fit-trained date ranker for hybrid engine')
     parser.add_argument('--limit',type=int);args=parser.parse_args()
     if args.engine=='hybrid':
         from compactfacts.hybrid import HybridExtractor
-        model=HybridExtractor(args.model,args.normalizer,args.device,args.generator,quantized=args.quantized)
+        model=HybridExtractor(args.model,args.normalizer,args.device,args.generator,quantized=args.quantized,
+                              date_ranker=args.date_ranker)
     elif args.engine=='neural':
         from compactfacts.neural import NeuralExtractor
         model=NeuralExtractor(args.model,args.normalizer,args.device,args.max_length,args.quantized)
