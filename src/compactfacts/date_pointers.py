@@ -3,7 +3,7 @@ from collections import defaultdict
 
 
 def apply_date_pointers(call,prediction,candidates,mode='conservative'):
-    if mode not in {'off','starts','conservative','full'}:raise ValueError(mode)
+    if mode not in {'off','starts','conservative','full','ends','open_ends'}:raise ValueError(mode)
     if mode=='off':return prediction
     source_indices={t['idx']:i for i,t in enumerate(call['turns'])}
     lookup={}
@@ -16,12 +16,13 @@ def apply_date_pointers(call,prediction,candidates,mode='conservative'):
         candidate=lookup.get(key,{})
         if fact['attribute']=='action' or 'date_from_ref' not in candidate:continue
         start_evidence=candidate.get('date_from_evidence');end_evidence=candidate.get('date_to_evidence')
+        if mode=='ends':start_evidence=None
         start=start_evidence['value'] if start_evidence else call['started_at'] if mode=='full' else fact['valid_from']
         end=fact['valid_to'];end_ref=candidate['date_to_ref']
         if mode!='starts':
             if end_evidence:end=end_evidence['value']
             elif end_ref==-1:end=call['started_at']
-            elif end_ref==0 and mode=='full':end=None
+            elif end_ref==0 and mode in {'full','ends','open_ends'}:end=None
         if end is not None and end<start:
             # A model reference never makes an invalid interval. Keep the existing dates.
             continue
@@ -39,7 +40,7 @@ def apply_date_pointers(call,prediction,candidates,mode='conservative'):
         facts.sort(key=lambda f:(f['source']['turn_idx'],(f['source'].get('span') or [0])[0]))
         for old,new in zip(facts,facts[1:]):
             previous=applied[id(old)];following=applied[id(new)]
-            if (old['value']!=new['value'] and following.get('date_from_evidence')
+            if (mode!='ends' and old['value']!=new['value'] and following.get('date_from_evidence')
                 and not previous.get('date_to_evidence') and new['valid_from']>=old['valid_from']):
                 old['valid_to']=new['valid_from']
                 evidence_by_fact[id(old)].update(end=following['date_from_evidence'],closed_unknown=False)

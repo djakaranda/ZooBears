@@ -58,7 +58,7 @@ def main():
         'Предыдущая итерация улучшила полноту и источники, но не прошла temporal/state пороги. Здесь Qwen дополнительно учится выбирать конкретное выражение даты для каждого факта. Модель возвращает номера из таблицы дат текущего звонка; свободная генерация ISO-дат запрещена форматом. Неозвученные дни не становятся обучающими ответами.','',
         'Вход содержит только дату звонка, реплики и автоматически разобранные выражения дат. Эталоны используются только для обучающих ответов. Таблица включает допустимые прошлое/будущее прочтения неоднозначного дня недели. Интервалы вроде «в прошлом месяце» не превращаются в выдуманный точный день.','',
         'Продолжение существующей LoRA: rank=16, 10 092 544 обучаемых параметра, одна эпоха, LR=5e-5, seed=42, вход до 3072 токенов. База Qwen3-0.6B — 596 049 920 параметров. Токены наблюдаемых ссылок на даты получают вес 3, неизвестного завершения — 2, остальные — 1. Используются тот же fit, защищённая ASR-аугментация и 112 синтетических записей; часть записей повторяет короткие шаблоны для усиления этих случаев.','',
-        'Проверяются исходная версия и два новых checkpoints; для каждого нового checkpoint — выключенные ссылки, только начала, консервативные границы и полные границы. Есть ограничения на потерю recall/F1 и сохранение достигнутого порога State на dev. Совпадение повторной обработки кеша с реальным inference проверено для консервативного режима.','',
+        'Проверяются исходная версия и два новых checkpoints; для каждого нового checkpoint — выключенные ссылки, только начала, консервативные границы, полные границы, только окончания и известные начала с полными окончаниями. Два последних режима добавлены после первого dev-сравнения эпохи и до нового val; оба checkpoint проверены на одинаковых шести режимах. Есть ограничения на потерю recall/F1 и сохранение достигнутого порога State на dev. Совпадение повторной обработки кеша с реальным inference проверено для консервативного режима.','',
         '| Модель, внешний val | Precision | Recall | Temporal | State | Grounding turn |',
         '|---|---:|---:|---:|---:|---:|',*rows,'',
         f"Пороги: temporal ≥ {thresholds['temporal_min']}, state ≥ {thresholds['state_min']}. Пройдены: temporal={thresholds['temporal_passed']}, state={thresholds['state_passed']}. Схема: {schema['valid']}.",'',
@@ -87,6 +87,16 @@ def main():
             for name in ['qwen_date_format.py','temporal_v2.py','temporal.py']}
         write_json(model/'experiment.json',metadata)
         (model/'README.md').write_text('# ZooBears: grounded date references\n\nSee reports/DATE_POINTER_REPORT.md.\n\n'+json.dumps(val,indent=2),encoding='utf8')
+    else:
+        candidate=Path('artifacts/qwen_dates')
+        metadata=read(candidate/'experiment.json')
+        metadata.update(selected_for_deployment=False,
+                        selection='Rejected against the frozen v2.1 baseline on generated internal dev metrics')
+        write_json(candidate/'experiment.json',metadata)
+        (candidate/'README.md').write_text(
+            '# Experimental adapter: not deployed\n\n'
+            'The v2.1 baseline won the generated internal dev comparison. '
+            'See reports/DATE_POINTER_REPORT.md and artifacts/deployment.json.\n',encoding='utf8')
     print({'selected':selection['selected'],'val':val,'thresholds':thresholds})
 
 

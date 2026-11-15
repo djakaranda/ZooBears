@@ -27,7 +27,7 @@ def main():
     assert set(cache)==set(raw)=={c['call_id'] for c in dev}
     ranker=joblib.load('artifacts/date_ranker_v21.joblib')
     results={}
-    for mode in ['off','starts','conservative','full']:
+    for mode in ['off','starts','conservative','full','ends','open_ends']:
         predictions=[]
         for gold in dev:
             call={k:v for k,v in gold.items() if k!='facts'}
@@ -45,7 +45,8 @@ def main():
         results[mode]=score['official']
         print(mode,results[mode],flush=True)
     write_json(args.prefix+'.json',{'metrics':results,'selected_on':'internal account-disjoint dev',
-        'conservative_cache_parity':True,'candidate_source':args.candidates})
+        'conservative_cache_parity':True,'candidate_source':args.candidates,
+        'boundary_ablation_note':'ends and open_ends were added after inspecting the first epoch dev comparison, before the new val generation. Both checkpoints use the same six modes.'})
 
 
 if __name__=='__main__':main()

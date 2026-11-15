@@ -25,7 +25,8 @@ def main():
     if sys.platform=='win32':
         import ctypes
         # Keep the system awake only while this process lives; leave the display free to sleep.
-        ctypes.windll.kernel32.SetThreadExecutionState(0x80000001)
+        # Display sleep can cap the GPU on this laptop; release on exit.
+        ctypes.windll.kernel32.SetThreadExecutionState(0x80000003)
         atexit.register(ctypes.windll.kernel32.SetThreadExecutionState,0x80000000)
     environment={'python':sys.version,'platform':platform.platform(),'packages':{},'started_at':time.time()}
     for package in ['torch','transformers','peft','accelerate','numpy','scikit-learn','joblib']:

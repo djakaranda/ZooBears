@@ -146,6 +146,26 @@ class DatePointerTests(unittest.TestCase):
         self.assertEqual(result['temporal_evidence'][0]['start']['kind'],'unknown')
         self.assertEqual(result['temporal_evidence'][0]['start']['reason'],'start_not_resolved')
 
+    def test_full_ends_can_preserve_or_refine_start_independently(self):
+        call=self.call();row=target_rows(call,call['turns'])[0];row[7]=0
+        candidates,_=parse_rows(json.dumps([row],ensure_ascii=False),call,call['turns'])
+        for mode,expected_start in [('ends','2026-11-10T00:00:00'),('open_ends','2026-11-13T00:00:00')]:
+            prediction=assemble_facts(call,candidates,None,agreement_evidence=False)
+            prediction['facts'][0].update(valid_from='2026-11-10T00:00:00',valid_to=call['started_at'])
+            apply_date_pointers(call,prediction,candidates,mode)
+            self.assertEqual(prediction['facts'][0]['valid_from'],expected_start)
+            self.assertIsNone(prediction['facts'][0]['valid_to'])
+            evidence=prediction['date_pointer_evidence'][0]
+            self.assertEqual(evidence['start'] is None,mode=='ends')
+
+    def test_ends_only_does_not_close_intervals_from_unused_start_references(self):
+        call=self.call();rows=target_rows(call,call['turns'])
+        for row in rows:row[7]=0
+        candidates,_=parse_rows(json.dumps(rows,ensure_ascii=False),call,call['turns'])
+        prediction=assemble_facts(call,candidates,None,agreement_evidence=False)
+        apply_date_pointers(call,prediction,candidates,'ends')
+        self.assertTrue(all(f['valid_to'] is None for f in prediction['facts']))
+
     def test_spoken_visit_window_refines_unknown_pointer_metadata(self):
         call={'call_id':'test:visit','started_at':'2026-11-14T10:00:00','turns':[
             {'idx':2,'speaker':'operator','text':'Предлагаю выезд специалиста сегодня после 14:00 до 18:00.'},

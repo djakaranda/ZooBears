@@ -25,7 +25,9 @@ def main():
     args=parser.parse_args()
     if sys.platform=='win32':
         import ctypes
-        ctypes.windll.kernel32.SetThreadExecutionState(0x80000001)
+        # On this MSI laptop display sleep also caps the GPU at 30 W.
+        # The request lasts only for this process; no power plan is changed.
+        ctypes.windll.kernel32.SetThreadExecutionState(0x80000003)
         atexit.register(ctypes.windll.kernel32.SetThreadExecutionState,0x80000000)
     assert Path('reports/V21_ITERATION_REPORT.md').exists(),'Finish the fallback iteration before starting this experiment'
     write_json('reports/date_pointer_environment.json',{'python':sys.version,'platform':platform.platform(),
