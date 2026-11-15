@@ -1,0 +1,8 @@
+{
+  "processed_calls": 383,
+  "total_calls": 383,
+  "facts": 1704,
+  "invalid_json_windows": 0,
+  "mean_amortized_ms": 2911.9502318539417,
+  "complete": true
+}

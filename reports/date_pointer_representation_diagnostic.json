@@ -1,0 +1,10 @@
+{
+  "split": "internal dev only",
+  "fixed_extractor": "v21 selected",
+  "eligible_matched_facts": 985,
+  "both_boundaries_representable": 502,
+  "idealized_oracle_upper_bound": 0.5096446700507614,
+  "missing_start_candidates": 449,
+  "missing_end_candidates": 188,
+  "note": "Label-informed representation diagnostic, NOT a model score. The union of reference and fallback choices is allowed independently per fact, more permissive than any deployed policy. No predictions or training inputs were changed."
+}

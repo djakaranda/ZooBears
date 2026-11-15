@@ -1,0 +1,65 @@
+{
+  "dry_run": false,
+  "datasets": {
+    "dev": {
+      "calls": 592,
+      "metadata_changed_calls": 76,
+      "fact_objects_unchanged": true,
+      "facts_sha256": "952cd0b4d31b45e20aa1a93dcaa4f49e90ff901c418a525807306a4d35ec7a66",
+      "helper_mean_ms": 0.04596469551796798,
+      "helper_max_ms": 16.419399995356798
+    },
+    "val": {
+      "calls": 383,
+      "metadata_changed_calls": 49,
+      "fact_objects_unchanged": true,
+      "facts_sha256": "73d874d73950299ebdc665b1b5f01b5aeb64e809aae50c29a554a1a54f051c7b",
+      "helper_mean_ms": 0.01655718084915928,
+      "helper_max_ms": 0.23389997659251094
+    },
+    "stress": {
+      "calls": 64,
+      "metadata_changed_calls": 7,
+      "fact_objects_unchanged": true,
+      "facts_sha256": "a854a8ec9a215f87291bc45caa632a19e8b87f601d7012d6da15896e2d2da97b",
+      "helper_mean_ms": 0.007592189831484575,
+      "helper_max_ms": 0.02910001785494387
+    },
+    "stress_clean": {
+      "calls": 64,
+      "metadata_changed_calls": 9,
+      "fact_objects_unchanged": true,
+      "facts_sha256": "7ef89ca23552753e8a825a3d3a694586137ad1e081ebb5c9b1a1d5e1a30895aa",
+      "helper_mean_ms": 0.019090623027295806,
+      "helper_max_ms": 0.3431999939493835
+    },
+    "cuda": {
+      "calls": 24,
+      "metadata_changed_calls": 3,
+      "fact_objects_unchanged": true,
+      "facts_sha256": "ca8ce9e656a59ac186fc6b6d9f3520f2765a4f5b6c4149512257920da718eb61",
+      "helper_mean_ms": 0.01469583852061381,
+      "helper_max_ms": 0.16299998969770968
+    },
+    "cuda_batch4": {
+      "calls": 24,
+      "metadata_changed_calls": 3,
+      "fact_objects_unchanged": true,
+      "facts_sha256": "4962d7374543c31ba9962d896972fa6fe3a6af5cb94da91cf274ac92077850a3",
+      "helper_mean_ms": 0.014924996018332118,
+      "helper_max_ms": 0.16230001347139478
+    },
+    "cpu": {
+      "calls": 24,
+      "metadata_changed_calls": 3,
+      "fact_objects_unchanged": true,
+      "facts_sha256": "daf4bf0aca151d36e9daecd02e836c57f2d0fc8148179b493608b81689d43f28",
+      "helper_mean_ms": 0.01556666514564616,
+      "helper_max_ms": 0.149500003317371
+    }
+  },
+  "refinement_source_sha256": "3c18af1f2840ce6eb61e02c558e2e3f5f23762145f69a207ac24beb2a2a12ce4",
+  "model_weights_and_metric_files_unchanged": true,
+  "resource_timing_note": "Resource timings precede this small CPU postprocessor correction. Frozen benchmark fact objects are checked unchanged; additional helper overhead is measured here.",
+  "test_oracle_note": "Initial legacy API failures are retained. Exact transition dates are tested on an explicit transcript, not on an unrelated SMS date."
+}

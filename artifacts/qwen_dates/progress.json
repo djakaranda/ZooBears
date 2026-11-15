@@ -1,0 +1,14 @@
+{
+  "epoch": 1,
+  "step": 499,
+  "total_steps": 499,
+  "samples": 3991,
+  "epoch_samples": 3991,
+  "loss": 0.15910841200380213,
+  "elapsed_seconds": 8174.0372202,
+  "eta_seconds": 0.0,
+  "tokens_per_second": 802.4305276945527,
+  "learning_rate": 5e-06,
+  "gradient_norm_before_clip": 0.8911311030387878,
+  "gpu_peak_mb": 4449.71630859375
+}

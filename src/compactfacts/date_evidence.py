@@ -120,8 +120,9 @@ def with_date_evidence(call, prediction):
                     local=item.get(field,{})
                     if local.get('kind')=='range' and not local['earliest']<=ref['value']<local['latest_exclusive']:
                         continue
+                    reason='confirmed_offer_window' if field=='end' and pointer.get('confirmed_visit_window_recovered') else 'model_linked_spoken_date'
                     item[field]={'kind':'exact','value':ref['value'],'precision':ref.get('precision','day'),
-                        'observed_at':call['started_at'],'reason':'model_linked_spoken_date','sources':[source]}
+                        'observed_at':call['started_at'],'reason':reason,'sources':[source]}
             if pointer.get('closed_unknown') and not item.get('end'):
                 item['end']={'kind':'unknown','observed_at':call['started_at'],'reason':'end_not_resolved','sources':[]}
         evidence.append(item)

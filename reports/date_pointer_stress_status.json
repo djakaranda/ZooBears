@@ -1,0 +1,55 @@
+{
+  "model": "artifacts/qwen_dates",
+  "calls": 64,
+  "seed": 43,
+  "rate": 0.2,
+  "stages": [
+    {
+      "command": [
+        "scripts/predict_experiment.py",
+        "--engine",
+        "qwen",
+        "--model",
+        "artifacts/qwen_dates",
+        "--base-model",
+        "artifacts/qwen_base",
+        "--date-ranker",
+        "artifacts/date_ranker_v21.joblib",
+        "--input",
+        "tmp/date_pointer_stress_calls.jsonl",
+        "--output",
+        "reports/date_pointer_stress_pred.jsonl",
+        "--device",
+        "cuda",
+        "--batch-size",
+        "4"
+      ],
+      "exit_code": 0,
+      "seconds": 180.987939119339
+    },
+    {
+      "command": [
+        "scripts/evaluate.py",
+        "tmp/date_pointer_stress_calls.jsonl",
+        "reports/date_pointer_stress_pred.jsonl",
+        "--output",
+        "reports/date_pointer_stress_metrics.json",
+        "--repair-known-scorer-errors"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3315119743347168
+    },
+    {
+      "command": [
+        "scripts/evaluate.py",
+        "tmp/date_pointer_stress_clean_calls.jsonl",
+        "tmp/date_pointer_stress_clean_pred.jsonl",
+        "--output",
+        "reports/date_pointer_stress_clean_metrics.json",
+        "--repair-known-scorer-errors"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3646268844604492
+    }
+  ]
+}

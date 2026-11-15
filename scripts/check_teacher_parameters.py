@@ -25,6 +25,7 @@ def main():
     minimum=sum(v for k,v in teacher['safetensors']['parameters'].items() if k.startswith('F8'))
     proof={'teacher_name_in_case':'glm-5.3','teacher_source':teacher['source'],'teacher_revision':teacher['sha'],
         'teacher_total_parameters':teacher['safetensors']['total'],'teacher_weight_lower_bound':minimum,
+        'student_model':Path(args.model).as_posix(),
         'student_base_parameters':student['base_parameters'],'student_adapter_parameters':student['trainable_adapter_parameters'],
         'student_date_ranker_parameters':classic,'student_unmerged_total':actual,'student_conservative_upper_bound':bound,
         'reduction_lower_bound':minimum/bound,'parameter_branch_passed':minimum/bound>=10,

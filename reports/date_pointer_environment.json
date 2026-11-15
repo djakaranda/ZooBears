@@ -1,0 +1,15 @@
+{
+  "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "torch": "2.9.1+cu126",
+    "transformers": "4.57.1",
+    "peft": "0.17.1",
+    "accelerate": "1.15.0",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "trainer_sha256": "1e073f9e40d561f2848626b4dbf8b0346f331c1300a67cf542cd97cf52d7d48e",
+  "format_sha256": "227ac1c3bdf28c277baf2b04c42a92249a7f1102dd2620fe3add384b2717848e"
+}

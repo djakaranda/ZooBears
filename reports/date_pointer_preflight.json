@@ -1,0 +1,15 @@
+{
+  "fit_calls": 3334,
+  "extra_calls": 378,
+  "fit_windows": 3991,
+  "dev_windows": 644,
+  "fit_tokens": 6559097,
+  "max_sequence_tokens": 3386,
+  "max_target_tokens": 354,
+  "max_date_references": 14,
+  "positive_start_references": 3551,
+  "positive_end_references": 1501,
+  "closed_unknown_ends": 1436,
+  "truncated_examples": 0,
+  "external_val_read": false
+}

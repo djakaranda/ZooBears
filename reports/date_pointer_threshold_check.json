@@ -1,0 +1,12 @@
+{
+  "temporal_min": 0.4506,
+  "state_min": 0.5145,
+  "temporal_passed": false,
+  "state_passed": false,
+  "temporal_exclusion_boundary": 0.4206,
+  "temporal_exclusion_passed": true,
+  "additional_correct_dates_at_fixed_denominator": 11,
+  "additional_correct_states_at_fixed_denominator": 3,
+  "parameter_branch_supported": true,
+  "teacher_gpu_seconds_reduction_measured": false
+}

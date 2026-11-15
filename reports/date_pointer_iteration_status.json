@@ -1,0 +1,311 @@
+[
+  {
+    "stage": "preflight",
+    "command": [
+      "scripts/preflight_date_pointers.py"
+    ],
+    "status": "complete",
+    "started_at": 1794766894.1989899,
+    "exit_code": 0,
+    "seconds": 97.08624529838562
+  },
+  {
+    "stage": "train",
+    "command": [
+      "scripts/train_qwen.py",
+      "--output",
+      "artifacts\\qwen_dates",
+      "--resume-adapter",
+      "artifacts\\qwen_v21",
+      "--epochs",
+      "1",
+      "--lr",
+      "5e-5",
+      "--augmentation-fraction",
+      ".08",
+      "--targeted-examples",
+      "--checkpoint-steps",
+      "300",
+      "--date-pointers",
+      "--max-prompt-tokens",
+      "3072",
+      "--date-token-weight",
+      "3"
+    ],
+    "status": "complete",
+    "started_at": 1794766991.2857628,
+    "exit_code": 0,
+    "seconds": 8236.230660676956
+  },
+  {
+    "stage": "dev_generate_epoch-1",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_dates\\checkpoints\\epoch-1",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker_v21.joblib",
+      "--input",
+      "tmp/splits/dev.jsonl",
+      "--output",
+      "tmp/date_pointer_epoch-1_dev_raw.jsonl",
+      "--candidate-output",
+      "tmp/date_pointer_epoch-1_candidates.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "status": "complete",
+    "started_at": 1794775227.5209942,
+    "exit_code": 0,
+    "seconds": 1931.1371331214905
+  },
+  {
+    "stage": "dev_select_epoch-1",
+    "command": [
+      "scripts/select_date_pointers.py",
+      "--candidates",
+      "tmp/date_pointer_epoch-1_candidates.jsonl",
+      "--raw-predictions",
+      "tmp/date_pointer_epoch-1_dev_raw.jsonl",
+      "--prefix",
+      "reports/date_pointer_dev_epoch-1"
+    ],
+    "status": "complete",
+    "started_at": 1794777158.6591034,
+    "exit_code": 0,
+    "seconds": 31.176876068115234
+  },
+  {
+    "stage": "dev_generate_step-300",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_dates\\checkpoints\\step-300",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker_v21.joblib",
+      "--input",
+      "tmp/splits/dev.jsonl",
+      "--output",
+      "tmp/date_pointer_step-300_dev_raw.jsonl",
+      "--candidate-output",
+      "tmp/date_pointer_step-300_candidates.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "status": "complete",
+    "started_at": 1794777189.8445292,
+    "exit_code": 0,
+    "seconds": 1776.9951980113983
+  },
+  {
+    "stage": "dev_select_step-300",
+    "command": [
+      "scripts/select_date_pointers.py",
+      "--candidates",
+      "tmp/date_pointer_step-300_candidates.jsonl",
+      "--raw-predictions",
+      "tmp/date_pointer_step-300_dev_raw.jsonl",
+      "--prefix",
+      "reports/date_pointer_dev_step-300"
+    ],
+    "status": "complete",
+    "started_at": 1794778966.8406708,
+    "exit_code": 0,
+    "seconds": 26.776544094085693
+  },
+  {
+    "stage": "val_generate",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_dates",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker_v21.joblib",
+      "--input",
+      "data/raw/val.jsonl",
+      "--output",
+      "reports/date_pointer_val_pred.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "status": "complete",
+    "started_at": 1794778993.7236428,
+    "exit_code": 0,
+    "seconds": 1122.8873853683472
+  },
+  {
+    "stage": "val_score",
+    "command": [
+      "scripts/evaluate.py",
+      "data/raw/val.jsonl",
+      "reports/date_pointer_val_pred.jsonl",
+      "--output",
+      "reports/date_pointer_val_metrics.json"
+    ],
+    "status": "complete",
+    "started_at": 1794780116.6117253,
+    "exit_code": 0,
+    "seconds": 12.866783142089844
+  },
+  {
+    "stage": "val_schema",
+    "command": [
+      "scripts/check_predictions.py",
+      "data/raw/val.jsonl",
+      "reports/date_pointer_val_pred.jsonl",
+      "--output",
+      "reports/date_pointer_val_schema.json"
+    ],
+    "status": "complete",
+    "started_at": 1794780129.4790888,
+    "exit_code": 0,
+    "seconds": 0.12970328330993652
+  },
+  {
+    "stage": "benchmark_cuda",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_dates",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker_v21.joblib",
+      "--input",
+      "tmp/date_pointer_benchmark_calls.jsonl",
+      "--output",
+      "reports/date_pointer_benchmark_cuda_pred.jsonl",
+      "--device",
+      "cuda"
+    ],
+    "status": "complete",
+    "started_at": 1794780129.6446574,
+    "exit_code": 0,
+    "seconds": 145.47534584999084
+  },
+  {
+    "stage": "benchmark_cuda_score",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/date_pointer_benchmark_calls.jsonl",
+      "reports/date_pointer_benchmark_cuda_pred.jsonl",
+      "--output",
+      "reports/date_pointer_benchmark_cuda_metrics.json",
+      "--repair-known-scorer-errors"
+    ],
+    "status": "complete",
+    "started_at": 1794780275.120749,
+    "exit_code": 0,
+    "seconds": 0.18873310089111328
+  },
+  {
+    "stage": "benchmark_cuda_batch4",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_dates",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker_v21.joblib",
+      "--input",
+      "tmp/date_pointer_benchmark_calls.jsonl",
+      "--output",
+      "reports/date_pointer_benchmark_cuda_batch4_pred.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "status": "complete",
+    "started_at": 1794780275.310116,
+    "exit_code": 0,
+    "seconds": 71.71107149124146
+  },
+  {
+    "stage": "benchmark_cuda_batch4_score",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/date_pointer_benchmark_calls.jsonl",
+      "reports/date_pointer_benchmark_cuda_batch4_pred.jsonl",
+      "--output",
+      "reports/date_pointer_benchmark_cuda_batch4_metrics.json",
+      "--repair-known-scorer-errors"
+    ],
+    "status": "complete",
+    "started_at": 1794780347.0218976,
+    "exit_code": 0,
+    "seconds": 0.20647883415222168
+  },
+  {
+    "stage": "benchmark_cpu",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_dates",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--date-ranker",
+      "artifacts/date_ranker_v21.joblib",
+      "--input",
+      "tmp/date_pointer_benchmark_calls.jsonl",
+      "--output",
+      "reports/date_pointer_benchmark_cpu_pred.jsonl",
+      "--device",
+      "cpu"
+    ],
+    "status": "complete",
+    "started_at": 1794780347.2290747,
+    "exit_code": 0,
+    "seconds": 621.5372149944305
+  },
+  {
+    "stage": "benchmark_cpu_score",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/date_pointer_benchmark_calls.jsonl",
+      "reports/date_pointer_benchmark_cpu_pred.jsonl",
+      "--output",
+      "reports/date_pointer_benchmark_cpu_metrics.json",
+      "--repair-known-scorer-errors"
+    ],
+    "status": "complete",
+    "started_at": 1794780968.7670093,
+    "exit_code": 0,
+    "seconds": 0.20086050033569336
+  },
+  {
+    "stage": "report",
+    "command": [
+      "scripts/write_date_pointer_report.py"
+    ],
+    "status": "complete",
+    "started_at": 1794780969.0173109,
+    "exit_code": 0,
+    "seconds": 12.355536460876465
+  }
+]

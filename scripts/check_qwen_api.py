@@ -30,6 +30,15 @@ def main():
         inputs[name]=call
         start = time.perf_counter()
         results[name] = {'response': request('/extract', call), 'seconds': time.perf_counter() - start}
+    # The legacy noisy fixture does not state when its intermediate state began.
+    # Test exact boundaries on a transcript that actually supplies those dates.
+    call={'call_id':'check:explicit_transition','started_at':'2026-04-06T16:00:00',
+          'turns':[{'idx':2,'speaker':'operator','text':'Заявка 5160 была принята 31 марта.'},
+                   {'idx':8,'speaker':'operator','text':'С 4 апреля заявка 5160 в работе.'},
+                   {'idx':16,'speaker':'client','text':'Спасибо, статус заявки понятен.'}]}
+    inputs['explicit_transition']=call
+    start=time.perf_counter()
+    results['explicit_transition']={'response':request('/extract',call),'seconds':time.perf_counter()-start}
     for name, text in [('uncertain', 'В прошлом месяце мне подключили тариф Гранд.'),
                        ('unknown', 'У меня тариф Гранд.')]:
         call = {'call_id': f'check:{name}', 'started_at': '2026-11-14T15:00:00',
@@ -46,15 +55,15 @@ def main():
         start=time.perf_counter()
         results['two_devices']={'response':request('/extract',call),'seconds':time.perf_counter()-start}
 
-    transition = [f for f in results['transition']['response']['facts'] if f['attribute'] == 'ticket_status']
+    transition = [f for f in results['explicit_transition']['response']['facts'] if f['attribute'] == 'ticket_status']
     appointment = results['appointment']['response']['facts']
     checks = {
         'qwen_596m': health.get('model') == 'qwen' and health.get('base_parameters') == 596049920,
         'status_chain': any(f['valid_from'] == '2026-03-31T00:00:00'
                             and f['valid_to'] == '2026-04-04T00:00:00'
-                            and f['source']['turn_idx'] == 8 for f in transition)
+                            and f['source']['turn_idx'] == 2 for f in transition)
                         and any(f['valid_from'] == '2026-04-04T00:00:00'
-                                and f['valid_to'] is None and f['source']['turn_idx'] == 16 for f in transition),
+                                and f['valid_to'] is None and f['source']['turn_idx'] == 8 for f in transition),
         'appointment_window': len(appointment) == 1
                               and appointment[0]['valid_from'] == '2026-11-19T14:00:00'
                               and appointment[0]['valid_to'] == '2026-11-19T18:00:00',
@@ -62,6 +71,10 @@ def main():
         'no_refusal_as_agreement': not any(f['attribute'] == 'agreement' and 'отказ' in f['value'].lower()
                                           for f in results['transition']['response']['facts']),
     }
+    legacy=results['transition']['response']
+    legacy_unknown={e['fact_index'] for e in legacy.get('temporal_evidence',[]) if e['start']['kind']=='unknown'}
+    checks['unresolved_state_start_is_unknown']=any(i in legacy_unknown and 'назначен' in f['value']
+        for i,f in enumerate(legacy['facts']) if f['attribute']=='ticket_status')
     if args.expected_adapter:
         checks['expected_adapter']=Path(health.get('adapter','')).resolve()==Path(args.expected_adapter).resolve()
     if args.extended:
@@ -79,7 +92,8 @@ def main():
         if name == 'uncertain' and evidence:
             checks[name] &= evidence[0]['start'].get('earliest') == '2026-10-01T00:00:00'
             checks[name] &= evidence[0]['start'].get('latest_exclusive') == '2026-11-01T00:00:00'
-    report = {'health': health, 'checks': checks, 'all_passed': all(checks.values()), 'cases': results,'schema':schema}
+    report = {'health': health, 'checks': checks, 'all_passed': all(checks.values()), 'cases': results,'schema':schema,
+              'test_oracle_note':'Legacy transition previously required 4 April for a state whose start is not stated. Exact boundaries are now checked on explicit_transition; the legacy case checks honest uncertainty. Original failures remain in date_pointer_api_check_initial.json.'}
     path = ROOT / args.output
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')

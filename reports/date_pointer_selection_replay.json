@@ -1,0 +1,9 @@
+{
+  "reason": "Include both supplementary epoch-1 boundary modes in the persisted candidate inventory; both checkpoints had already been scored on all six modes.",
+  "previous_selected": "step-300_open_ends",
+  "selected": "step-300_open_ends",
+  "candidate_count": 13,
+  "selected_weights_unchanged": true,
+  "existing_val_predictions_and_metrics_unchanged": true,
+  "no_additional_val_generation": true
+}

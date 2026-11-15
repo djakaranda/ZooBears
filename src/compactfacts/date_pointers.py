@@ -52,4 +52,6 @@ def apply_date_pointers(call,prediction,candidates,mode='conservative'):
             if fact['valid_from']!=call['started_at']:evidence['start_unknown']=False
             if fact['valid_to']!=call['started_at']:evidence['closed_unknown']=False
     prediction['date_pointer_evidence']=provenance
+    from .date_refinement import refine_date_evidence
+    refine_date_evidence(call,prediction)
     return prediction

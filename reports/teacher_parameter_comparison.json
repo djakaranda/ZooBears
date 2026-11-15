@@ -4,6 +4,7 @@
   "teacher_revision": "ba32f8c19c8738e2c57c71798c601d477a7bf844",
   "teacher_total_parameters": 753329940480,
   "teacher_weight_lower_bound": 241591910400,
+  "student_model": "artifacts/qwen_dates",
   "student_base_parameters": 596049920,
   "student_adapter_parameters": 10092544,
   "student_date_ranker_parameters": 20077,

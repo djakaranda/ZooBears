@@ -46,5 +46,13 @@
     "agreement_evidence": false,
     "canonical_objects": false,
     "event_date_model": null
+  },
+  "qwen_final": {
+    "engine": "qwen",
+    "model": "artifacts/qwen_dates",
+    "base_model": "artifacts/qwen_base",
+    "date_ranker": "artifacts/date_ranker_v21.joblib",
+    "device": "cuda",
+    "selected_on": "internal dev"
   }
 }

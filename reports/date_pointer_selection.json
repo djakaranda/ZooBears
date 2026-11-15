@@ -1,0 +1,281 @@
+{
+  "selected": "step-300_open_ends",
+  "deployed_model": "artifacts/qwen_dates",
+  "eligible": [
+    "baseline",
+    "epoch-1_starts",
+    "epoch-1_conservative",
+    "epoch-1_ends",
+    "epoch-1_open_ends",
+    "step-300_off",
+    "step-300_starts",
+    "step-300_conservative",
+    "step-300_ends",
+    "step-300_open_ends"
+  ],
+  "candidates": {
+    "baseline": {
+      "model": "artifacts/qwen_v21",
+      "mode": "off",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2617,
+        "fact_precision": 0.6026,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.398,
+        "n_temporal": 985,
+        "state_accuracy": 0.5382,
+        "n_state": 955,
+        "grounding_turn": 0.799,
+        "grounding_span": 0.9683,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/v21_dev_selected_pred.jsonl"
+    },
+    "epoch-1_off": {
+      "model": "artifacts/qwen_dates/checkpoints/epoch-1",
+      "mode": "off",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2656,
+        "fact_precision": 0.596,
+        "fact_recall": 0.5668,
+        "temporal_recall": 0.3888,
+        "n_temporal": 985,
+        "state_accuracy": 0.5424,
+        "n_state": 955,
+        "grounding_turn": 0.7915,
+        "grounding_span": 0.9717,
+        "n_grounded": 1583
+      },
+      "predictions": "reports/date_pointer_dev_epoch-1_off_pred.jsonl"
+    },
+    "epoch-1_starts": {
+      "model": "artifacts/qwen_dates/checkpoints/epoch-1",
+      "mode": "starts",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2656,
+        "fact_precision": 0.596,
+        "fact_recall": 0.5668,
+        "temporal_recall": 0.401,
+        "n_temporal": 985,
+        "state_accuracy": 0.5414,
+        "n_state": 955,
+        "grounding_turn": 0.7915,
+        "grounding_span": 0.9717,
+        "n_grounded": 1583
+      },
+      "predictions": "reports/date_pointer_dev_epoch-1_starts_pred.jsonl"
+    },
+    "epoch-1_conservative": {
+      "model": "artifacts/qwen_dates/checkpoints/epoch-1",
+      "mode": "conservative",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2656,
+        "fact_precision": 0.596,
+        "fact_recall": 0.5668,
+        "temporal_recall": 0.398,
+        "n_temporal": 985,
+        "state_accuracy": 0.5372,
+        "n_state": 955,
+        "grounding_turn": 0.7915,
+        "grounding_span": 0.9717,
+        "n_grounded": 1583
+      },
+      "predictions": "reports/date_pointer_dev_epoch-1_conservative_pred.jsonl"
+    },
+    "epoch-1_full": {
+      "model": "artifacts/qwen_dates/checkpoints/epoch-1",
+      "mode": "full",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2656,
+        "fact_precision": 0.596,
+        "fact_recall": 0.5668,
+        "temporal_recall": 0.3736,
+        "n_temporal": 985,
+        "state_accuracy": 0.5613,
+        "n_state": 955,
+        "grounding_turn": 0.7915,
+        "grounding_span": 0.9717,
+        "n_grounded": 1583
+      },
+      "predictions": "reports/date_pointer_dev_epoch-1_full_pred.jsonl"
+    },
+    "epoch-1_ends": {
+      "model": "artifacts/qwen_dates/checkpoints/epoch-1",
+      "mode": "ends",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2656,
+        "fact_precision": 0.596,
+        "fact_recall": 0.5668,
+        "temporal_recall": 0.3949,
+        "n_temporal": 985,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.7915,
+        "grounding_span": 0.9717,
+        "n_grounded": 1583
+      },
+      "predictions": "reports/date_pointer_dev_epoch-1_ends_pred.jsonl"
+    },
+    "epoch-1_open_ends": {
+      "model": "artifacts/qwen_dates/checkpoints/epoch-1",
+      "mode": "open_ends",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2656,
+        "fact_precision": 0.596,
+        "fact_recall": 0.5668,
+        "temporal_recall": 0.4091,
+        "n_temporal": 985,
+        "state_accuracy": 0.5581,
+        "n_state": 955,
+        "grounding_turn": 0.7915,
+        "grounding_span": 0.9717,
+        "n_grounded": 1583
+      },
+      "predictions": "reports/date_pointer_dev_epoch-1_open_ends_pred.jsonl"
+    },
+    "step-300_off": {
+      "model": "artifacts/qwen_dates/checkpoints/step-300",
+      "mode": "off",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.401,
+        "n_temporal": 975,
+        "state_accuracy": 0.5361,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/date_pointer_dev_step-300_off_pred.jsonl"
+    },
+    "step-300_starts": {
+      "model": "artifacts/qwen_dates/checkpoints/step-300",
+      "mode": "starts",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4154,
+        "n_temporal": 975,
+        "state_accuracy": 0.5351,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/date_pointer_dev_step-300_starts_pred.jsonl"
+    },
+    "step-300_conservative": {
+      "model": "artifacts/qwen_dates/checkpoints/step-300",
+      "mode": "conservative",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4123,
+        "n_temporal": 975,
+        "state_accuracy": 0.5288,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/date_pointer_dev_step-300_conservative_pred.jsonl"
+    },
+    "step-300_full": {
+      "model": "artifacts/qwen_dates/checkpoints/step-300",
+      "mode": "full",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.3815,
+        "n_temporal": 975,
+        "state_accuracy": 0.555,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/date_pointer_dev_step-300_full_pred.jsonl"
+    },
+    "step-300_ends": {
+      "model": "artifacts/qwen_dates/checkpoints/step-300",
+      "mode": "ends",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4062,
+        "n_temporal": 975,
+        "state_accuracy": 0.5508,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/date_pointer_dev_step-300_ends_pred.jsonl"
+    },
+    "step-300_open_ends": {
+      "model": "artifacts/qwen_dates/checkpoints/step-300",
+      "mode": "open_ends",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4226,
+        "n_temporal": 975,
+        "state_accuracy": 0.5476,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/date_pointer_dev_step-300_open_ends_pred.jsonl"
+    }
+  },
+  "selected_on": "full account-disjoint internal dev",
+  "external_val_used_for_selection": false,
+  "objective": "normalized temporal/state, recall/F1 guards and retention of previously achieved state threshold"
+}

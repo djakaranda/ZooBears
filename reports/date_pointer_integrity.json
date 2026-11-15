@@ -1,0 +1,9 @@
+{
+  "checks": {
+    "original_adapter_unchanged": true,
+    "v21_fallback_unchanged": true,
+    "format_matches_training": true,
+    "trainer_matches_training": true
+  },
+  "selected_adapter_sha256": "ef775b6ad5ca7a9042499bdc6bcdc9bf6e6853cb01138e6bcac1ddf547ff597a"
+}

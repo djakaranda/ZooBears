@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import sys
 import hashlib
+import math
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
@@ -25,6 +26,9 @@ def main():
         'temporal_passed':val['temporal_recall']>=teacher['temporal_recall']-.02,
         'state_passed':val['state_accuracy']>=teacher['state_accuracy']-.02,
         'temporal_exclusion_boundary':round(teacher['temporal_recall']-.05,4),
+        'temporal_exclusion_passed':val['temporal_recall']>=teacher['temporal_recall']-.05,
+        'additional_correct_dates_at_fixed_denominator':max(0,math.ceil((teacher['temporal_recall']-.02)*val['n_temporal'])-round(val['temporal_recall']*val['n_temporal'])),
+        'additional_correct_states_at_fixed_denominator':max(0,math.ceil((teacher['state_accuracy']-.02)*val['n_state'])-round(val['state_accuracy']*val['n_state'])),
         'parameter_branch_supported':read('reports/teacher_parameter_comparison.json')['parameter_branch_passed'] if Path('reports/teacher_parameter_comparison.json').exists() else False,
         'teacher_gpu_seconds_reduction_measured':False}
     write_json('reports/date_pointer_threshold_check.json',thresholds)
@@ -53,6 +57,13 @@ def main():
             '| Контроль | Precision | Recall | Temporal | State |','|---|---:|---:|---:|---:|',
             f"| Чистый | {clean['fact_precision']} | {clean['fact_recall']} | {clean['temporal_recall']} | {clean['state_accuracy']} |",
             f"| Шум | {noisy['fact_precision']} | {noisy['fact_recall']} | {noisy['temporal_recall']} | {noisy['state_accuracy']} |",'']
+    api_text=[]
+    if Path('reports/date_pointer_api_check.json').exists():
+        api=read('reports/date_pointer_api_check.json')
+        api_text=['## HTTP API и контроль исправления','',
+            f"Проверены {len(api['cases'])} HTTP-сценариев; успешны {sum(api['checks'].values())} из {len(api['checks'])} проверок. Все пройдены: {api['all_passed']}. Адаптер проверен по /health. Полные ответы: date_pointer_api_check.json.",'',
+            'Исправлено сохранение согласованного окна при повторном подтверждении выезда. Неозвученное начало другого состояния в той же реплике отмечается как неизвестное. В старом тесте цепочки ошибочно требовалась дата, относящаяся к SMS; точные границы теперь проверяются на явно датированном разговоре, а исходный пример проверяет неопределённость. Первоначальный неуспешный отчёт сохранён в date_pointer_api_check_initial.json. Подробности: ../docs/API_DATE_FIX.md.','',
+            'После выбора модели выполнена сверка постпроцессора: на dev, val, ASR-контроле и наборах ресурсов ни один конкурсный факт не изменился. Метрики и веса сохранены; обновлены только вспомогательные сведения о неопределённости. Время ресурсов измерено перед этой небольшой CPU-правкой; её накладные расходы измерены отдельно в date_pointer_api_refinement_audit.json.','']
     text=['# Выбор дат моделью по ссылкам на транскрипт','',
         f"Выбрана версия `{selection['selected']}`, модель `{selection['deployed_model']}`. Выбор выполнен на полном внутреннем dev; внешний val не используется для выбора.",'',
         'Предыдущая итерация улучшила полноту и источники, но не прошла temporal/state пороги. Здесь Qwen дополнительно учится выбирать конкретное выражение даты для каждого факта. Модель возвращает номера из таблицы дат текущего звонка; свободная генерация ISO-дат запрещена форматом. Неозвученные дни не становятся обучающими ответами.','',
@@ -62,10 +73,12 @@ def main():
         '| Модель, внешний val | Precision | Recall | Temporal | State | Grounding turn |',
         '|---|---:|---:|---:|---:|---:|',*rows,'',
         f"Пороги: temporal ≥ {thresholds['temporal_min']}, state ≥ {thresholds['state_min']}. Пройдены: temporal={thresholds['temporal_passed']}, state={thresholds['state_passed']}. Схема: {schema['valid']}.",'',
+        f"Граница исключения temporal {thresholds['temporal_exclusion_boundary']}: выше или равен границе — {thresholds['temporal_exclusion_passed']}. При фиксированных нынешних знаменателях до целевых порогов не хватает {thresholds['additional_correct_dates_at_fixed_denominator']} правильно датированных совпадений и {thresholds['additional_correct_states_at_fixed_denominator']} текущих состояний. Это диагностический ориентир: при изменении предсказаний знаменатели тоже могут измениться.",'',
         '| Checkpoint / режим, dev | Precision | Recall | Temporal | State |','|---|---:|---:|---:|---:|',*comparisons,'',
         '| Режим | Звонки | Среднее, мс | p95, мс | Пик RSS, МБ |','|---|---:|---:|---:|---:|',*resources,'',
         'CUDA batch=4 показывает амортизированное время на звонок; остальные режимы — задержку отдельного запроса. Используются одинаковые 24 dev-звонка. Если выбран baseline, повторные измерения не выполняются: используются уже полученные замеры той же версии.','',
         *stress_text,
+        *api_text,
         '## Ограничения','',
         '- Если выбран baseline, обучение новых ссылок не дало достаточного результата на dev, и новые веса не разворачиваются.',
         '- Исходные artifacts/qwen и резервная версия artifacts/qwen_v21 сохраняются. Новое обучение находится в artifacts/qwen_dates.',
@@ -85,6 +98,8 @@ def main():
         metadata=read(model/'experiment.json')
         metadata['date_reference_code_sha256']={name:hashlib.sha256((ROOT/'src/compactfacts'/name).read_bytes()).hexdigest()
             for name in ['qwen_date_format.py','temporal_v2.py','temporal.py']}
+        metadata['postprocessing_code_sha256']={name:hashlib.sha256((ROOT/'src/compactfacts'/name).read_bytes()).hexdigest()
+            for name in ['qwen.py','date_pointers.py','date_refinement.py','date_evidence.py']}
         write_json(model/'experiment.json',metadata)
         (model/'README.md').write_text('# ZooBears: grounded date references\n\nSee reports/DATE_POINTER_REPORT.md.\n\n'+json.dumps(val,indent=2),encoding='utf8')
     else:

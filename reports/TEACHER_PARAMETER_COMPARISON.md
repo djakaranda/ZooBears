@@ -21,7 +21,7 @@
 параметров; LoRA при inference сливается с базой, поэтому выбранная выше оценка
 размера студента завышает реальную параметрическую нагрузку.
 
-Повторение: `python scripts/check_teacher_parameters.py --model artifacts/qwen_v21`.
+Повторение: `python scripts/check_teacher_parameters.py --model artifacts/qwen_dates`.
 
 ## Дополнительная проверка с учётом MoE
 

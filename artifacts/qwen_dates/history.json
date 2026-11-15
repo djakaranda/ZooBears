@@ -1,0 +1,8 @@
+[
+  {
+    "epoch": 1,
+    "train_loss_per_window": 0.17837557534693285,
+    "dev_response_token_loss": 0.26517771146178537,
+    "seconds": 8228.575608899991
+  }
+]
