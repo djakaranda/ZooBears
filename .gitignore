@@ -12,5 +12,6 @@ tmp/
 artifacts/qwen_base/
 artifacts/qwen_merged/
 artifacts/qwen_v21/checkpoints/
+artifacts/qwen_dates/checkpoints/
 *.~lock.*#
 .~lock.*#

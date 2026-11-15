@@ -1,5 +1,6 @@
 """Locally trained Qwen3-0.6B + grounded date/timeline postprocessing."""
 import json
+import hashlib
 from pathlib import Path
 
 import torch
@@ -15,12 +16,26 @@ class QwenExtractor:
                  max_new_tokens=None, max_prompt_tokens=None, merge=True, quantized=False):
         directory = Path(directory)
         self.metadata = json.loads((directory / 'experiment.json').read_text(encoding='utf-8'))
+        self.format_windows=windows
+        self.format_parser=parse_rows
+        if self.metadata.get('transport_format_version',1)==2:
+            formatter=Path(__file__).with_name('qwen_date_format.py')
+            expected=self.metadata.get('format_code_sha256')
+            if expected and hashlib.sha256(formatter.read_bytes()).hexdigest()!=expected:
+                raise ValueError('Date-reference format differs from training; use the recorded source version')
+            reference_hashes=self.metadata.get('date_reference_code_sha256',{})
+            for name in ['qwen_date_format.py','temporal_v2.py','temporal.py']:
+                if name in reference_hashes and hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()!=reference_hashes[name]:
+                    raise ValueError('Date-reference parser differs from the saved model: '+name)
+            from .qwen_date_format import windows as dated_windows, parse_rows as dated_parser
+            self.format_windows,self.format_parser=dated_windows,dated_parser
         catalog_path = directory / 'catalog.json'
         if not catalog_path.exists():
             catalog_path = Path(__file__).resolve().parents[2] / 'data/raw/catalog.json'
         self.catalog = json.loads(catalog_path.read_text(encoding='utf-8')) if catalog_path.exists() else {}
         inference_path = directory / 'inference_config.json'
         inference = json.loads(inference_path.read_text(encoding='utf-8')) if inference_path.exists() else {}
+        self.date_pointer_mode=inference.get('date_pointer_mode','conservative') if self.metadata.get('transport_format_version',1)==2 else 'off'
         if date_ranker is None:
             date_ranker = inference.get('date_ranker')
         self.device = torch.device(device)
@@ -73,7 +88,7 @@ class QwenExtractor:
                         'truncated_windows': 0, 'generated_tokens': 0} for _ in calls]
         entries = []
         for index, call in enumerate(calls):
-            for turns, ids in windows(call, self.tokenizer, self.max_prompt_tokens):
+            for turns, ids in self.format_windows(call, self.tokenizer, self.max_prompt_tokens):
                 entries.append((index, turns, ids))
         self.tokenizer.padding_side = 'left'
         for begin in range(0, len(entries), batch_size):
@@ -101,7 +116,7 @@ class QwenExtractor:
                 diagnostic['truncated_windows'] += int(len(generated) == self.max_new_tokens
                                                         and generated[-1] != self.tokenizer.eos_token_id)
                 try:
-                    rows, invalid = parse_rows(text, calls[index], turns)
+                    rows, invalid = self.format_parser(text, calls[index], turns)
                     candidates[index].extend(rows)
                     diagnostic['invalid_rows'] += invalid
                     if invalid:
@@ -146,5 +161,8 @@ class QwenExtractor:
             apply_wide_dates(call,result,self.wide_dates,chains=self.wide_date_chains)
         if self.event_dates is not None:
             self.event_dates.apply(call, result, **self.event_date_options)
+        if self.date_pointer_mode!='off':
+            from .date_pointers import apply_date_pointers
+            apply_date_pointers(call,result,candidates,self.date_pointer_mode)
         result['generation_diagnostics'] = diagnostics
         return result

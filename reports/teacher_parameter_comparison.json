@@ -1,0 +1,20 @@
+{
+  "teacher_name_in_case": "glm-5.3",
+  "teacher_source": "https://huggingface.co/zai-org/GLM-5.3",
+  "teacher_revision": "ba32f8c19c8738e2c57c71798c601d477a7bf844",
+  "teacher_total_parameters": 753329940480,
+  "teacher_weight_lower_bound": 241591910400,
+  "student_base_parameters": 596049920,
+  "student_adapter_parameters": 10092544,
+  "student_date_ranker_parameters": 20077,
+  "student_unmerged_total": 606162541,
+  "student_conservative_upper_bound": 610000000,
+  "reduction_lower_bound": 396.0523121311475,
+  "parameter_branch_passed": true,
+  "teacher_runtime_revision_verified": false,
+  "gpu_seconds_reduction_measured": false,
+  "monetary_cost_reduction_measured": false,
+  "comparison": "Total stored model parameters, not active per-token MoE compute. Identity follows the teacher name in the case; runtime revision is unavailable.",
+  "active_one_projection_lower_bound": 7549747200,
+  "active_projection_reduction_lower_bound": 12.37663475409836
+}

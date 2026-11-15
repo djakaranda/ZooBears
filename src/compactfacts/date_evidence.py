@@ -99,7 +99,30 @@ def _start_evidence(call, fact):
 
 def with_date_evidence(call, prediction):
     """Return API/UI metadata; the original facts and their dates stay intact."""
-    return {**prediction, 'temporal_evidence': [
-        {'fact_index': i, 'start': _start_evidence(call, fact)}
-        for i, fact in enumerate(prediction['facts'])
-    ]}
+    pointers={(p['object_id'],p['attribute'],p['turn_idx'],p.get('value'),p.get('polarity')):p for p in prediction.get('date_pointer_evidence',[])}
+    turns={t['idx']:t for t in call['turns']}
+    def reference_source(ref):
+        if not ref or ref['turn_idx'] not in turns:return None
+        lo,hi=ref['span'];text=turns[ref['turn_idx']]['text']
+        if not 0<=lo<=hi<=len(text) or text[lo:hi]!=ref['quote']:return None
+        return {'turn_idx':ref['turn_idx'],'span':ref['span'],'quote':ref['quote']}
+    evidence=[]
+    for i,fact in enumerate(prediction['facts']):
+        item={'fact_index':i,'start':_start_evidence(call,fact)}
+        key=(fact['object'].get('id'),fact['attribute'],fact['source']['turn_idx'])
+        pointer=pointers.get((*key,fact['value'],fact.get('polarity',1))) or pointers.get((*key,None,None))
+        if pointer:
+            if pointer.get('start_unknown') and item['start']['kind']!='range':
+                item['start']={'kind':'unknown','observed_at':call['started_at'],'reason':'start_not_resolved','sources':[]}
+            for field,key in [('start','valid_from'),('end','valid_to')]:
+                ref=pointer.get(field);source=reference_source(ref)
+                if source and ref['value']==fact[key]:
+                    local=item.get(field,{})
+                    if local.get('kind')=='range' and not local['earliest']<=ref['value']<local['latest_exclusive']:
+                        continue
+                    item[field]={'kind':'exact','value':ref['value'],'precision':ref.get('precision','day'),
+                        'observed_at':call['started_at'],'reason':'model_linked_spoken_date','sources':[source]}
+            if pointer.get('closed_unknown') and not item.get('end'):
+                item['end']={'kind':'unknown','observed_at':call['started_at'],'reason':'end_not_resolved','sources':[]}
+        evidence.append(item)
+    return {**prediction,'temporal_evidence':evidence}

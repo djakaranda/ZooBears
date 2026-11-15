@@ -1,0 +1,13 @@
+{
+  "config_source": "https://huggingface.co/zai-org/GLM-5.3/raw/ba32f8c19c8738e2c57c71798c601d477a7bf844/config.json",
+  "implementation_source": "https://raw.githubusercontent.com/huggingface/transformers/6a9193deabe4ffcf495726897e3f2e651b8bbead/src/transformers/models/glm_moe_dsa/modeling_glm_moe_dsa.py",
+  "implementation_sha256": "936d82b6ba335141e20406201f2b3b634e7a082a1ba9fb18126efeed0811a2a5",
+  "sparse_layers": 75,
+  "active_experts_per_token": 8,
+  "hidden_size": 6144,
+  "expert_intermediate_size": 2048,
+  "active_down_projection_weights_lower_bound": 7549747200,
+  "note": "Only the down projection of routed experts is counted; attention, two other expert projections, dense layers, shared experts and embeddings are excluded. Architectural bound, not a GPU timing measurement.",
+  "routed_experts_per_layer": 256,
+  "main_routed_down_projection_weights_lower_bound": 241591910400
+}

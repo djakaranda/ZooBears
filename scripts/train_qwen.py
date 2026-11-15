@@ -24,15 +24,22 @@ def accounts(calls):
     return {(c.get('series') or {}).get('account_id') or c['call_id'].split(':')[0] for c in calls}
 
 
-def dataset(calls, tokenizer, max_prompt, max_target):
+def dataset(calls, tokenizer, max_prompt, max_target, date_token_weight=1.):
     samples = []
     for call in calls:
         for turns, prompt in windows(call, tokenizer, max_prompt):
-            target = json.dumps(target_rows(call, turns), ensure_ascii=False, separators=(',', ':'))
-            target = tokenizer.encode(target + tokenizer.eos_token, add_special_tokens=False)
+            rows=target_rows(call,turns)
+            weights=None
+            if date_token_weight>1:
+                from compactfacts.qwen_date_format import weighted_target
+                target,weights=weighted_target(tokenizer,rows,date_token_weight)
+            else:
+                target = json.dumps(rows, ensure_ascii=False, separators=(',', ':'))
+                target = tokenizer.encode(target + tokenizer.eos_token, add_special_tokens=False)
             if len(target) > max_target:
                 raise ValueError(f"Target for {call['call_id']} has {len(target)} tokens, limit={max_target}; no truncation allowed")
             samples.append({'call_id': call['call_id'], 'input': prompt + target, 'prefix': len(prompt)})
+            if weights is not None:samples[-1]['target_weights']=weights
     return samples
 
 
@@ -44,10 +51,16 @@ def loss_for(model, sample, device):
     positions = torch.arange(prefix - 1, ids.shape[1] - 1, device=device)
     output = model(input_ids=ids, attention_mask=torch.ones_like(ids),
                    logits_to_keep=positions, use_cache=False)
+    if 'target_weights' in sample:
+        weights=torch.tensor(sample['target_weights'],dtype=torch.float32,device=device)
+        targets=sum(sample['target_weights'])
+        loss=(F.cross_entropy(output.logits[0].float(),ids[0,prefix:],reduction='none')*weights).sum()/targets
+        return loss,ids.shape[1],targets
     return F.cross_entropy(output.logits[0].float(), ids[0, prefix:]), ids.shape[1], ids.shape[1] - prefix
 
 
 def main():
+    global target_rows, windows
     parser = argparse.ArgumentParser()
     parser.add_argument('--train', default='tmp/splits/fit.jsonl')
     parser.add_argument('--dev', default='tmp/splits/dev.jsonl')
@@ -67,7 +80,15 @@ def main():
     parser.add_argument('--augmentation-fraction', type=float, default=0.)
     parser.add_argument('--targeted-examples', action='store_true')
     parser.add_argument('--checkpoint-steps', type=int, default=0)
+    parser.add_argument('--date-pointers',action='store_true',help='Train eight-field facts with grounded date references (transport v2)')
+    parser.add_argument('--date-token-weight',type=float,default=1.,help='Weight of observed date-reference tokens; unknown-end token uses weight-1')
     args = parser.parse_args()
+    if args.date_token_weight<1 or (args.date_token_weight!=1 and not args.date_pointers):
+        raise ValueError('Date weighting requires --date-pointers and weight >= 1')
+    format_version=2 if args.date_pointers else 1
+    format_path=ROOT/'src/compactfacts'/('qwen_date_format.py' if args.date_pointers else 'qwen_format.py')
+    if args.date_pointers:
+        from compactfacts.qwen_date_format import target_rows, windows
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed)
     torch.set_num_threads(6)
     device = torch.device(args.device)
@@ -96,8 +117,8 @@ def main():
     tokenizer.pad_token = tokenizer.eos_token
     started = time.perf_counter()
     print('Preparing response-only training windows', flush=True)
-    fit_data = dataset(fit + supplements, tokenizer, args.max_prompt_tokens, args.max_target_tokens)
-    dev_data = dataset(dev[:args.dev_loss_limit], tokenizer, args.max_prompt_tokens, args.max_target_tokens)
+    fit_data = dataset(fit + supplements, tokenizer, args.max_prompt_tokens, args.max_target_tokens,args.date_token_weight)
+    dev_data = dataset(dev[:args.dev_loss_limit], tokenizer, args.max_prompt_tokens, args.max_target_tokens,args.date_token_weight)
     write_json(output / 'data_audit.json', {
         'fit_calls': len(fit), 'fit_windows': len(fit_data), 'dev_calls': len(dev), 'dev_loss_calls': min(len(dev), args.dev_loss_limit),
         'dev_loss_windows': len(dev_data), 'account_overlap': 0,
@@ -110,6 +131,7 @@ def main():
         'dev_ids_sha256': hashlib.sha256('\n'.join(sorted(c['call_id'] for c in dev)).encode()).hexdigest(),
         'truncated_training_examples': 0, 'smoke_limit': args.limit,
         'metrics_version': '2.1', 'augmentation_calls': len(supplements),
+        'date_token_weight':args.date_token_weight,
         'augmentation_fraction': args.augmentation_fraction, 'targeted_examples': args.targeted_examples,
         'canonicalized_training_objects': sum(training_object(c, f) != (f['object']['type'], f['object']['name'])
                                              for c in fit for f in c['facts']),
@@ -141,12 +163,13 @@ def main():
         tokenizer.save_pretrained(destination)
         write_json(destination/'experiment.json', {
             'backbone': BACKBONE, 'revision': REVISION, 'base_parameters':base_parameters,
-            'license':'Apache-2.0','transport_format_version':1,
-            'format_code_sha256':hashlib.sha256((ROOT/'src/compactfacts/qwen_format.py').read_bytes()).hexdigest(),
+            'license':'Apache-2.0','transport_format_version':format_version,
+            'format_code_sha256':hashlib.sha256(format_path.read_bytes()).hexdigest(),
             'training_code_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'trainable_adapter_parameters':trainable, 'max_prompt_tokens':args.max_prompt_tokens,
             'total_parameters_with_adapter':sum(p.numel() for p in model.parameters()),
             'lora_rank':args.rank,'learning_rate':args.lr,'accumulation':args.accumulation,
+            'date_token_weight':args.date_token_weight,
             'fit_calls':len(fit),'dev_calls':len(dev),'fit_windows':len(fit_data),
             'size_requirement_satisfied':True,'optimizer_state_resumed':False,'smoke_limit':args.limit,
             'max_target_tokens':args.max_target_tokens, 'epochs_requested':args.epochs,
@@ -206,8 +229,8 @@ def main():
             tokenizer.save_pretrained(output)
             write_json(output / 'experiment.json', {
                 'backbone': BACKBONE, 'revision': REVISION, 'license': 'Apache-2.0',
-                'transport_format_version': 1,
-                'format_code_sha256': hashlib.sha256((ROOT / 'src/compactfacts/qwen_format.py').read_bytes()).hexdigest(),
+                'transport_format_version': format_version,
+                'format_code_sha256': hashlib.sha256(format_path.read_bytes()).hexdigest(),
                 'training_code_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                 'base_parameters': base_parameters, 'trainable_adapter_parameters': trainable,
                 'total_parameters_with_adapter': sum(p.numel() for p in model.parameters()),
@@ -215,6 +238,7 @@ def main():
                 'fit_windows': len(fit_data), 'epochs_requested': args.epochs, 'best_epoch': epoch,
                 'max_prompt_tokens': args.max_prompt_tokens, 'max_target_tokens': args.max_target_tokens,
                 'lora_rank': args.rank, 'learning_rate': args.lr, 'accumulation': args.accumulation,
+                'date_token_weight':args.date_token_weight,
                 'seed': args.seed, 'training_seconds': time.perf_counter() - started,
                 'selection': f'response token loss on first {min(len(dev), args.dev_loss_limit)} internal dev calls; no external val selection',
                 'resume_adapter': args.resume_adapter, 'metrics_version':'2.1',
