@@ -34,7 +34,7 @@ if __name__ == '__main__':
                 preserve_visit_window(call, result)
             predictions.append(result)
         variants[name] = predictions
-        detail = evaluate(gold, predictions)
+        detail = evaluate(gold, predictions, args.dev, True)
         metrics[name] = detail['official']
         write_json(f'reports/qwen_dev_{name}_metrics.json', detail)
         write_jsonl(f'tmp/qwen_dev_{name}_pred.jsonl', predictions)

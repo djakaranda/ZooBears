@@ -8,11 +8,20 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT/'src'), str(ROOT/'data/raw')]
-import case_metrics as official
+from compactfacts.metrics import official, scorer_context
 from compactfacts.io import read_jsonl, write_json
 
 
-def evaluate(gold, pred):
+def evaluate(gold, pred, gold_path=None, repair_known_errors=False):
+    with scorer_context(gold_path, repair_known_errors) as repairs:
+        result = _evaluate(gold, pred)
+        result['scorer'] = {'metrics_version': getattr(official, 'VERSION', '1'),
+                            'catalog_loaded': hasattr(official, 'load_catalog'),
+                            'local_known_error_repair_enabled': repair_known_errors, **repairs}
+        return result
+
+
+def _evaluate(gold, pred):
     gd = {c['call_id']:c for c in gold}; pd={c['call_id']:c for c in pred}
     result={'official':official.evaluate(gd,pd),'per_attribute':{},'errors':[]}
     matched_total = strict_total = temporal_correct = 0
@@ -45,8 +54,9 @@ def evaluate(gold, pred):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('gold'); parser.add_argument('pred'); parser.add_argument('--output',required=True)
+    parser.add_argument('--repair-known-scorer-errors', action='store_true', help='Explicit local compatibility repair; official source stays unchanged')
     args=parser.parse_args()
-    result=evaluate(read_jsonl(args.gold),read_jsonl(args.pred))
+    result=evaluate(read_jsonl(args.gold),read_jsonl(args.pred),args.gold,args.repair_known_scorer_errors)
     write_json(args.output,result)
     print(result['official'])
     print(result['diagnostics'])

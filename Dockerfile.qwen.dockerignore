@@ -5,8 +5,11 @@
 !artifacts/
 !artifacts/qwen_base/
 !artifacts/qwen_base/**
-artifacts/qwen_base/.cache/
-!artifacts/qwen/
-!artifacts/qwen/**
+!artifacts/qwen_v21/
+!artifacts/qwen_v21/**
+artifacts/qwen_v21/checkpoints/
+artifacts/qwen_v21/checkpoints/**
 !artifacts/date_ranker.joblib
-!Dockerfile.qwen
+!artifacts/date_ranker_v21.joblib
+!artifacts/event_dates_v21.joblib
+!artifacts/wide_dates_v21.joblib

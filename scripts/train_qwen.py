@@ -11,7 +11,7 @@ import time
 import numpy as np
 import torch
 import torch.nn.functional as F
-from peft import LoraConfig, TaskType, get_peft_model
+from peft import LoraConfig, TaskType, get_peft_model, PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,6 +63,10 @@ def main():
     parser.add_argument('--dev-loss-limit', type=int, default=96, help='Fixed train-dev prefix used for checkpoint loss; full dev generation is evaluated separately')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--device', default='cuda')
+    parser.add_argument('--resume-adapter')
+    parser.add_argument('--augmentation-fraction', type=float, default=0.)
+    parser.add_argument('--targeted-examples', action='store_true')
+    parser.add_argument('--checkpoint-steps', type=int, default=0)
     args = parser.parse_args()
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed)
     torch.set_num_threads(6)
@@ -72,12 +76,27 @@ def main():
     assert not accounts(fit) & accounts(dev), 'Train/dev account overlap'
     if args.limit:
         fit = fit[:args.limit]
+    original_fit_calls = len(fit)
+    supplements = []
+    if args.augmentation_fraction:
+        from compactfacts.asr import augment_calls
+        supplements.extend(augment_calls(fit, args.augmentation_fraction, .12, args.seed))
+    if args.targeted_examples:
+        from compactfacts.fit_examples import targeted_examples
+        catalog = json.loads((ROOT/'data/raw/catalog.json').read_text(encoding='utf8'))
+        supplements.extend(targeted_examples(catalog, args.seed))
     output = Path(args.output); output.mkdir(parents=True, exist_ok=True)
+    log_path = output / 'training_log.jsonl'
+    log_path.write_text('', encoding='utf8')
+    def log_event(event, **fields):
+        with log_path.open('a', encoding='utf8') as stream:
+            stream.write(json.dumps({'event':event,'timestamp':time.time(),**fields})+'\n')
+    log_event('start', arguments=vars(args))
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, local_files_only=True)
     tokenizer.pad_token = tokenizer.eos_token
     started = time.perf_counter()
     print('Preparing response-only training windows', flush=True)
-    fit_data = dataset(fit, tokenizer, args.max_prompt_tokens, args.max_target_tokens)
+    fit_data = dataset(fit + supplements, tokenizer, args.max_prompt_tokens, args.max_target_tokens)
     dev_data = dataset(dev[:args.dev_loss_limit], tokenizer, args.max_prompt_tokens, args.max_target_tokens)
     write_json(output / 'data_audit.json', {
         'fit_calls': len(fit), 'fit_windows': len(fit_data), 'dev_calls': len(dev), 'dev_loss_calls': min(len(dev), args.dev_loss_limit),
@@ -90,6 +109,8 @@ def main():
         'fit_ids_sha256': hashlib.sha256('\n'.join(sorted(c['call_id'] for c in fit)).encode()).hexdigest(),
         'dev_ids_sha256': hashlib.sha256('\n'.join(sorted(c['call_id'] for c in dev)).encode()).hexdigest(),
         'truncated_training_examples': 0, 'smoke_limit': args.limit,
+        'metrics_version': '2.1', 'augmentation_calls': len(supplements),
+        'augmentation_fraction': args.augmentation_fraction, 'targeted_examples': args.targeted_examples,
         'canonicalized_training_objects': sum(training_object(c, f) != (f['object']['type'], f['object']['name'])
                                              for c in fit for f in c['facts']),
     })
@@ -100,7 +121,7 @@ def main():
     base_parameters = sum(p.numel() for p in base.parameters())
     assert 500_000_000 <= base_parameters <= 1_500_000_000, base_parameters
     base.config.use_cache = False
-    model = get_peft_model(base, LoraConfig(task_type=TaskType.CAUSAL_LM, r=args.rank,
+    model = PeftModel.from_pretrained(base,args.resume_adapter,is_trainable=True,local_files_only=True) if args.resume_adapter else get_peft_model(base, LoraConfig(task_type=TaskType.CAUSAL_LM, r=args.rank,
                                           lora_alpha=args.rank * 2, lora_dropout=.05,
                                           target_modules='all-linear', bias='none'))
     model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})
@@ -114,6 +135,27 @@ def main():
     warmup = max(1, total_steps // 20)
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda step: min((step + 1) / warmup, max(.1, 1 - step / total_steps)))
     history = []; best = float('inf'); step = 0; tokens_seen = 0
+    def save_candidate(label, epoch):
+        destination = output/'checkpoints'/label
+        model.save_pretrained(destination, safe_serialization=True)
+        tokenizer.save_pretrained(destination)
+        write_json(destination/'experiment.json', {
+            'backbone': BACKBONE, 'revision': REVISION, 'base_parameters':base_parameters,
+            'license':'Apache-2.0','transport_format_version':1,
+            'format_code_sha256':hashlib.sha256((ROOT/'src/compactfacts/qwen_format.py').read_bytes()).hexdigest(),
+            'training_code_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            'trainable_adapter_parameters':trainable, 'max_prompt_tokens':args.max_prompt_tokens,
+            'total_parameters_with_adapter':sum(p.numel() for p in model.parameters()),
+            'lora_rank':args.rank,'learning_rate':args.lr,'accumulation':args.accumulation,
+            'fit_calls':len(fit),'dev_calls':len(dev),'fit_windows':len(fit_data),
+            'size_requirement_satisfied':True,'optimizer_state_resumed':False,'smoke_limit':args.limit,
+            'max_target_tokens':args.max_target_tokens, 'epochs_requested':args.epochs,
+            'best_epoch':epoch,'resume_adapter':args.resume_adapter,'checkpoint_step':step,
+            'selection':'Candidate checkpoint; select by generated internal dev metrics',
+            'metrics_version':'2.1','seed':args.seed})
+        if (output/'inference_config.json').exists():
+            (destination/'inference_config.json').write_bytes((output/'inference_config.json').read_bytes())
+        print('SAVED_CANDIDATE',destination,flush=True)
     for epoch in range(1, args.epochs + 1):
         model.train(); optimizer.zero_grad(set_to_none=True)
         order = list(range(len(fit_data))); random.shuffle(order)
@@ -126,17 +168,22 @@ def main():
             (loss / group_size).backward()
             value = loss.detach().item(); epoch_loss += value; recent.append(value); tokens_seen += tokens
             if (i + 1) % args.accumulation == 0 or i + 1 == len(order):
-                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
+                gradient_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
                 optimizer.step(); scheduler.step(); optimizer.zero_grad(set_to_none=True); step += 1
                 elapsed = time.perf_counter() - started
                 progress = {'epoch': epoch, 'step': step, 'total_steps': total_steps,
                             'samples': i + 1, 'epoch_samples': len(order), 'loss': float(np.mean(recent)),
                             'elapsed_seconds': elapsed, 'eta_seconds': elapsed / step * (total_steps - step),
                             'tokens_per_second': tokens_seen / elapsed,
+                            'learning_rate': optimizer.param_groups[0]['lr'],
+                            'gradient_norm_before_clip': float(gradient_norm),
                             'gpu_peak_mb': torch.cuda.max_memory_allocated() / 1024**2 if device.type == 'cuda' else None}
                 write_json(output / 'progress.json', progress)
+                log_event('step', **progress)
                 if step % 10 == 0 or i + 1 == len(order):
                     print(json.dumps(progress), flush=True); recent = []
+                if args.checkpoint_steps and step % args.checkpoint_steps == 0 and i+1 < len(order):
+                    save_candidate(f'step-{step}', epoch-1+(i+1)/len(order))
                 if device.type == 'cuda':
                     # Variable-length Windows/WDDM workloads otherwise retain
                     # large unused blocks and can exhaust the 6 GB device.
@@ -150,6 +197,9 @@ def main():
         record = {'epoch': epoch, 'train_loss_per_window': epoch_loss / len(order),
                   'dev_response_token_loss': score if dev_data else None, 'seconds': time.perf_counter() - started}
         history.append(record); print(json.dumps(record), flush=True)
+        log_event('epoch', **record)
+        if args.checkpoint_steps:
+            save_candidate(f'epoch-{epoch}',epoch)
         if score < best:
             best = score
             model.save_pretrained(output, safe_serialization=True)
@@ -167,10 +217,12 @@ def main():
                 'lora_rank': args.rank, 'learning_rate': args.lr, 'accumulation': args.accumulation,
                 'seed': args.seed, 'training_seconds': time.perf_counter() - started,
                 'selection': f'response token loss on first {min(len(dev), args.dev_loss_limit)} internal dev calls; no external val selection',
+                'resume_adapter': args.resume_adapter, 'metrics_version':'2.1',
                 'history': history, 'smoke_limit': args.limit,
                 'cuda_peak_allocated_mb': torch.cuda.max_memory_allocated() / 1024**2 if device.type == 'cuda' else None,
             })
         write_json(output / 'history.json', history)
+    log_event('complete', best_response_loss=best)
     print(f'Training complete. Best adapter: {output}; dev_response_loss={best:.4f}', flush=True)
 
 

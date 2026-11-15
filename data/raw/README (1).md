@@ -8,10 +8,13 @@
 | файл | что это |
 |---|---|
 | `train.jsonl` | обучающий корпус: диалоги + эталонные факты (шум 0.25) |
-| `val.jsonl` | валидационный срез: диалоги + эталон + `baseline_pred.jsonl` — вывод базового LLM-экстрактора |
+| `val.jsonl` | валидационный срез: диалоги + эталонные факты |
 | `schema.md` | формат данных, онтология атрибутов, ловушки, даты |
 | `catalog.json` | каталог значений для нормализации (услуги/тарифы/устройства/симптомы/действия/статусы) |
-| `case_metrics.py` | скрипт метрик (stdlib-only): `python case_metrics.py gold.jsonl pred.jsonl` |
+| `case_metrics.py` | скрипт метрик (stdlib-only): `python3 case_metrics.py gold.jsonl pred.jsonl` |
+| `baseline_metrics.json` | метрики планки (воспроизводятся прогоном) |
+| `ANSWERS_v2.md` | ответы организаторов на вопросы по оценщику/разметке |
+| `CHECKSUMS.txt` | контрольные суммы всех файлов пакета |
 | `baseline_pred.jsonl` | предсказания базового LLM-экстрактора на val — планка качества |
 
 Скрытый тестовый срез (включая adversarial-подмножество с усиленным ASR-шумом)
@@ -19,9 +22,11 @@
 
 ## Быстрый старт
 
+`case_metrics.py` требует только стандартную библиотеку Python 3.10+ (без pip install).
+
 ```bash
-python case_metrics.py val.jsonl baseline_pred.jsonl   # метрики базового экстрактора
-python case_metrics.py val.jsonl my_pred.jsonl         # ваши предсказания
+python3 case_metrics.py val.jsonl baseline_pred.jsonl   # метрики базового экстрактора
+python3 case_metrics.py val.jsonl my_pred.jsonl         # ваши предсказания
 ```
 
 Предсказание — тот же формат звонка; в `facts` обязательны `object.name`, `attribute`,
@@ -33,14 +38,21 @@ python case_metrics.py val.jsonl my_pred.jsonl         # ваши предска
 
 | метрика | значение |
 |---|---|
-| fact_precision / fact_recall | 0.21 / 0.24 |
-| temporal_recall | 0.42 |
-| state_accuracy | 0.35 |
-| grounding (реплика) | 0.68 |
+| fact_precision / fact_recall | 0.3348 / 0.3805 |
+| temporal_recall | 0.4706 |
+| state_accuracy | 0.5345 |
+| grounding (реплика) | 0.7835 |
 
 Критерий кейса «падение относительно базы ≤ 0.02» считается по этим числам.
 Большая модель теряется в ASR-шуме, относительных датах и ловушках — компактная
 модель, обученная на train, обязана её обойти.
+
+## Самопроверка устойчивости к шуму
+
+Скрытый срез жюри включает подмножество с усиленным шумом. В выданном корпусе
+noise_level везде 0.25 — для самопроверки устойчивости примените собственную
+аугментацию по образцу корпуса (искажение согласных, слияние/пропуск слов,
+обрыв реплики тире) к отложенной части train и оцените той же case_metrics.py.
 
 ## На что обратить внимание
 

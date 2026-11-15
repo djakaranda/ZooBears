@@ -9,7 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from compactfacts.io import write_json, read_jsonl
 sys.path.insert(0, str(ROOT / 'data/raw'))
-from case_metrics import evaluate as official_evaluate
+from compactfacts.metrics import official
+official_evaluate = official.evaluate
 
 
 def read(path):
@@ -17,11 +18,15 @@ def read(path):
 
 
 if __name__ == '__main__':
+    if hasattr(official, 'load_catalog'):
+        official.load_catalog('data/raw/val.jsonl')
     exp = read('artifacts/qwen/experiment.json')
     audit = read('artifacts/qwen/data_audit.json')
     selection = read('reports/qwen_dev_selection.json')
     dev = read('reports/qwen_dev_metrics.json')['official']
     val_detail = read('reports/qwen_val_metrics.json')
+    if val_detail['official'].get('metrics_version', '1') != getattr(official, 'VERSION', '1'):
+        raise RuntimeError('Archived report metrics use a different scorer. Run scripts/run_v21_iteration.py and write_v21_report.py for v2.1.')
     old_detail = read('reports/qwen_reference_val_metrics.json')
     val = val_detail['official']
     old = old_detail['official']

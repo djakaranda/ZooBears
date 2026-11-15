@@ -21,6 +21,8 @@ class QwenExtractor:
         self.catalog = json.loads(catalog_path.read_text(encoding='utf-8')) if catalog_path.exists() else {}
         inference_path = directory / 'inference_config.json'
         inference = json.loads(inference_path.read_text(encoding='utf-8')) if inference_path.exists() else {}
+        if date_ranker is None:
+            date_ranker = inference.get('date_ranker')
         self.device = torch.device(device)
         self.max_prompt_tokens = max_prompt_tokens or self.metadata['max_prompt_tokens']
         self.max_new_tokens = max_new_tokens or self.metadata['max_target_tokens']
@@ -41,7 +43,18 @@ class QwenExtractor:
                 self.model, {torch.nn.Linear: torch.ao.quantization.per_channel_dynamic_qconfig},
                 dtype=torch.qint8, inplace=True)
         self.date_ranker = None
-        self.agreement_evidence = True if date_ranker is None else inference.get('agreement_evidence', False)
+        self.canonical_objects = inference.get('canonical_objects', False)
+        self.event_date_options = inference.get('event_date_options', {})
+        self.event_dates = None
+        self.wide_dates = None
+        self.wide_date_chains = inference.get('wide_date_chains', False)
+        if inference.get('wide_date_model'):
+            from joblib import load
+            self.wide_dates = load(inference['wide_date_model'])
+        if inference.get('event_date_model'):
+            from joblib import load
+            self.event_dates = load(inference['event_date_model'])
+        self.agreement_evidence = inference.get('agreement_evidence', date_ranker is None)
         if date_ranker:
             from joblib import load
             self.date_ranker = load(date_ranker)
@@ -117,6 +130,10 @@ class QwenExtractor:
         return results
 
     def _assemble(self, call, candidates, diagnostics):
+        if self.canonical_objects:
+            from .entities import canonicalize_objects
+            account = (call.get('series') or {}).get('account_id') or call['call_id'].split(':')[0]
+            candidates = canonicalize_objects(candidates, account)
         # Repeated context windows should not count as repeated events.
         result = assemble_facts(call, candidates, None, agreement_evidence=self.agreement_evidence)
         if self.date_ranker is not None:
@@ -124,5 +141,10 @@ class QwenExtractor:
             apply_date_model(call, result, self.date_ranker,
                              {'action', 'agreement', 'tariff', 'service_state', 'ticket_status'})
             preserve_visit_window(call, result)
+        if self.wide_dates is not None:
+            from .wide_dates import apply_wide_dates
+            apply_wide_dates(call,result,self.wide_dates,chains=self.wide_date_chains)
+        if self.event_dates is not None:
+            self.event_dates.apply(call, result, **self.event_date_options)
         result['generation_diagnostics'] = diagnostics
         return result
