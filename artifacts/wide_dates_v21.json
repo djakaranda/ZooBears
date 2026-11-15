@@ -1,0 +1,8 @@
+{
+  "code_sha256": "b09aedd836cd9bdae5b275f7b3d53a3fe8b65684c831c41bf59a84f670327569",
+  "fit_sha256": "6a7552212dc3b459cb90f6d6007bc357572231641b4f8c9f0ece18943611f71e",
+  "supplement_sha256": "a7d133eeade0ab966f52ebef6d0b78aa856a861835cfab27bfbd51d7677cf411",
+  "fit_calls": 3334,
+  "supplement_calls": 112,
+  "seed": 42
+}

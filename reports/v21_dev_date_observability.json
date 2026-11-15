@@ -1,0 +1,30 @@
+{
+  "split": "internal dev only",
+  "counts": {
+    "eligible_gold_facts": 1353,
+    "end_recovered_start_not_in_bank": 287,
+    "start_recovered_end_not_in_bank": 46
+  },
+  "per_attribute": {
+    "tariff": {
+      "eligible_gold_facts": 216,
+      "end_recovered_start_not_in_bank": 98
+    },
+    "ticket_status": {
+      "eligible_gold_facts": 425,
+      "end_recovered_start_not_in_bank": 68,
+      "start_recovered_end_not_in_bank": 46
+    },
+    "agreement": {
+      "eligible_gold_facts": 363
+    },
+    "service_state": {
+      "eligible_gold_facts": 349,
+      "end_recovered_start_not_in_bank": 121
+    }
+  },
+  "local_repairs": {
+    "recover_dates_type_errors": 1
+  },
+  "note": "v2.1 includes a fact when either gold boundary is in its date bank, then requires BOTH boundaries to match. A missing bank date is diagnostic, not proof that the date is unknowable or a quality ceiling."
+}

@@ -1,0 +1,18 @@
+{
+  "metrics_version": "2.1",
+  "archive_sha256": "e349542092a211ab271e6baa5254c897442b848ef9b92e38722f1ef40bcd0aac",
+  "files_sha256": {
+    "ANSWERS_v2.md": "3fd52cd5c38c2bbf97bc5ad90a4433d8ef78b1428d16830a348612d69b80c067",
+    "README.md": "2b33ac543bbaed8d5754722a9651e51031076eb234131c3836fdd03da4158b26",
+    "baseline_metrics.json": "1f61a4a41e50ff4773ae4797dadf7cf65450e75823099c823f9bc72a41a21add",
+    "baseline_pred.jsonl": "11a6685758b872c81b16bb5f3d6eac9667d91a92d40760d1153a0eacd7d02ab6",
+    "case_metrics.py": "863f87737dd1108e772250967f43697fa2411b3394c190d192b7ff66666259c3",
+    "catalog.json": "b7579c704e03e76e174e54bf7e7099171bc62301a2cfd8f5b3c7838b552701cb",
+    "schema.md": "3eb1d47f862195228d22750fa2c453899bed1c5803222da6903f1ea020914603",
+    "train.jsonl": "0878bfd983e14c75b51f32f04d961c5b82b10fa243845a25fe1c811cb4882466",
+    "val.jsonl": "e12610354aa69dff83e1d7c1e8c94736c97d5761d20af58790435f4be1941808"
+  },
+  "previous_release": "data/releases/v1",
+  "official_scorer_modified": false,
+  "manifest_self_hash": "Not checked: the supplied self-reference is stale."
+}

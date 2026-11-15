@@ -1,0 +1,9 @@
+{
+  "fit_calls": 3334,
+  "supplement_calls": 378,
+  "fit_windows": 4042,
+  "total_tokens": 5514790,
+  "max_sequence_tokens": 2849,
+  "max_target_tokens": 312,
+  "truncated_examples": 0
+}

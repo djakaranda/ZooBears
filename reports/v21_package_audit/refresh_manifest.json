@@ -1,0 +1,29 @@
+{
+  "strategy": "Keep original predictions for 378 unchanged prompt inputs; refresh five changed prompt inputs using unchanged weights and date configuration, CPU FP32 batch=1. This is a migration audit using cached predictions, not a new end-to-end resource benchmark.",
+  "changed_input_positions": [
+    11,
+    28,
+    68,
+    312,
+    357
+  ],
+  "changed_input_call_ids": [
+    "u2027_00017:call0001",
+    "u2027_00032:call0000",
+    "u2027_00074:call0000",
+    "u2027_00308:call0001",
+    "u2027_00348:call0000"
+  ],
+  "refreshed_calls": 5,
+  "reused_calls": 378,
+  "source_commit": "fa36dac45431d813a7df8e2a601f505fcc0f9a9b",
+  "source_prediction_sha256": "a4aa7893f7583d8a2879288982d6d8ae7272427f04bfaaa4fbc17ac65a6339e9",
+  "inference_config": {
+    "selected_on": "internal account-disjoint dev",
+    "variant": "date_ranker",
+    "date_ranker": "artifacts/date_ranker.joblib",
+    "agreement_evidence": false
+  },
+  "adapter_sha256": "740677bcb005e93c7d7c96f9079e30bb821343ffd7ade2ac485c2a3bde60441e",
+  "abandoned_attempt": "20-call CUDA batch=4 refresh cancelled under severely restricted GPU clocks; no completed output used."
+}

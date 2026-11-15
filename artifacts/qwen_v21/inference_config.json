@@ -1,0 +1,8 @@
+{
+  "selected_on": "internal account-disjoint dev v2.1",
+  "variant": "retrained_ranker",
+  "date_ranker": "artifacts/date_ranker_v21.joblib",
+  "agreement_evidence": false,
+  "canonical_objects": false,
+  "event_date_model": null
+}

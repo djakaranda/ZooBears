@@ -1,0 +1,52 @@
+[
+  {
+    "file": "ANSWERS_v2.md",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "CHECKSUMS.txt",
+    "matches": false,
+    "self_reference": true
+  },
+  {
+    "file": "README.md",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "baseline_metrics.json",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "baseline_pred.jsonl",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "case_metrics.py",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "catalog.json",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "schema.md",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "train.jsonl",
+    "matches": true,
+    "self_reference": false
+  },
+  {
+    "file": "val.jsonl",
+    "matches": true,
+    "self_reference": false
+  }
+]

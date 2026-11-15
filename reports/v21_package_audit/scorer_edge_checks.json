@@ -1,0 +1,12 @@
+[
+  {
+    "text": "через две недели",
+    "exception": "TypeError",
+    "message": "'datetime.date' object is not iterable"
+  },
+  {
+    "text": "позапрошлый понедельник",
+    "exception": "TypeError",
+    "message": "'datetime.date' object is not iterable"
+  }
+]

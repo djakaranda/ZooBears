@@ -1,0 +1,88 @@
+[
+  {
+    "file": "schema.md",
+    "archive_sha256": "3eb1d47f862195228d22750fa2c453899bed1c5803222da6903f1ea020914603",
+    "local_exists": true,
+    "exact_equal": false,
+    "lf_equal": false,
+    "local_sha256": "8435f897c4d848a696c2bc5aecf061914d251296ffb2e0312f2d2d907436484b"
+  },
+  {
+    "file": "CHECKSUMS.txt",
+    "archive_sha256": "e4a6eae9a8b556f82ed89858584a84daf2ae2459f29480af25d873743dfc6e97",
+    "local_exists": false
+  },
+  {
+    "file": "README.md",
+    "archive_sha256": "2b33ac543bbaed8d5754722a9651e51031076eb234131c3836fdd03da4158b26",
+    "local_exists": true,
+    "exact_equal": false,
+    "lf_equal": false,
+    "local_sha256": "89e62da2d9762cb6449ad37a3d806c862f2d7df80d008cbc02775273f4366509"
+  },
+  {
+    "file": "baseline_metrics.json",
+    "archive_sha256": "1f61a4a41e50ff4773ae4797dadf7cf65450e75823099c823f9bc72a41a21add",
+    "local_exists": true,
+    "exact_equal": false,
+    "lf_equal": false,
+    "local_sha256": "cc6858b774f4fbd37e1e8fa4b7430af53cc6465e504dee8c0a80a1e71cb456b4",
+    "json_equal": false
+  },
+  {
+    "file": "case_metrics.py",
+    "archive_sha256": "863f87737dd1108e772250967f43697fa2411b3394c190d192b7ff66666259c3",
+    "local_exists": true,
+    "exact_equal": false,
+    "lf_equal": false,
+    "local_sha256": "dffec9b8b20c5a8a101a33a27b1672f2b6195f00ab60f021a1c14b31eeeacabd"
+  },
+  {
+    "file": "baseline_pred.jsonl",
+    "archive_sha256": "11a6685758b872c81b16bb5f3d6eac9667d91a92d40760d1153a0eacd7d02ab6",
+    "local_exists": true,
+    "exact_equal": true,
+    "lf_equal": true,
+    "local_sha256": "11a6685758b872c81b16bb5f3d6eac9667d91a92d40760d1153a0eacd7d02ab6",
+    "local_rows": 383,
+    "archive_rows": 383,
+    "json_equal": true
+  },
+  {
+    "file": "catalog.json",
+    "archive_sha256": "b7579c704e03e76e174e54bf7e7099171bc62301a2cfd8f5b3c7838b552701cb",
+    "local_exists": true,
+    "exact_equal": true,
+    "lf_equal": true,
+    "local_sha256": "b7579c704e03e76e174e54bf7e7099171bc62301a2cfd8f5b3c7838b552701cb",
+    "json_equal": true
+  },
+  {
+    "file": "val.jsonl",
+    "archive_sha256": "e12610354aa69dff83e1d7c1e8c94736c97d5761d20af58790435f4be1941808",
+    "local_exists": true,
+    "exact_equal": false,
+    "lf_equal": false,
+    "local_sha256": "fb0dd73bba4b642ca18538751ce4a64d40a569aa7edd1a2a2b595af3c6b6ca83",
+    "local_rows": 383,
+    "archive_rows": 383,
+    "json_equal": false,
+    "added_ids": 0,
+    "removed_ids": 0,
+    "changed_calls": 344
+  },
+  {
+    "file": "train.jsonl",
+    "archive_sha256": "0878bfd983e14c75b51f32f04d961c5b82b10fa243845a25fe1c811cb4882466",
+    "local_exists": true,
+    "exact_equal": false,
+    "lf_equal": false,
+    "local_sha256": "62cb4af045ab12dbc854d71532b3b796ef501f4a232359e98549863ae0476fcb",
+    "local_rows": 3926,
+    "archive_rows": 3926,
+    "json_equal": false,
+    "added_ids": 0,
+    "removed_ids": 0,
+    "changed_calls": 3536
+  }
+]

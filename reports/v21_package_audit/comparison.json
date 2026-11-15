@@ -1,0 +1,150 @@
+{
+  "audited_at": "2026-11-15T11:42:07.403311+03:00",
+  "github_commit": "fa36dac45431d813a7df8e2a601f505fcc0f9a9b",
+  "package_sha256": "e349542092a211ab271e6baa5254c897442b848ef9b92e38722f1ef40bcd0aac",
+  "metrics_version": "2.1",
+  "baseline_reproduced_exactly": true,
+  "baseline": {
+    "metrics_version": "2.1",
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 2097,
+    "fact_precision": 0.3348,
+    "fact_recall": 0.3805,
+    "temporal_recall": 0.4706,
+    "n_temporal": 442,
+    "state_accuracy": 0.5345,
+    "n_state": 623,
+    "grounding_turn": 0.7835,
+    "grounding_span": null,
+    "n_grounded": 702
+  },
+  "qwen": {
+    "metrics_version": "2.1",
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 1655,
+    "fact_precision": 0.606,
+    "fact_recall": 0.5436,
+    "temporal_recall": 0.374,
+    "n_temporal": 631,
+    "state_accuracy": 0.4928,
+    "n_state": 623,
+    "grounding_turn": 0.7428,
+    "grounding_span": 0.9715,
+    "n_grounded": 1003
+  },
+  "thresholds": {
+    "temporal_min": 0.4506,
+    "state_min": 0.5145,
+    "temporal_exclusion_boundary": 0.4206,
+    "temporal_passed": false,
+    "state_passed": false,
+    "temporal_exclusion_triggered": true
+  },
+  "data_changes": {
+    "train.jsonl": {
+      "calls": 3926,
+      "old_facts": 18475,
+      "new_facts": 18475,
+      "changed_input_calls": 254,
+      "field_change_counts": {
+        "facts[].source.quote": 7681,
+        "facts[].speaker": 1555,
+        "facts[].source.span": 2337,
+        "facts[].source.turn_idx": 2418,
+        "series.call_index": 181,
+        "facts[].source.span[]": 165,
+        "facts[].object.type": 395,
+        "facts[].object.name": 730,
+        "turns[].text": 220,
+        "turns.length": 5,
+        "turns[].speaker": 146
+      },
+      "calls_per_changed_field": {
+        "facts[].source.quote": 3478,
+        "facts[].speaker": 1325,
+        "facts[].source.span": 1860,
+        "facts[].source.turn_idx": 1906,
+        "series.call_index": 181,
+        "facts[].source.span[]": 85,
+        "facts[].object.name": 154,
+        "facts[].object.type": 154,
+        "turns[].text": 72,
+        "turns.length": 5,
+        "turns[].speaker": 2
+      }
+    },
+    "val.jsonl": {
+      "calls": 383,
+      "old_facts": 1845,
+      "new_facts": 1845,
+      "changed_input_calls": 24,
+      "field_change_counts": {
+        "facts[].source.quote": 787,
+        "facts[].source.span": 231,
+        "facts[].source.turn_idx": 242,
+        "facts[].speaker": 148,
+        "turns[].text": 25,
+        "series.call_index": 19,
+        "facts[].source.span[]": 21,
+        "turns.length": 1,
+        "turns[].speaker": 21,
+        "facts[].object.type": 45,
+        "facts[].object.name": 81
+      },
+      "calls_per_changed_field": {
+        "facts[].source.turn_idx": 192,
+        "facts[].source.quote": 340,
+        "facts[].source.span": 185,
+        "facts[].speaker": 124,
+        "turns[].text": 5,
+        "series.call_index": 19,
+        "facts[].source.span[]": 11,
+        "turns[].speaker": 1,
+        "turns.length": 1,
+        "facts[].object.name": 16,
+        "facts[].object.type": 16
+      }
+    }
+  },
+  "inference_audit_method": {
+    "strategy": "Keep original predictions for 378 unchanged prompt inputs; refresh five changed prompt inputs using unchanged weights and date configuration, CPU FP32 batch=1. This is a migration audit using cached predictions, not a new end-to-end resource benchmark.",
+    "changed_input_positions": [
+      11,
+      28,
+      68,
+      312,
+      357
+    ],
+    "changed_input_call_ids": [
+      "u2027_00017:call0001",
+      "u2027_00032:call0000",
+      "u2027_00074:call0000",
+      "u2027_00308:call0001",
+      "u2027_00348:call0000"
+    ],
+    "refreshed_calls": 5,
+    "reused_calls": 378,
+    "source_commit": "fa36dac45431d813a7df8e2a601f505fcc0f9a9b",
+    "source_prediction_sha256": "a4aa7893f7583d8a2879288982d6d8ae7272427f04bfaaa4fbc17ac65a6339e9",
+    "inference_config": {
+      "selected_on": "internal account-disjoint dev",
+      "variant": "date_ranker",
+      "date_ranker": "artifacts/date_ranker.joblib",
+      "agreement_evidence": false
+    },
+    "adapter_sha256": "740677bcb005e93c7d7c96f9079e30bb821343ffd7ade2ac485c2a3bde60441e",
+    "abandoned_attempt": "20-call CUDA batch=4 refresh cancelled under severely restricted GPU clocks; no completed output used."
+  },
+  "schema": {
+    "calls": 383,
+    "facts": 1655,
+    "missing_calls": 0,
+    "errors": [],
+    "valid": true
+  },
+  "resource_comparison_repeated": false,
+  "official_scorer_modified": false,
+  "training_or_model_selection_performed": false
+}

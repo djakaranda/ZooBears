@@ -1,0 +1,7 @@
+{
+  "temporal_min": 0.4506,
+  "state_min": 0.5145,
+  "temporal_passed": false,
+  "state_passed": false,
+  "resource_reduction_against_teacher_verified": false
+}

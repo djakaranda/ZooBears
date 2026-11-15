@@ -1,0 +1,94 @@
+{
+  "selected": "epoch-1",
+  "selected_on": "full internal dev, metrics v2.1",
+  "objective": "maximize smaller normalized temporal/state score with recall/F1 safeguards",
+  "candidates": {
+    "baseline": {
+      "model": "artifacts\\qwen",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2549,
+        "fact_precision": 0.6018,
+        "fact_recall": 0.5492,
+        "temporal_recall": 0.3975,
+        "n_temporal": 966,
+        "state_accuracy": 0.5257,
+        "n_state": 955,
+        "grounding_turn": 0.7229,
+        "grounding_span": 0.9677,
+        "n_grounded": 1534
+      },
+      "variant": "wide_ranker_chains",
+      "config": {
+        "selected_on": "internal account-disjoint dev v2.1",
+        "variant": "wide_ranker_chains",
+        "date_ranker": null,
+        "agreement_evidence": false,
+        "canonical_objects": false,
+        "event_date_model": null,
+        "wide_date_model": "artifacts/wide_dates_v21.joblib",
+        "wide_date_chains": true
+      },
+      "prefix": "reports/v21_dev_baseline"
+    },
+    "epoch-1": {
+      "model": "artifacts\\qwen_v21\\checkpoints\\epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2617,
+        "fact_precision": 0.6026,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.398,
+        "n_temporal": 985,
+        "state_accuracy": 0.5382,
+        "n_state": 955,
+        "grounding_turn": 0.799,
+        "grounding_span": 0.9683,
+        "n_grounded": 1577
+      },
+      "variant": "retrained_ranker",
+      "config": {
+        "selected_on": "internal account-disjoint dev v2.1",
+        "variant": "retrained_ranker",
+        "date_ranker": "artifacts/date_ranker_v21.joblib",
+        "agreement_evidence": false,
+        "canonical_objects": false,
+        "event_date_model": null
+      },
+      "prefix": "reports/v21_dev_epoch-1"
+    },
+    "step-300": {
+      "model": "artifacts\\qwen_v21\\checkpoints\\step-300",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2573,
+        "fact_precision": 0.611,
+        "fact_recall": 0.5628,
+        "temporal_recall": 0.3913,
+        "n_temporal": 984,
+        "state_accuracy": 0.5267,
+        "n_state": 955,
+        "grounding_turn": 0.7964,
+        "grounding_span": 0.9694,
+        "n_grounded": 1572
+      },
+      "variant": "retrained_ranker",
+      "config": {
+        "selected_on": "internal account-disjoint dev v2.1",
+        "variant": "retrained_ranker",
+        "date_ranker": "artifacts/date_ranker_v21.joblib",
+        "agreement_evidence": false,
+        "canonical_objects": false,
+        "event_date_model": null
+      },
+      "prefix": "reports/v21_dev_step-300"
+    }
+  },
+  "external_val_used_for_selection": false
+}
