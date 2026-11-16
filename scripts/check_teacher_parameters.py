@@ -20,14 +20,34 @@ def main():
     assert 'glm-5.3' in Path('data/raw/ANSWERS_v2.md').read_text(encoding='utf8').lower()
     ranker=joblib.load('artifacts/date_ranker_v21.joblib')
     classic=int(ranker.model.coef_.size+ranker.model.intercept_.size)
-    actual=student['total_parameters_with_adapter']+classic
+    config=json.loads((Path(args.model)/'inference_config.json').read_text(encoding='utf8'))
+    auxiliary={}
+    policy=config.get('sprint_dates',{})
+    if policy.get('model'):
+        boundary=joblib.load(policy['model'])
+        # Include tree topology, sample counts and impurity as well as values:
+        # this deliberately overcounts learned scalar parameters.
+        for kind,model in boundary.models.items():
+            if hasattr(model,'estimators_'):
+                total=0
+                for estimator in model.estimators_:
+                    state=estimator.tree_.__getstate__()
+                    total+=state['nodes'].size*len(state['nodes'].dtype.names)+state['values'].size
+                auxiliary[kind+'_tree_scalars_and_topology']=int(total)
+            else:auxiliary[kind+'_linear_parameters']=int(model.coef_.size+model.intercept_.size)
+            auxiliary[kind+'_vocabulary_entries']=len(boundary.vectorizers[kind].vocabulary_)
+    if policy.get('ranges'):
+        ranges=joblib.load(policy['ranges'])
+        auxiliary['range_statistics']=sum(len(v) for v in ranges.stats.values())
+    actual=student['total_parameters_with_adapter']+classic+sum(auxiliary.values())
     bound=math.ceil(actual/10_000_000)*10_000_000
     minimum=sum(v for k,v in teacher['safetensors']['parameters'].items() if k.startswith('F8'))
     proof={'teacher_name_in_case':'glm-5.3','teacher_source':teacher['source'],'teacher_revision':teacher['sha'],
         'teacher_total_parameters':teacher['safetensors']['total'],'teacher_weight_lower_bound':minimum,
         'student_model':Path(args.model).as_posix(),
         'student_base_parameters':student['base_parameters'],'student_adapter_parameters':student['trainable_adapter_parameters'],
-        'student_date_ranker_parameters':classic,'student_unmerged_total':actual,'student_conservative_upper_bound':bound,
+        'student_date_ranker_parameters':classic,'student_auxiliary_parameters_upper_estimate':auxiliary,
+        'student_unmerged_total':actual,'student_conservative_upper_bound':bound,
         'reduction_lower_bound':minimum/bound,'parameter_branch_passed':minimum/bound>=10,
         'teacher_runtime_revision_verified':False,'gpu_seconds_reduction_measured':False,'monetary_cost_reduction_measured':False,
         'comparison':'Total stored model parameters, not active per-token MoE compute. Identity follows the teacher name in the case; runtime revision is unavailable.'}
@@ -50,7 +70,7 @@ def main():
 
 - Всего скаляров параметров учителя: **{teacher['safetensors']['total']:,}**.
 - Консервативная нижняя оценка весов основной сети: **{minimum:,}**.
-- Студент до слияния LoRA вместе с линейным ранжировщиком дат: **{actual:,}**.
+- Студент до слияния LoRA вместе со всеми выбранными CPU-моделями дат: **{actual:,}**.
 - Округляем размер студента вверх до **{bound:,}**.
 - Отношение: **{minimum/bound:.1f}×**, требуемая ветка по параметрам — ≥10×.
 

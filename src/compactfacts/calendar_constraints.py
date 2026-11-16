@@ -69,6 +69,23 @@ def apply_calendar_constraints(call,prediction):
     for fact in prediction['facts']:
         if fact['attribute']=='action':continue
         pointer=pointers.get((fact['object']['id'],fact['attribute'],fact['source']['turn_idx'],fact['value'],fact['polarity']))
+        # Reference IDs are frozen and were parsed with the historical default.
+        # A linked weekday in an agreement must use the existing future-aware
+        # parser, just as appointment assembly does before applying pointers.
+        if fact['attribute']=='agreement' and pointer and pointer.get('start'):
+            ref=pointer['start'];linked=call['turns'][indices[ref['turn_idx']]]
+            if WEEKDAY.search(ref.get('quote','')):
+                matches=[m for m in find_dates(linked['text'],call['started_at'],True)
+                         if m.value and [m.start,m.end]==ref.get('span')]
+                if len(matches)==1:
+                    m=matches[0];old=fact['valid_from'];new=m.value
+                    end=fact['valid_to'];end_ref=pointer.get('end')
+                    if end and old[:10]==end[:10] and end_ref and end_ref.get('precision')=='time':
+                        end=new[:10]+end[10:]
+                    if end is None or new<=end:
+                        fact.update(valid_from=new,valid_to=end)
+                        ref.update(value=new,selection_method='calendar_constraints')
+                        if end_ref and end is not None:end_ref['value']=end
         source_indices=[indices[fact['source']['turn_idx']]]
         if pointer and pointer.get('start'):
             other=indices.get(pointer['start']['turn_idx'])

@@ -1,0 +1,15 @@
+{
+  "date_ranker": "artifacts/date_ranker_v21.joblib",
+  "agreement_evidence": false,
+  "canonical_objects": false,
+  "event_date_model": null,
+  "date_pointer_mode": "open_ends",
+  "selected_on": "full sprint internal dev",
+  "sprint_dates": {
+    "model": "artifacts/sprint_boundary_trees.joblib",
+    "mode": "both",
+    "margin": 2.0,
+    "ranges": "artifacts/sprint_ranges.joblib",
+    "constraints": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "fit_calls": 1440,
+  "fit_windows": 1545,
+  "dev_calls": 592,
+  "dev_loss_calls": 64,
+  "dev_loss_windows": 70,
+  "account_overlap": 0,
+  "train_sha256": "33e9d34298337384f0adc1e4a40884853e1ac3a5576584b8762891edc5387cae",
+  "dev_sha256": "885d3cfd3b171e8a41b881fb04930e37f0063e1c80fc76ed8bb39ef5414cfb7d",
+  "fit_tokens": 1826213,
+  "fit_target_tokens": 165730,
+  "max_sequence_tokens": 3386,
+  "fit_ids_sha256": "32f4a7a023ee9707b4ad8d24530846e62e97a6ba71f20b1e1e591bab10d1c0bb",
+  "dev_ids_sha256": "068a4cb9bfe02ca5768a725647ddd7832235c61bf4a3e71057422da7faef647c",
+  "truncated_training_examples": 0,
+  "smoke_limit": null,
+  "metrics_version": "2.1",
+  "augmentation_calls": 40,
+  "date_token_weight": 3.0,
+  "augmentation_fraction": 0.03,
+  "targeted_examples": false,
+  "canonicalized_training_objects": 156
+}

@@ -15,6 +15,20 @@ def prediction(call,value='Плюс',attr='tariff',source=2,ref=None):
 
 
 class CalendarConstraintTests(unittest.TestCase):
+    def test_appointment_pointer_uses_future_weekday_and_preserves_clock_window(self):
+        text='Давайте оформим выезд специалиста в четверг после двух до 18:00.'
+        call={'started_at':'2026-11-14T15:00:00','turns':[{'idx':2,'speaker':'operator','text':text}]}
+        mentions=find_dates(text,call['started_at'],False)
+        first=next(m for m in mentions if m.value and m.relation!='until')
+        last=next(m for m in mentions if m.value and m.relation=='until')
+        ref={'turn_idx':2,'span':[first.start,first.end],'quote':text[first.start:first.end],'value':first.value}
+        pred=prediction(call,'выезд специалиста','agreement',2,ref)
+        pred['facts'][0].update(valid_from=first.value,valid_to=last.value)
+        pred['date_pointer_evidence'][0]['end']={'value':last.value,'precision':'time'}
+        apply_calendar_constraints(call,pred)
+        self.assertEqual(pred['facts'][0]['valid_from'],'2026-11-19T14:00:00')
+        self.assertEqual(pred['facts'][0]['valid_to'],'2026-11-19T18:00:00')
+
     def test_spelled_day_with_month_retains_real_offsets(self):
         text='Тариф подключили пятого октября.'
         m=word_date_mentions(text,'2026-11-14T15:00:00')[0]
