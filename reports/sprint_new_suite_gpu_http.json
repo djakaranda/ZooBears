@@ -1,0 +1,10 @@
+{
+  "calls": 43,
+  "url": "http://127.0.0.1:8001",
+  "latency_mean_ms": 957.8945813957753,
+  "latency_p95_ms": 2466.6733399906657,
+  "unit": "HTTP request wall time, batch1, model already loaded",
+  "checker_exit_code": 1,
+  "strict_all_passed": false,
+  "generation_invalid_json_windows": 0
+}

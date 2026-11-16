@@ -1,0 +1,84 @@
+{
+  "created_at": "2026-11-16T03:03:57.607248+00:00",
+  "selected": "step-100/calendar_range_trees_2",
+  "full_val_complete": true,
+  "schema_valid": true,
+  "api_checks": {
+    "qwen_596m": true,
+    "status_chain": true,
+    "appointment_window": true,
+    "refusal_empty": true,
+    "no_refusal_as_agreement": true,
+    "unresolved_state_start_is_unknown": true,
+    "expected_adapter": true,
+    "distinct_devices": true,
+    "source_and_schema": true,
+    "uncertain": true,
+    "unknown": true
+  },
+  "unit_tests": 92,
+  "generation_diagnostics": {
+    "windows": 419,
+    "invalid_json_windows": 0,
+    "invalid_rows": 3,
+    "truncated_windows": 0
+  },
+  "baseline_files_unchanged": true,
+  "frozen_date_reference_code": {
+    "qwen_date_format.py": "227ac1c3bdf28c277baf2b04c42a92249a7f1102dd2620fe3add384b2717848e",
+    "temporal_v2.py": "06660b50aec2afab77aae62af31b876acf4a7aa5ec05665fe56aeda51ba2e245",
+    "temporal.py": "08692947542e7ab7b0cab096b0708d1df9c0ccc20af765063b3f86d1a88f9474"
+  },
+  "adapter_sha256": "10b0d8aa105b43c32f181cd54d650d996f41f62e48521314f2c21b72ff5d3d22",
+  "full_val_runtime_identity": {
+    "selected": "step-100/calendar_range_trees_2",
+    "weights_sha256": "10b0d8aa105b43c32f181cd54d650d996f41f62e48521314f2c21b72ff5d3d22",
+    "inference_config": {
+      "date_ranker": "artifacts/date_ranker_v21.joblib",
+      "agreement_evidence": false,
+      "canonical_objects": false,
+      "event_date_model": null,
+      "date_pointer_mode": "open_ends",
+      "selected_on": "full sprint internal dev",
+      "sprint_dates": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true
+      }
+    },
+    "sources": {
+      "qwen.py": "0a2727e1ba9a99ffbc0398712bb2149985ee30dc76ec9750d7ebc572027aafd1",
+      "date_pointers.py": "d0bdd790012dea71a43397b075ff913dd0f79f763c6601b0c9825cdb96f13829",
+      "date_refinement.py": "3c18af1f2840ce6eb61e02c558e2e3f5f23762145f69a207ac24beb2a2a12ce4",
+      "scoped_dates.py": "4997f66b14cd77eb7f7a255b11a9353ebc76befcfd2d358e770f7862b0b7fb82",
+      "boundary_ranker.py": "5bc76b9fb873710045fbde2b043ce8f3474800ace0a182b33a93def2e543c68f",
+      "range_estimator.py": "0e98e7c773b8f4e620c064be3dc427ce2ffd82a9b0dec82fbc238429bdd88364",
+      "calendar_constraints.py": "696b3b3d85676286edc33165df96a66395dd224d740507a0af8ac9432d8c258d"
+    },
+    "auxiliary_models": {
+      "artifacts/sprint_boundary_trees.joblib": "3ad68622cc7c0aa5490115e092768e531e5b7000b186e93d495ed8c37ec7dfed",
+      "artifacts/sprint_ranges.joblib": "6c17be7d87790e51f0e435484cd8834b8ea0fb9528f9251690f9b35fa8fefa33"
+    },
+    "api_weekday_fix_verified_on_dev_before_val": true
+  },
+  "thresholds": {
+    "temporal_min": 0.4506,
+    "state_min": 0.5145,
+    "temporal": 0.4589,
+    "state": 0.5297,
+    "temporal_passed": true,
+    "state_passed": true,
+    "temporal_exclusion_boundary": 0.4206,
+    "parameter_branch_supported": true,
+    "teacher_gpu_seconds_reduction_measured": false
+  },
+  "base_parameters": 596049920,
+  "new_suite_cuda_strict": 27,
+  "new_suite_total": 43,
+  "external_val_used_for_checkpoint_selection": false,
+  "external_val_used_for_release_acceptance": true,
+  "docker_built": false,
+  "second_neural_date_verifier_deployed": false
+}

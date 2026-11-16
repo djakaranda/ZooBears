@@ -1,0 +1,443 @@
+{
+  "selected_on": "internal dev only",
+  "candidates": {
+    "raw": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4226,
+        "n_temporal": 975,
+        "state_accuracy": 0.5476,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_raw_pred.jsonl",
+      "policy": {}
+    },
+    "scope_tickets": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4267,
+        "n_temporal": 975,
+        "state_accuracy": 0.5476,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_scope_tickets_pred.jsonl",
+      "policy": {
+        "scope": true
+      }
+    },
+    "boundary_start_1": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4226,
+        "n_temporal": 975,
+        "state_accuracy": 0.5487,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_start_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "start",
+        "margin": 1.0
+      }
+    },
+    "boundary_end_1": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4256,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_end_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "end",
+        "margin": 1.0
+      }
+    },
+    "boundary_both_0": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4185,
+        "n_temporal": 975,
+        "state_accuracy": 0.5403,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_0_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 0.0
+      }
+    },
+    "boundary_both_1": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4246,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0
+      }
+    },
+    "boundary_both_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4277,
+        "n_temporal": 975,
+        "state_accuracy": 0.5508,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0
+      }
+    },
+    "boundary_both_1_scope": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4246,
+        "n_temporal": 975,
+        "state_accuracy": 0.5455,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_1_scope_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0,
+        "scope": true
+      }
+    },
+    "range_estimate": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4246,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_range_estimate_pred.jsonl",
+      "policy": {
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "range_boundary_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4297,
+        "n_temporal": 975,
+        "state_accuracy": 0.5487,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_range_boundary_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "range_scope": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4287,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_range_scope_pred.jsonl",
+      "policy": {
+        "scope": true,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "trees_both_1": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4297,
+        "n_temporal": 975,
+        "state_accuracy": 0.5518,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_trees_both_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 1.0
+      }
+    },
+    "trees_both_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4308,
+        "n_temporal": 975,
+        "state_accuracy": 0.5539,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_trees_both_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0
+      }
+    },
+    "range_trees_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4328,
+        "n_temporal": 975,
+        "state_accuracy": 0.5529,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_range_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "calendar_exact": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4226,
+        "n_temporal": 975,
+        "state_accuracy": 0.5476,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_calendar_exact_pred.jsonl",
+      "policy": {
+        "constraints": true
+      }
+    },
+    "calendar_trees_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4308,
+        "n_temporal": 975,
+        "state_accuracy": 0.5539,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_calendar_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "constraints": true
+      }
+    },
+    "calendar_range_trees_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4328,
+        "n_temporal": 975,
+        "state_accuracy": 0.5529,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_calendar_range_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true
+      }
+    },
+    "calendar_interval_trees_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4328,
+        "n_temporal": 975,
+        "state_accuracy": 0.5529,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_calendar_interval_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true,
+        "range_method": "interval_offset"
+      }
+    },
+    "calendar_interval_linear_2": {
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4297,
+        "n_temporal": 975,
+        "state_accuracy": 0.5487,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_calendar_interval_linear_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true,
+        "range_method": "interval_offset"
+      }
+    }
+  }
+}

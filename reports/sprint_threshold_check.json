@@ -1,0 +1,11 @@
+{
+  "temporal_min": 0.4506,
+  "state_min": 0.5145,
+  "temporal": 0.4589,
+  "state": 0.5297,
+  "temporal_passed": true,
+  "state_passed": true,
+  "temporal_exclusion_boundary": 0.4206,
+  "parameter_branch_supported": true,
+  "teacher_gpu_seconds_reduction_measured": false
+}

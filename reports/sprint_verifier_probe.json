@@ -1,0 +1,509 @@
+{
+  "subset": "64 input-selected dev cases; exploratory, not final quality",
+  "metrics": {
+    "before": {
+      "metrics_version": "2.1",
+      "n_calls": 48,
+      "n_gold_facts": 242,
+      "n_pred_facts": 232,
+      "fact_precision": 0.6121,
+      "fact_recall": 0.5868,
+      "temporal_recall": 0.5474,
+      "n_temporal": 95,
+      "state_accuracy": 0.6024,
+      "n_state": 83,
+      "grounding_turn": 0.831,
+      "grounding_span": 1.0,
+      "n_grounded": 142
+    },
+    "starts": {
+      "metrics_version": "2.1",
+      "n_calls": 48,
+      "n_gold_facts": 242,
+      "n_pred_facts": 232,
+      "fact_precision": 0.6121,
+      "fact_recall": 0.5868,
+      "temporal_recall": 0.5474,
+      "n_temporal": 95,
+      "state_accuracy": 0.6024,
+      "n_state": 83,
+      "grounding_turn": 0.831,
+      "grounding_span": 1.0,
+      "n_grounded": 142
+    },
+    "conservative": {
+      "metrics_version": "2.1",
+      "n_calls": 48,
+      "n_gold_facts": 242,
+      "n_pred_facts": 232,
+      "fact_precision": 0.6121,
+      "fact_recall": 0.5868,
+      "temporal_recall": 0.5474,
+      "n_temporal": 95,
+      "state_accuracy": 0.6024,
+      "n_state": 83,
+      "grounding_turn": 0.831,
+      "grounding_span": 1.0,
+      "n_grounded": 142
+    },
+    "open_ends": {
+      "metrics_version": "2.1",
+      "n_calls": 48,
+      "n_gold_facts": 242,
+      "n_pred_facts": 232,
+      "fact_precision": 0.6121,
+      "fact_recall": 0.5868,
+      "temporal_recall": 0.5474,
+      "n_temporal": 95,
+      "state_accuracy": 0.6024,
+      "n_state": 83,
+      "grounding_turn": 0.831,
+      "grounding_span": 1.0,
+      "n_grounded": 142
+    }
+  },
+  "generation_records": [
+    {
+      "call_id": "u104_00535:call0000",
+      "text": "[0,6,\"agreement\",\"клиент подтвердил последние цифры договора 7-12-34\",\"client\",\"Марин Сергеевна\",1],[1,7,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4179\",1],[2,9,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 4179\",1],[3,11,\"ticket_status\",\"назначен",
+      "starts_error": "Extra data: line 1 column 100 (char 99)",
+      "conservative_error": "Extra data: line 1 column 100 (char 99)",
+      "open_ends_error": "Extra data: line 1 column 100 (char 99)"
+    },
+    {
+      "call_id": "u104_00535:call0000",
+      "text": "[4,14,\"agreement\",\"выезд специалиста в среду после двух\",\"client\",\"Марин Сергеевна\",1],[5,15,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Марин Сергеевна\",1]",
+      "starts_error": "Extra data: line 1 column 87 (char 86)",
+      "conservative_error": "Extra data: line 1 column 87 (char 86)",
+      "open_ends_error": "Extra data: line 1 column 87 (char 86)"
+    },
+    {
+      "call_id": "u101_01538:call0000",
+      "text": "[0,5,\"service_state\",\"работает нормально\",\"service\",\"семейная подписка на облако\",1],[1,5,\"service_state\",\"шум на линии\",\"service\",\"семейная подписка на облако\",1],[4,11,\"tariff\",\"Расширенный\",\"client\",\"Марь Сергевна\",1],[5,11,\"tariff\",\"Комбо+\",\"client\",\"Марь",
+      "starts_error": "Extra data: line 1 column 85 (char 84)",
+      "conservative_error": "Extra data: line 1 column 85 (char 84)",
+      "open_ends_error": "Extra data: line 1 column 85 (char 84)"
+    },
+    {
+      "call_id": "u101_01538:call0000",
+      "text": "[6,16,\"agreement\",\"проверка линии на станции\",\"client\",\"Марь Сергевна\",1],[7,17,\"agreement\",\"выезд мастера послезавтра с утра\",\"client\",\"Марь Сергевна\",1],[8,18,\"ticket_status\",\"принята\",\"ticket\",\"заявка 5013\",1],[9,18,\"agreement\",\"при шуме до об",
+      "starts_error": "Extra data: line 1 column 74 (char 73)",
+      "conservative_error": "Extra data: line 1 column 74 (char 73)",
+      "open_ends_error": "Extra data: line 1 column 74 (char 73)"
+    },
+    {
+      "call_id": "u101_01015:call0002",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4580\",1],[1,6,\"ticket_status\",\"выполнена\",\"ticket\",\"заявка 4580\",1],[3,14,\"service_state\",\"услуга видеопрокат активна и работает\",\"service\",\"видеопрокат\",1]",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u104_00203:call0000",
+      "text": "[0,8,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4374\",1],[1,10,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 4374\",1],[2,12,\"ticket_status\",\"назначен выезд специалиста\",\"ticket\",\"заявка 4374\",1],[3,14,\"agreement\",\"специалист позвонит",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u104_00203:call0000",
+      "text": "[4,16,\"agreement\",\"специалист проверит оборудование и подключение модема\",\"client\",\"Катерина Сергеевна\",1], [10,16,\"agreement\",\"назначен выезд специалиста\",\"client\",\"Катерина Сергеевна\",1], [12,16,\"agreement\",\"назначен выезд специалиста\",\"client\",\"Катерина Сергеевна",
+      "starts_error": "Extra data: line 1 column 107 (char 106)",
+      "conservative_error": "Extra data: line 1 column 107 (char 106)",
+      "open_ends_error": "Extra data: line 1 column 107 (char 106)"
+    },
+    {
+      "call_id": "u101_00061:call0000",
+      "text": "[0,1,\"service_state\",\"постоянно просит пароль от вай-фай\",\"device\",\"старая сим-карта\",1],[2,13,\"agreement\",\"клиент согласился на оформление заявки через два дня\",\"client\",\"Марин Олеговна\",1],[3,11,\"service_state\",\"постоянно просит пароль от вай-фай\",\"device\",\"старая сим-",
+      "starts_error": "Extra data: line 1 column 89 (char 88)",
+      "conservative_error": "Extra data: line 1 column 89 (char 88)",
+      "open_ends_error": "Extra data: line 1 column 89 (char 88)"
+    },
+    {
+      "call_id": "u104_00867:call0000",
+      "text": "[0,4,\"service_state\",\"не подключаются новые устройства\",\"device\",\"сим-карта\",1],[2,10,\"agreement\",\"перенастройка приставки удалённо\",\"client\",\"Катерина Сергеевна\",1],[3,11,\"agreement\",\"подключение сотовой связи, мультирума и пакета\",\"client\",\"Катерина Сергеевна\",1]",
+      "starts_error": "Extra data: line 1 column 80 (char 79)",
+      "conservative_error": "Extra data: line 1 column 80 (char 79)",
+      "open_ends_error": "Extra data: line 1 column 80 (char 79)"
+    },
+    {
+      "call_id": "u101_00991:call0000",
+      "text": "[0,3,\"ticket_status\",\"принята\",\"ticket\",\"заявка 5443\",1],[1,3,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 5443\",1],[2,6,\"service_state\",\"сетевой адаптер после переноса не горит\",\"device\",\"сетевой адаптер\",1],[3,7,\"agreement\",\"выезд специалиста\",\"client\",\"Мар",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u101_02163:call0000",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 5846\",1],[1,6,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 5846\",1],[2,10,\"agreement\",\"оператор прилжит к заявке 5846 звонок и претензия, итог проверки клиенту перезвонят\",\"client\",\"О",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u102_00596:call0000",
+      "text": "[0,2,\"service_state\",\"голосовая почта не работает\",\"service\",\"голосовая почта\",1],[1,2,\"service_state\",\"не приходят смс\",\"service\",\"голосовая почта\",1],[2,3,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4123\",1],[3,3,\"ticket_status\",\"назначен выезд специалиста\",\"ticket\",\"заявка 4",
+      "starts_error": "Extra data: line 1 column 82 (char 81)",
+      "conservative_error": "Extra data: line 1 column 82 (char 81)",
+      "open_ends_error": "Extra data: line 1 column 82 (char 81)"
+    },
+    {
+      "call_id": "u102_00596:call0000",
+      "text": "[4,6,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Елен Петровна\",1],[5,9,\"tariff\",\"Сухой\",\"client\",\"Елен Петровна\",1]",
+      "starts_error": "Extra data: line 1 column 75 (char 74)",
+      "conservative_error": "Extra data: line 1 column 75 (char 74)",
+      "open_ends_error": "Extra data: line 1 column 75 (char 74)"
+    },
+    {
+      "call_id": "u101_00985:call0001",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4663\",1],[1,6,\"ticket_status\",\"выполнена\",\"ticket\",\"заявка 4663\",1],[2,12,\"agreement\",\"клиент подтвердила: «Нет, это всё. Я просто подстраховаться не стала.»\",\"client\",\"Елен Петровна\",1]",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u104_00045:call0000",
+      "text": "[0,5,\"service_state\",\"работает нормально\",\"service\",\"второй телевизор по договору\",1],[2,12,\"service_state\",\"индикатор питания горит зелёным, самоустройство живое, питание в порядке\",\"device\",\"сетевой кабель\",1],[3,14,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Марь Сергевна\",1],[4,1",
+      "starts_error": "Extra data: line 1 column 86 (char 85)",
+      "conservative_error": "Extra data: line 1 column 86 (char 85)",
+      "open_ends_error": "Extra data: line 1 column 86 (char 85)"
+    },
+    {
+      "call_id": "u101_00577:call0000",
+      "text": "[0,2,\"service_state\",\"запрашивается пароль от вай-фай\",\"device\",\"роутер TP-Link Archer\",1],[4,12,\"agreement\",\"выезд специалиста\",\"client\",\"Марин Сергеевна\",1]",
+      "starts_error": "Extra data: line 1 column 91 (char 90)",
+      "conservative_error": "Extra data: line 1 column 91 (char 90)",
+      "open_ends_error": "Extra data: line 1 column 91 (char 90)"
+    },
+    {
+      "call_id": "u102_00562:call0000",
+      "text": "[0,5,\"service_state\",\"слабый сигнал вай-фай\",\"device\",\"сетевой концентратор\",1],[2,13,\"agreement\",\"перезвонок специалиста\",\"client\",\"Катерина Сергеевна\",1],[4,14,\"agreement\",\"специалист свяжется с клиентом в субботу\",\"client\",\"Катерина Сергеевна\",1]",
+      "starts_error": "Extra data: line 1 column 80 (char 79)",
+      "conservative_error": "Extra data: line 1 column 80 (char 79)",
+      "open_ends_error": "Extra data: line 1 column 80 (char 79)"
+    },
+    {
+      "call_id": "u102_00531:call0001",
+      "text": "[0,2,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4556\",1],[1,4,\"ticket_status\",\"назначен выезд специалиста\",\"ticket\",\"заявка 4556\",1],[2,8,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Марин Викторовна\",1],[3,12,\"service_state\",\"музыкаль",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u102_00531:call0001",
+      "text": "[4,13,\"service_state\",\"интернет работает, проблемы только с инете\",\"service\",\"музыкальный пакет каналов\",1], [14,15,\"pristine\",\"принято. итак, фиксирую: заявка 4556, выезд специалиста на дом —\"], [15,16,\"pristine\",\"Спасиба за обращение, всего доброго!",
+      "starts_error": "Extra data: line 1 column 108 (char 107)",
+      "conservative_error": "Extra data: line 1 column 108 (char 107)",
+      "open_ends_error": "Extra data: line 1 column 108 (char 107)"
+    },
+    {
+      "call_id": "u101_00810:call0001",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 5372\",1],[1,6,\"ticket_status\",\"назначен выезд специалиста\",\"ticket\",\"заявка 5372\",1],[3,14,\"agreement\",\"специалист предварительно позвонит за полчаса до визита\",\"client\",\"Оля Викторовна\",1],[4,",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u104_00850:call0001",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4891\",1],[1,8,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 4891\",1],[2,12,\"agreement\",\"специалист позвонит перед приходом\",\"client\",\"Катерина Сергеевна\",1],[3,13,\"agreement\",\"клиент подтвердил срок решения",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u101_02000:call0000",
+      "text": "[0,0,\"service_state\",\"слабо ловит вай-фай\",\"device\",\"роутер Keenetic Start\",1],[2,8,\"agreement\",\"визит мастера в четверг подтверждён клиентом\",\"client\",\"Марь Сергевна\",1]",
+      "starts_error": "Extra data: line 1 column 79 (char 78)",
+      "conservative_error": "Extra data: line 1 column 79 (char 78)",
+      "open_ends_error": "Extra data: line 1 column 79 (char 78)"
+    },
+    {
+      "call_id": "u101_01315:call0000",
+      "text": "[0,1,\"service_state\",\"пауза при просмотре\",\"device\",\"смарт-приставка\",1],[1,10,\"service_state\",\"видео и звук нормальные, картинка хорошая\",\"device\",\"смарт-приставка\",1],[2,14,\"tariff\",\"Городской\",\"client\",\"Елен Петровна\",1],[3,15,\"ticket_status\",\"принята\",\"ticket\",\"зая",
+      "starts_error": "Extra data: line 1 column 73 (char 72)",
+      "conservative_error": "Extra data: line 1 column 73 (char 72)",
+      "open_ends_error": "Extra data: line 1 column 73 (char 72)"
+    },
+    {
+      "call_id": "u101_02043:call0000",
+      "text": "[0,5,\"service_state\",\"слабый сигнал вай-фай\",\"device\",\"сим-карта\",1],[2,14,\"agreement\",\"перезвонок специалиста\",\"client\",\"Марь Сергевна\",1]",
+      "starts_error": "Extra data: line 1 column 69 (char 68)",
+      "conservative_error": "Extra data: line 1 column 69 (char 68)",
+      "open_ends_error": "Extra data: line 1 column 69 (char 68)"
+    },
+    {
+      "call_id": "u104_00199:call0000",
+      "text": "[0,1,\"service_state\",\"двойное списание\",\"service\",\"мультирум\",1],[2,14,\"agreement\",\"перерасчёт счёта\",\"client\",\"Катерина Сергеевна\",1],[3,14,\"agreement\",\"заявка на поиск по запросам оформлена\",\"client\",\"Катерина Сергеевна\",1],[4,17,\"agreement\",\"клиент подтверд",
+      "starts_error": "Extra data: line 1 column 65 (char 64)",
+      "conservative_error": "Extra data: line 1 column 65 (char 64)",
+      "open_ends_error": "Extra data: line 1 column 65 (char 64)"
+    },
+    {
+      "call_id": "u101_00529:call0000",
+      "text": "[0,1,\"service_state\",\"оплата не прошла\",\"service\",\"датчик дыма\",1],[1,4,\"service_state\",\"датчик дыма не продлился\",\"service\",\"датчик дыма\",1],[2,6,\"agreement\",\"блокировка списаний до разбора\",\"client\",\"Марин Андреевна\",1],[3,9,\"agreement\",\"видеонаблюдение и стаци",
+      "starts_error": "Extra data: line 1 column 67 (char 66)",
+      "conservative_error": "Extra data: line 1 column 67 (char 66)",
+      "open_ends_error": "Extra data: line 1 column 67 (char 66)"
+    },
+    {
+      "call_id": "u101_00529:call0000",
+      "text": "[4,10,\"agreement\",\"смс о заявке придёт сегодня же\",\"client\",\"Марин Андреевна\",1]",
+      "starts_rows": 0,
+      "conservative_rows": 0,
+      "open_ends_rows": 0
+    },
+    {
+      "call_id": "u101_00677:call0000",
+      "text": "[0,1,\"service_state\",\"работает нормально\",\"service\",\"фильтр спам-звонков\",1],[1,1,\"service_state\",\"оплата не прошла\",\"service\",\"фильтр спам-звонков\",1],[2,5,\"tariff\",\"Орбита\",\"client\",\"Марь Сергевна\",1],[3,5,\"tariff\",\"Скоростной\",\"client\",\"Марь Сергевна\",1]",
+      "starts_error": "Extra data: line 1 column 77 (char 76)",
+      "conservative_error": "Extra data: line 1 column 77 (char 76)",
+      "open_ends_error": "Extra data: line 1 column 77 (char 76)"
+    },
+    {
+      "call_id": "u101_00677:call0000",
+      "text": "[5,10,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Марь Сергевна\",1],[6,12,\"agreement\",\"клиент подтвердил срок подтверждения по смс через пять дней\",\"client\",\"Марь Сергевна\",1]",
+      "starts_error": "Extra data: line 1 column 76 (char 75)",
+      "conservative_error": "Extra data: line 1 column 76 (char 75)",
+      "open_ends_error": "Extra data: line 1 column 76 (char 75)"
+    },
+    {
+      "call_id": "u101_00062:call0000",
+      "text": "[0,6,\"service_state\",\"работает нормально\",\"service\",\"антивирус для дома\",1],[1,6,\"service_state\",\"нет уведомлений с камер\",\"service\",\"антивирус для дома\",1],[2,10,\"tariff\",\"Импульс\",\"client\",\"Елене Викторовне\",1],[3,10,\"tariff\",\"Мини\",\"client\",\"Елене Викторовне",
+      "starts_error": "Extra data: line 1 column 76 (char 75)",
+      "conservative_error": "Extra data: line 1 column 76 (char 75)",
+      "open_ends_error": "Extra data: line 1 column 76 (char 75)"
+    },
+    {
+      "call_id": "u101_00062:call0000",
+      "text": "[4,12,\"service_state\",\"телевизор через антивирус работает, картинка с камер показывает\",\"device\",\"телевизор\",1],[5,16,\"agreement\",\"выезд специалиста\",\"client\",\"Елене Викторовне\",1],[12,16,\"service_state\",\"телевизор через антивирус работает, картинка с камер показывает\",\"device\",\"телевизор\",1]",
+      "starts_error": "Extra data: line 1 column 112 (char 111)",
+      "conservative_error": "Extra data: line 1 column 112 (char 111)",
+      "open_ends_error": "Extra data: line 1 column 112 (char 111)"
+    },
+    {
+      "call_id": "u101_00053:call0000",
+      "text": "[0,3,\"service_state\",\"больше не используется\",\"service\",\"мобильное приложение оператора\",-1],[2,10,\"ticket_status\",\"принята\",\"ticket\",\"заявка 5176\",1],[3,10,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Елен Петровна\",1],[4,11,\"agreement\",\"возврат средств деньгами, а не б",
+      "starts_error": "Extra data: line 1 column 93 (char 92)",
+      "conservative_error": "Extra data: line 1 column 93 (char 92)",
+      "open_ends_error": "Extra data: line 1 column 93 (char 92)"
+    },
+    {
+      "call_id": "u102_00261:call0000",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 5400\",1],[1,8,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 5400\",1],[2,8,\"ticket_status\",\"выполнена\",\"ticket\",\"заявка 5400\",1],[3,13,\"agreement\",\"оператор поставит пометку в карточке, чтобы по",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u102_00261:call0000",
+      "text": "[4,15,\"agreement\",\"клиент обратится в офис за сим-карточкой в новом телефоне завтра\",\"клиент\",\"Марин Андреевна\",1], [8,15,\"agreement\",\"так вот дальше вчера она ещё числилась «в работе», а сегодня утром мастер закрыл работы — сейчас стоит «выполнена»\",\"started_at\",15]",
+      "starts_error": "Extra data: line 1 column 115 (char 114)",
+      "conservative_error": "Extra data: line 1 column 115 (char 114)",
+      "open_ends_error": "Extra data: line 1 column 115 (char 114)"
+    },
+    {
+      "call_id": "u102_00124:call0000",
+      "text": "[0,3,\"service_state\",\"работает нормально\",\"service\",\"страховка экрана телефона\",1],[3,9,\"service_state\",\"больше не используется\",\"service\",\"мобильный интернет\",-1],[4,13,\"agreement\",\"выезд специалиста назначен на воскресенье\",\"client\",\"Марин Викторовна\",1],[5,14,\"ticket_status\",\"принята\",\"ticket\",\"заяв",
+      "starts_error": "Extra data: line 1 column 83 (char 82)",
+      "conservative_error": "Extra data: line 1 column 83 (char 82)",
+      "open_ends_error": "Extra data: line 1 column 83 (char 82)"
+    },
+    {
+      "call_id": "u104_00149:call0000",
+      "text": "[0,7,\"service_state\",\"точка доступа не видна\",\"device\",\"старая сим-карта\",1],[3,38,\"agreement\",\"специалист перезвонит в четверг с утра\",\"client\",\"Марь Сергевна\",1],[3,37,\"agreement\",\"спацаялюста — удобно будет в четверг, с утра?\",\"client\",\"Марь Сергев",
+      "starts_error": "Extra data: line 1 column 77 (char 76)",
+      "conservative_error": "Extra data: line 1 column 77 (char 76)",
+      "open_ends_error": "Extra data: line 1 column 77 (char 76)"
+    },
+    {
+      "call_id": "u101_01273:call0000",
+      "text": "[0,1,\"service_state\",\"работает нормально\",\"service\",\"цифровое телевидение\",1],[2,7,\"tariff\",\"Для планшета\",\"client\",\"Марин Андреевна\",1],[3,7,\"tariff\",\"Тысяча минут\",\"client\",\"Марин Андреевна\",1],[4,11,\"agreement\",\"мастер приедет в четверг, через два дня\",\"",
+      "starts_error": "Extra data: line 1 column 78 (char 77)",
+      "conservative_error": "Extra data: line 1 column 78 (char 77)",
+      "open_ends_error": "Extra data: line 1 column 78 (char 77)"
+    },
+    {
+      "call_id": "u101_01273:call0000",
+      "text": "[5,14,\"agreement\",\"клиент отказался от роутера, оператор согласился без него\",\"client\",\"Марин Андреевна\",1], [10,14,\"operator\",\"по телевидению предлагаю так: оформлю заявку на провирку линии, мастер приедет в четверг, через два дня Подтверждаете?\",\"client\",\"в четверг… да, подходит",
+      "starts_error": "Extra data: line 1 column 108 (char 107)",
+      "conservative_error": "Extra data: line 1 column 108 (char 107)",
+      "open_ends_error": "Extra data: line 1 column 108 (char 107)"
+    },
+    {
+      "call_id": "u104_00834:call0000",
+      "text": "[0,2,\"service_state\",\"ошибка аутентификации\",\"device\",\"видеорегистратор для камер\",1],[2,10,\"agreement\",\"выезд специалиста\",\"client\",\"Марин Олеговна\",1],[3,12,\"agreement\",\"специалист приедет в пятницу\",\"client\",\"Марин Олеговна\",1],[4,12,\"agreement\",\"специ",
+      "starts_error": "Extra data: line 1 column 86 (char 85)",
+      "conservative_error": "Extra data: line 1 column 86 (char 85)",
+      "open_ends_error": "Extra data: line 1 column 86 (char 85)"
+    },
+    {
+      "call_id": "u101_01015:call0001",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4580\",1],[1,6,\"ticket_status\",\"назначен выезд специалиста\",\"ticket\",\"заявка 4580\",1],[2,12,\"agreement\",\"специалист позвонит перед выездом за полчаса\",\"client\",\"Марь Сергевна\",1],[3,13,\"agreement",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u104_00936:call0000",
+      "text": "[0,3,\"service_state\",\"работает нормально\",\"service\",\"второй номер\",1],[1,3,\"service_state\",\"почта не приходит\",\"service\",\"второй номер\",1],[4,12,\"agreement\",\"клиент подтвердил визит специалиста в четверг\",\"client\",\"Елен Петровна\",1],[5,12,\"agreement\",\"клиент подтвердил визит специалиста в",
+      "starts_error": "Extra data: line 1 column 70 (char 69)",
+      "conservative_error": "Extra data: line 1 column 70 (char 69)",
+      "open_ends_error": "Extra data: line 1 column 70 (char 69)"
+    },
+    {
+      "call_id": "u104_00411:call0001",
+      "text": "[0,8,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4179\",1],[1,15,\"agreement\",\"выезд специалиста\",\"client\",\"Марин Сергеевна\",1],[2,16,\"agreement\",\"специалист позвонит перед приездом\",\"client\",\"Марин Сергеевна\",1],[3,23,\"ticket_status\",\"в работе\",\"ticket\",\"",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u104_00411:call0001",
+      "text": "[4,38,\"agreement\",\"номер телефона клиента — 4179\",\"client\",\"Марин Сергеевна\",1]  \n[14,38,\"agreement\",\"выезд специалиста. Скажем, в понедельник — вам удобно?\",\"2026-09-14T00:00:00\"]",
+      "starts_error": "Extra data: line 2 column 1 (char 82)",
+      "conservative_error": "Extra data: line 2 column 1 (char 82)",
+      "open_ends_error": "Extra data: line 2 column 1 (char 82)"
+    },
+    {
+      "call_id": "u102_00190:call0000",
+      "text": "[0,4,\"tariff\",\"Джаз-Мини\",\"client\",\"Катерина Сергеевна\",1],[1,5,\"tariff\",\"Семейный\",\"client\",\"Катерина Сергеевна\",1],[2,11,\"agreement\",\"выезд мастера в четверг с утра подтверждён клиентом\",\"client\",\"Катерина Сергеевна\",1]",
+      "starts_error": "Extra data: line 1 column 59 (char 58)",
+      "conservative_error": "Extra data: line 1 column 59 (char 58)",
+      "open_ends_error": "Extra data: line 1 column 59 (char 58)"
+    },
+    {
+      "call_id": "u101_02243:call0001",
+      "text": "[0,12,\"ticket_status\",\"назначен выезд специалиста\",\"ticket\",\"заявка 4030\",1],[1,15,\"agreement\",\"выезд специалиста в среду к обеду, клиент подтвердил\",\"client\",\"Марин Сергеевна\",1],[2,16,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Марин Сергеевна\",",
+      "starts_error": "Extra data: line 1 column 77 (char 76)",
+      "conservative_error": "Extra data: line 1 column 77 (char 76)",
+      "open_ends_error": "Extra data: line 1 column 77 (char 76)"
+    },
+    {
+      "call_id": "u101_01323:call0000",
+      "text": "[0,1,\"service_state\",\"работает нормально\",\"service\",\"киноканал про сериалы\",1],[3,7,\"service_state\",\"больше не используется\",\"service\",\"фильтр спам-звонков\",-1],[4,9,\"service_state\",\"сетевой адаптер работает нормально, не перегревается\",\"device\",\"сетевой адаптер\",1],[5,11,\"agreement\",\"выезд специалиста послезав",
+      "starts_error": "Extra data: line 1 column 79 (char 78)",
+      "conservative_error": "Extra data: line 1 column 79 (char 78)",
+      "open_ends_error": "Extra data: line 1 column 79 (char 78)"
+    },
+    {
+      "call_id": "u101_01323:call0000",
+      "text": "[6,12,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4176\",1]",
+      "starts_rows": 0,
+      "conservative_rows": 0,
+      "open_ends_rows": 0
+    },
+    {
+      "call_id": "u101_00839:call0000",
+      "text": "[0,6,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4972\",1],[1,8,\"ticket_status\",\"выполнена\",\"ticket\",\"заявка 4972\",1],[2,12,\"agreement\",\"специалист проверит при выезде мигающий сетевой адаптер\",\"client\",\"Анастасия Валерьевна Прохорова\",1],[",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u101_00902:call0000",
+      "text": "[0,7,\"tariff\",\"Хайп\",\"client\",\"Елене Викторовне\",1],[1,8,\"tariff\",\"Экстру\",\"client\",\"Елене Викторовне\",1],[2,15,\"agreement\",\"клиент подтвердил: перезагрузить роутер\",\"client\",\"Елене Викторовне\",1],[3,16,\"agreement\",\"отслеживание заяв",
+      "starts_error": "Extra data: line 1 column 52 (char 51)",
+      "conservative_error": "Extra data: line 1 column 52 (char 51)",
+      "open_ends_error": "Extra data: line 1 column 52 (char 51)"
+    },
+    {
+      "call_id": "u101_01054:call0000",
+      "text": "[0,1,\"service_state\",\"средства списаны дважды\",\"service\",\"личный кабинет старой версии\",1],[1,6,\"service_state\",\"средства списаны на стороне платежной системы\",\"service\",\"страховка экрана телефона\",1],[2,9,\"agreement\",\"перерасчёт счёта\",\"client\",\"Марин Викторовна\",1]",
+      "starts_error": "Extra data: line 1 column 91 (char 90)",
+      "conservative_error": "Extra data: line 1 column 91 (char 90)",
+      "open_ends_error": "Extra data: line 1 column 91 (char 90)"
+    },
+    {
+      "call_id": "u101_00626:call0000",
+      "text": "[0,1,\"service_state\",\"ошибка аутентификации\",\"device\",\"датчик протечки\",1],[2,11,\"agreement\",\"перезвонок специалиста\",\"client\",\"Катерина Сергеевна\",1],[3,12,\"agreement\",\"больше ничего делать не нужно, только ждать звонка\",\"client\",\"Катерина Сергеевна\",1]",
+      "starts_error": "Extra data: line 1 column 75 (char 74)",
+      "conservative_error": "Extra data: line 1 column 75 (char 74)",
+      "open_ends_error": "Extra data: line 1 column 75 (char 74)"
+    },
+    {
+      "call_id": "u101_01845:call0000",
+      "text": "[0,3,\"tariff\",\"Квант-X\",\"client\",\"Катерина Сергеевна\",1],[1,3,\"service_state\",\"безлимит на соцсети работает медленно\",\"service\",\"безлимит на соцсети\",1],[2,3,\"service_state\",\"картинки не открываются\",\"service\",\"безлимит на соцсети\",1],[3,4,\"ticket_status\",\"принята",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u101_01845:call0000",
+      "text": "[4,4,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 4364\",1],[5,11,\"agreement\",\"выезд специалиста\",\"client\",\"Катерина Сергеевна\",1],[12,12,\"ticket_status\",\"в работе\",\"ticket\",\"заявка 4364\",1]",
+      "starts_error": "Extra data: line 1 column 58 (char 57)",
+      "conservative_error": "Extra data: line 1 column 58 (char 57)",
+      "open_ends_error": "Extra data: line 1 column 58 (char 57)"
+    },
+    {
+      "call_id": "u101_00917:call0000",
+      "text": "[0,3,\"tariff\",\"тариф «Пять гигабайт»\",\"client\",\"Марин Сергеевна\",1],[1,5,\"service_state\",\"работает нормально\",\"service\",\"определитель номера\",1],[4,11,\"agreement\",\"проверка линии назначена на завтра после трёх\",\"client\",\"Марин Сергеевна\",1],[5,12,\"ticket_status\",\"прин",
+      "starts_error": "Extra data: line 1 column 68 (char 67)",
+      "conservative_error": "Extra data: line 1 column 68 (char 67)",
+      "open_ends_error": "Extra data: line 1 column 68 (char 67)"
+    },
+    {
+      "call_id": "u101_02412:call0000",
+      "text": "[0,6,\"service_state\",\"двойное списание\",\"service\",\"домашний интернет\",1],[1,14,\"agreement\",\"ответ в течение двух дней, клиент подтвердил\",\"client\",\"Марин Сергеевна\",1],[2,15,\"agreement\",\"деньги вернут, а не отписка\",\"client\",\"Марин Сергеевна\",1]",
+      "starts_error": "Extra data: line 1 column 73 (char 72)",
+      "conservative_error": "Extra data: line 1 column 73 (char 72)",
+      "open_ends_error": "Extra data: line 1 column 73 (char 72)"
+    },
+    {
+      "call_id": "u101_02036:call0000",
+      "text": "[0,1,\"service_state\",\"оплата не прошла\",\"service\",\"рассрочка на смартфон\",1],[1,10,\"service_state\",\"оплата не прошла, списание зафиксировано\",\"service\",\"домашний телефон\",1],[2,17,\"agreement\",\"клиент подтвердил оформление заявки на разбор платежа\",\"client\",\"Марин Андреевна\",1],[3,17,\"",
+      "starts_error": "Extra data: line 1 column 77 (char 76)",
+      "conservative_error": "Extra data: line 1 column 77 (char 76)",
+      "open_ends_error": "Extra data: line 1 column 77 (char 76)"
+    },
+    {
+      "call_id": "u101_01064:call0000",
+      "text": "[0,1,\"service_state\",\"работает нормально\",\"service\",\"запись разговоров\",1],[1,1,\"service_state\",\"интернет пропал\",\"service\",\"запись разговоров\",1],[3,15,\"agreement\",\"техник приедет через два дня в первой половине дня\",\"client\",\"Елен Петровна\",1],[4,16,\"agreement\",\"номер заявки придёт сообщением\",\"client",
+      "starts_error": "Extra data: line 1 column 75 (char 74)",
+      "conservative_error": "Extra data: line 1 column 75 (char 74)",
+      "open_ends_error": "Extra data: line 1 column 75 (char 74)"
+    },
+    {
+      "call_id": "u101_01064:call0000",
+      "text": "[5,17,\"agreement\",\"клиент подтвердил заявку на проверку линии\",\"client\",\"Елен Петровна\",1]",
+      "starts_rows": 0,
+      "conservative_rows": 0,
+      "open_ends_rows": 0
+    },
+    {
+      "call_id": "u102_00256:call0000",
+      "text": "[0,1,\"service_state\",\"средства списаны дважды\",\"service\",\"подписка на сериалы\",1],[1,18,\"agreement\",\"возврат на карту, с чёрточкой платёжной системы\",\"client\",\"Елене Викторовне\",1],[2,18,\"agreement\",\"срок возврата — в течение трёх рабочих дней, до конца недели",
+      "starts_error": "Extra data: line 1 column 82 (char 81)",
+      "conservative_error": "Extra data: line 1 column 82 (char 81)",
+      "open_ends_error": "Extra data: line 1 column 82 (char 81)"
+    },
+    {
+      "call_id": "u101_00782:call0001",
+      "text": "[0,9,\"ticket_status\",\"принята\",\"ticket\",\"заявка 4252\",1],[1,18,\"service_state\",\"у клиента умная колонка с ассистентом, подключена к роутеру\",\"device\",\"умная колонка с ассистентом\",1],[2,22,\"agreement\",\"специалист приедет в четверг утром",
+      "starts_error": "Extra data: line 1 column 57 (char 56)",
+      "conservative_error": "Extra data: line 1 column 57 (char 56)",
+      "open_ends_error": "Extra data: line 1 column 57 (char 56)"
+    },
+    {
+      "call_id": "u101_00782:call0001",
+      "text": "[4,32,\"ticket_status\",\"заявка 4252 выполнена\",\"client\",\"Марин Сергеевна\",1], [13,24,\"ticket_status\",\"заявка 4252 рерядына специалистам\", \"operator\",24], [21,24,\"ticket_status\",\"заявка 4252 приоритетная\", \"client\",24], [",
+      "starts_error": "Extra data: line 1 column 76 (char 75)",
+      "conservative_error": "Extra data: line 1 column 76 (char 75)",
+      "open_ends_error": "Extra data: line 1 column 76 (char 75)"
+    },
+    {
+      "call_id": "u101_00633:call0000",
+      "text": "[0,5,\"tariff\",\"Хайп+\",\"client\",\"Катерина Сергеевна\",1],[1,7,\"service_state\",\"работает нормально\",\"service\",\"личный кабинет\",1],[3,19,\"agreement\",\"подтверждение заявки по смс\",\"client\",\"Катерина Сергеевна\",1],[5,28,\"ticket_status\",\"принята\",\"ticket\",\"заявка ",
+      "starts_error": "Extra data: line 1 column 55 (char 54)",
+      "conservative_error": "Extra data: line 1 column 55 (char 54)",
+      "open_ends_error": "Extra data: line 1 column 55 (char 54)"
+    },
+    {
+      "call_id": "u104_00807:call0000",
+      "text": "[0,4,\"service_state\",\"постоянно просит пароль от вай-фай\",\"device\",\"сим-карта\",1],[2,16,\"tariff\",\"тариф «Пятисотый»\",\"client\",\"Марин Викторовна\",1],[3,25,\"agreement\",\"специалист перезвонит завтра в первой половине дня\",\"client\",\"Марин Викторовна\",",
+      "starts_error": "Extra data: line 1 column 82 (char 81)",
+      "conservative_error": "Extra data: line 1 column 82 (char 81)",
+      "open_ends_error": "Extra data: line 1 column 82 (char 81)"
+    }
+  ],
+  "seconds": 1553.9843465000158
+}

@@ -1,0 +1,443 @@
+{
+  "trigger": "API appointment weekday regression, future-aware parsing of existing linked reference",
+  "dev_before": {
+    "metrics_version": "2.1",
+    "n_calls": 592,
+    "n_gold_facts": 2793,
+    "n_pred_facts": 2667,
+    "fact_precision": 0.5969,
+    "fact_recall": 0.57,
+    "temporal_recall": 0.4456,
+    "n_temporal": 983,
+    "state_accuracy": 0.5602,
+    "n_state": 955,
+    "grounding_turn": 0.7984,
+    "grounding_span": 0.9731,
+    "n_grounded": 1592
+  },
+  "dev_after": {
+    "metrics_version": "2.1",
+    "n_calls": 592,
+    "n_gold_facts": 2793,
+    "n_pred_facts": 2667,
+    "fact_precision": 0.5969,
+    "fact_recall": 0.57,
+    "temporal_recall": 0.4476,
+    "n_temporal": 983,
+    "state_accuracy": 0.5602,
+    "n_state": 955,
+    "grounding_turn": 0.7984,
+    "grounding_span": 0.9731,
+    "n_grounded": 1592
+  },
+  "dev_gate_passed": true,
+  "changes": [
+    {
+      "call_id": "u2027_00199:call0001",
+      "before": [
+        {
+          "object": {
+            "id": "u2027_00199:ticket:cd1f5d5d",
+            "type": "ticket",
+            "name": "заявка 4159"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-08-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13,
+            "span": [
+              81,
+              88
+            ],
+            "quote": "принята"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00199:service:b8a49639",
+            "type": "service",
+            "name": "прибавка скорости"
+          },
+          "attribute": "service_state",
+          "value": "клиент не подключала другие услуги (музикальная систему и тариф «Мини+»)",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-08-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 22,
+            "span": [
+              0,
+              75
+            ],
+            "quote": "Нет-нет, ничего этого у меня нет. Только интернет да прибавка скорости эта."
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00199:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "action",
+          "value": "устранение неисправности — замена оборудования",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-08-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 29,
+            "span": [
+              0,
+              92
+            ],
+            "quote": "Да нет, не замена. Я же писала — устранение неисправности, интелнет вот падает периодически."
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00199:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-08-13T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 39,
+            "span": [
+              0,
+              11
+            ],
+            "quote": "Да, тот же."
+          }
+        }
+      ],
+      "after": [
+        {
+          "object": {
+            "id": "u2027_00199:ticket:cd1f5d5d",
+            "type": "ticket",
+            "name": "заявка 4159"
+          },
+          "attribute": "ticket_status",
+          "value": "принята",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-08-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 13,
+            "span": [
+              81,
+              88
+            ],
+            "quote": "принята"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00199:service:b8a49639",
+            "type": "service",
+            "name": "прибавка скорости"
+          },
+          "attribute": "service_state",
+          "value": "клиент не подключала другие услуги (музикальная систему и тариф «Мини+»)",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-08-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 22,
+            "span": [
+              0,
+              75
+            ],
+            "quote": "Нет-нет, ничего этого у меня нет. Только интернет да прибавка скорости эта."
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00199:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "action",
+          "value": "устранение неисправности — замена оборудования",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-08-06T16:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 29,
+            "span": [
+              0,
+              92
+            ],
+            "quote": "Да нет, не замена. Я же писала — устранение неисправности, интелнет вот падает периодически."
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00199:client:8e09e497",
+            "type": "client",
+            "name": "Оля Викторовна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-08-06T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 39,
+            "span": [
+              0,
+              11
+            ],
+            "quote": "Да, тот же."
+          }
+        }
+      ]
+    },
+    {
+      "call_id": "u2027_00321:call0002",
+      "before": [
+        {
+          "object": {
+            "id": "u2027_00321:service:13144663",
+            "type": "service",
+            "name": "второй номер"
+          },
+          "attribute": "service_state",
+          "value": "каналы не подключились после оплаты",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-28T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 2,
+            "span": [
+              104,
+              139
+            ],
+            "quote": "каналы не подключились после оплаты"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "action",
+          "value": "заявка 4331 уже оформлена на устранение неисправности",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-28T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              0,
+              235
+            ],
+            "quote": "Да нит, ремонт не нужен, линия-то живая! Нет, вы не поняли — заявка нужна на устранение неисправности, я вчера её уже заводила! Заявка 4331! Я ей ещё позвоню в жалобную книгу, у миня соседка, знакомая говорит, вечно у вас всё по кругу!"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:ticket:d5828a34",
+            "type": "ticket",
+            "name": "заявка 4331"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-27T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              109,
+              135
+            ],
+            "quote": "назначен выезд специалиста"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста назначен на пятницу",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-28T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              0,
+              130
+            ],
+            "quote": "ну в пятмижу значит да подходит только пусть не в обид  я тогда дома буду знакомую как раз жду марь сергевна тёзка моя будет рядом"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-24T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9,
+            "span": [
+              24,
+              51
+            ],
+            "quote": "подтверждение заявки по смс"
+          }
+        }
+      ],
+      "after": [
+        {
+          "object": {
+            "id": "u2027_00321:service:13144663",
+            "type": "service",
+            "name": "второй номер"
+          },
+          "attribute": "service_state",
+          "value": "каналы не подключились после оплаты",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-28T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 2,
+            "span": [
+              104,
+              139
+            ],
+            "quote": "каналы не подключились после оплаты"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "action",
+          "value": "заявка 4331 уже оформлена на устранение неисправности",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-28T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 4,
+            "span": [
+              0,
+              235
+            ],
+            "quote": "Да нит, ремонт не нужен, линия-то живая! Нет, вы не поняли — заявка нужна на устранение неисправности, я вчера её уже заводила! Заявка 4331! Я ей ещё позвоню в жалобную книгу, у миня соседка, знакомая говорит, вечно у вас всё по кругу!"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:ticket:d5828a34",
+            "type": "ticket",
+            "name": "заявка 4331"
+          },
+          "attribute": "ticket_status",
+          "value": "назначен выезд специалиста",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-27T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 5,
+            "span": [
+              109,
+              135
+            ],
+            "quote": "назначен выезд специалиста"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "agreement",
+          "value": "выезд специалиста назначен на пятницу",
+          "polarity": 1,
+          "speaker": "client",
+          "valid_from": "2026-07-28T08:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 8,
+            "span": [
+              0,
+              130
+            ],
+            "quote": "ну в пятмижу значит да подходит только пусть не в обид  я тогда дома буду знакомую как раз жду марь сергевна тёзка моя будет рядом"
+          }
+        },
+        {
+          "object": {
+            "id": "u2027_00321:client:efb19ae9",
+            "type": "client",
+            "name": "Марь Сергевна"
+          },
+          "attribute": "agreement",
+          "value": "подтверждение заявки по смс",
+          "polarity": 1,
+          "speaker": "operator",
+          "valid_from": "2026-07-31T00:00:00",
+          "valid_to": null,
+          "source": {
+            "turn_idx": 9,
+            "span": [
+              24,
+              51
+            ],
+            "quote": "подтверждение заявки по смс"
+          }
+        }
+      ]
+    }
+  ],
+  "cached_val_after": {
+    "metrics_version": "2.1",
+    "n_calls": 383,
+    "n_gold_facts": 1845,
+    "n_pred_facts": 1727,
+    "fact_precision": 0.6022,
+    "fact_recall": 0.5637,
+    "temporal_recall": 0.4589,
+    "n_temporal": 632,
+    "state_accuracy": 0.5297,
+    "n_state": 623,
+    "grounding_turn": 0.8048,
+    "grounding_span": 0.9699,
+    "n_grounded": 1040
+  }
+}

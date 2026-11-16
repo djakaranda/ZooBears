@@ -14,5 +14,7 @@ artifacts/qwen_merged/
 artifacts/qwen_v21/checkpoints/
 artifacts/qwen_dates/checkpoints/
 artifacts/qwen_sprint/checkpoints/
+# Regenerable full dev policy caches (57 inventories are kept in reports).
+reports/sprint_dates_*_pred.jsonl
 *.~lock.*#
 .~lock.*#

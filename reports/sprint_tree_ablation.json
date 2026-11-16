@@ -1,0 +1,90 @@
+{
+  "start": {
+    "policy": {
+      "model": "artifacts/sprint_boundary_trees.joblib",
+      "mode": "start",
+      "margin": 1.0
+    },
+    "metrics": {
+      "metrics_version": "2.1",
+      "n_calls": 592,
+      "n_gold_facts": 2793,
+      "n_pred_facts": 2615,
+      "fact_precision": 0.6031,
+      "fact_recall": 0.5646,
+      "temporal_recall": 0.4256,
+      "n_temporal": 975,
+      "state_accuracy": 0.5497,
+      "n_state": 955,
+      "grounding_turn": 0.7952,
+      "grounding_span": 0.9726,
+      "n_grounded": 1577
+    }
+  },
+  "end": {
+    "policy": {
+      "model": "artifacts/sprint_boundary_trees.joblib",
+      "mode": "end",
+      "margin": 1.0
+    },
+    "metrics": {
+      "metrics_version": "2.1",
+      "n_calls": 592,
+      "n_gold_facts": 2793,
+      "n_pred_facts": 2615,
+      "fact_precision": 0.6031,
+      "fact_recall": 0.5646,
+      "temporal_recall": 0.4236,
+      "n_temporal": 975,
+      "state_accuracy": 0.5518,
+      "n_state": 955,
+      "grounding_turn": 0.7952,
+      "grounding_span": 0.9726,
+      "n_grounded": 1577
+    }
+  },
+  "both": {
+    "policy": {
+      "model": "artifacts/sprint_boundary_trees.joblib",
+      "mode": "both",
+      "margin": 1.0
+    },
+    "metrics": {
+      "metrics_version": "2.1",
+      "n_calls": 592,
+      "n_gold_facts": 2793,
+      "n_pred_facts": 2615,
+      "fact_precision": 0.6031,
+      "fact_recall": 0.5646,
+      "temporal_recall": 0.4297,
+      "n_temporal": 975,
+      "state_accuracy": 0.5518,
+      "n_state": 955,
+      "grounding_turn": 0.7952,
+      "grounding_span": 0.9726,
+      "n_grounded": 1577
+    }
+  },
+  "both2": {
+    "policy": {
+      "model": "artifacts/sprint_boundary_trees.joblib",
+      "mode": "both",
+      "margin": 2.0
+    },
+    "metrics": {
+      "metrics_version": "2.1",
+      "n_calls": 592,
+      "n_gold_facts": 2793,
+      "n_pred_facts": 2615,
+      "fact_precision": 0.6031,
+      "fact_recall": 0.5646,
+      "temporal_recall": 0.4308,
+      "n_temporal": 975,
+      "state_accuracy": 0.5539,
+      "n_state": 955,
+      "grounding_turn": 0.7952,
+      "grounding_span": 0.9726,
+      "n_grounded": 1577
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "dev": {
+    "eligible_matched_facts": 983,
+    "both_correct": 440,
+    "temporal_recall_recomputed": 0.4476,
+    "fields": {
+      "valid_from": {
+        "eligible_facts": 983,
+        "correct_on_eligible": 489,
+        "recoverable_nonnull_boundaries": 725,
+        "correct_recoverable_nonnull": 489,
+        "accuracy_on_eligible": 0.4975,
+        "accuracy_on_recoverable_nonnull": 0.6745
+      },
+      "valid_to": {
+        "eligible_facts": 983,
+        "correct_on_eligible": 731,
+        "recoverable_nonnull_boundaries": 363,
+        "correct_recoverable_nonnull": 144,
+        "accuracy_on_eligible": 0.7436,
+        "accuracy_on_recoverable_nonnull": 0.3967
+      }
+    },
+    "local_repairs": {
+      "recover_dates_type_errors": 1
+    },
+    "comparison_unit": "calendar day, as in official v2.1",
+    "note": "Eligible accuracy includes null ends. Recoverable-nonnull accuracy excludes null and dates absent from the official date bank. These diagnostics do not replace official scores."
+  },
+  "val": {
+    "eligible_matched_facts": 632,
+    "both_correct": 290,
+    "temporal_recall_recomputed": 0.4589,
+    "fields": {
+      "valid_from": {
+        "eligible_facts": 632,
+        "correct_on_eligible": 323,
+        "recoverable_nonnull_boundaries": 482,
+        "correct_recoverable_nonnull": 322,
+        "accuracy_on_eligible": 0.5111,
+        "accuracy_on_recoverable_nonnull": 0.668
+      },
+      "valid_to": {
+        "eligible_facts": 632,
+        "correct_on_eligible": 486,
+        "recoverable_nonnull_boundaries": 223,
+        "correct_recoverable_nonnull": 107,
+        "accuracy_on_eligible": 0.769,
+        "accuracy_on_recoverable_nonnull": 0.4798
+      }
+    },
+    "local_repairs": {
+      "recover_dates_type_errors": 0
+    },
+    "comparison_unit": "calendar day, as in official v2.1",
+    "note": "Eligible accuracy includes null ends. Recoverable-nonnull accuracy excludes null and dates absent from the official date bank. These diagnostics do not replace official scores."
+  }
+}

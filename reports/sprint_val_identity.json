@@ -1,0 +1,33 @@
+{
+  "selected": "step-100/calendar_range_trees_2",
+  "weights_sha256": "10b0d8aa105b43c32f181cd54d650d996f41f62e48521314f2c21b72ff5d3d22",
+  "inference_config": {
+    "date_ranker": "artifacts/date_ranker_v21.joblib",
+    "agreement_evidence": false,
+    "canonical_objects": false,
+    "event_date_model": null,
+    "date_pointer_mode": "open_ends",
+    "selected_on": "full sprint internal dev",
+    "sprint_dates": {
+      "model": "artifacts/sprint_boundary_trees.joblib",
+      "mode": "both",
+      "margin": 2.0,
+      "ranges": "artifacts/sprint_ranges.joblib",
+      "constraints": true
+    }
+  },
+  "sources": {
+    "qwen.py": "0a2727e1ba9a99ffbc0398712bb2149985ee30dc76ec9750d7ebc572027aafd1",
+    "date_pointers.py": "d0bdd790012dea71a43397b075ff913dd0f79f763c6601b0c9825cdb96f13829",
+    "date_refinement.py": "3c18af1f2840ce6eb61e02c558e2e3f5f23762145f69a207ac24beb2a2a12ce4",
+    "scoped_dates.py": "4997f66b14cd77eb7f7a255b11a9353ebc76befcfd2d358e770f7862b0b7fb82",
+    "boundary_ranker.py": "5bc76b9fb873710045fbde2b043ce8f3474800ace0a182b33a93def2e543c68f",
+    "range_estimator.py": "0e98e7c773b8f4e620c064be3dc427ce2ffd82a9b0dec82fbc238429bdd88364",
+    "calendar_constraints.py": "696b3b3d85676286edc33165df96a66395dd224d740507a0af8ac9432d8c258d"
+  },
+  "auxiliary_models": {
+    "artifacts/sprint_boundary_trees.joblib": "3ad68622cc7c0aa5490115e092768e531e5b7000b186e93d495ed8c37ec7dfed",
+    "artifacts/sprint_ranges.joblib": "6c17be7d87790e51f0e435484cd8834b8ea0fb9528f9251690f9b35fa8fefa33"
+  },
+  "api_weekday_fix_verified_on_dev_before_val": true
+}

@@ -1,0 +1,47 @@
+{
+  "starts": {
+    "metrics_version": "2.1",
+    "n_calls": 592,
+    "n_gold_facts": 2793,
+    "n_pred_facts": 2615,
+    "fact_precision": 0.6031,
+    "fact_recall": 0.5646,
+    "temporal_recall": 0.4246,
+    "n_temporal": 975,
+    "state_accuracy": 0.5476,
+    "n_state": 955,
+    "grounding_turn": 0.7952,
+    "grounding_span": 0.9726,
+    "n_grounded": 1577
+  },
+  "chains": {
+    "metrics_version": "2.1",
+    "n_calls": 592,
+    "n_gold_facts": 2793,
+    "n_pred_facts": 2615,
+    "fact_precision": 0.6031,
+    "fact_recall": 0.5646,
+    "temporal_recall": 0.4246,
+    "n_temporal": 975,
+    "state_accuracy": 0.5476,
+    "n_state": 955,
+    "grounding_turn": 0.7952,
+    "grounding_span": 0.9726,
+    "n_grounded": 1577
+  },
+  "ticket_chains": {
+    "metrics_version": "2.1",
+    "n_calls": 592,
+    "n_gold_facts": 2793,
+    "n_pred_facts": 2615,
+    "fact_precision": 0.6031,
+    "fact_recall": 0.5646,
+    "temporal_recall": 0.4267,
+    "n_temporal": 975,
+    "state_accuracy": 0.5476,
+    "n_state": 955,
+    "grounding_turn": 0.7952,
+    "grounding_span": 0.9726,
+    "n_grounded": 1577
+  }
+}

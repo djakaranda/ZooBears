@@ -49,6 +49,22 @@
   },
   "qwen_final": {
     "engine": "qwen",
+    "model": "artifacts/qwen_sprint",
+    "base_model": "artifacts/qwen_base",
+    "date_ranker": "artifacts/date_ranker_v21.joblib",
+    "device": "cuda",
+    "selected_on": "full account-disjoint internal dev",
+    "sprint_dates": {
+      "model": "artifacts/sprint_boundary_trees.joblib",
+      "mode": "both",
+      "margin": 2.0,
+      "ranges": "artifacts/sprint_ranges.joblib",
+      "constraints": true
+    },
+    "validation_report": "reports/SPRINT_REPORT.md"
+  },
+  "qwen_previous": {
+    "engine": "qwen",
     "model": "artifacts/qwen_dates",
     "base_model": "artifacts/qwen_base",
     "date_ranker": "artifacts/date_ranker_v21.joblib",

@@ -1,0 +1,261 @@
+[
+  {
+    "stage": "train",
+    "command": [
+      "scripts/train_qwen.py",
+      "--train",
+      "tmp/sprint_fit.jsonl",
+      "--dev",
+      "tmp/splits/dev.jsonl",
+      "--output",
+      "artifacts\\qwen_sprint",
+      "--resume-adapter",
+      "artifacts\\qwen_dates",
+      "--epochs",
+      "1",
+      "--lr",
+      "2e-5",
+      "--seed",
+      "73",
+      "--max-prompt-tokens",
+      "3072",
+      "--max-target-tokens",
+      "512",
+      "--dev-loss-limit",
+      "64",
+      "--date-pointers",
+      "--date-token-weight",
+      "3",
+      "--checkpoint-steps",
+      "100",
+      "--augmentation-fraction",
+      ".03"
+    ],
+    "started_at": 1794786595.1765578,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 2246.100283384323
+  },
+  {
+    "stage": "dev_generate_epoch-1",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_sprint\\checkpoints\\epoch-1",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--input",
+      "tmp/splits/dev.jsonl",
+      "--output",
+      "reports/sprint_dev_epoch-1_pred.jsonl",
+      "--candidate-output",
+      "tmp/sprint_epoch-1_candidates.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "started_at": 1794788841.2798111,
+    "status": "interrupted_before_dev_to_add_fit_only_date_comparisons"
+  },
+  {
+    "stage": "baseline_dates",
+    "command": [
+      "scripts/select_sprint_dates.py",
+      "--predictions",
+      "reports/date_pointer_dev_selected_pred.jsonl",
+      "--prefix",
+      "reports/sprint_dates_baseline"
+    ],
+    "started_at": 1794789041.7115617,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 44.07619619369507
+  },
+  {
+    "stage": "dev_generate_epoch-1",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_sprint\\checkpoints\\epoch-1",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--input",
+      "tmp/splits/dev.jsonl",
+      "--output",
+      "reports/sprint_dev_epoch-1_pred.jsonl",
+      "--candidate-output",
+      "tmp/sprint_epoch-1_candidates.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "started_at": 1794789085.798193,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 1866.7969372272491
+  },
+  {
+    "stage": "dev_score_epoch-1",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/splits/dev.jsonl",
+      "reports/sprint_dev_epoch-1_pred.jsonl",
+      "--output",
+      "reports/sprint_dev_epoch-1_metrics.json",
+      "--repair-known-scorer-errors"
+    ],
+    "started_at": 1794790952.5959215,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 2.882232189178467
+  },
+  {
+    "stage": "dates_epoch-1",
+    "command": [
+      "scripts/select_sprint_dates.py",
+      "--predictions",
+      "reports/sprint_dev_epoch-1_pred.jsonl",
+      "--prefix",
+      "reports/sprint_dates_epoch-1"
+    ],
+    "started_at": 1794790955.4788063,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 105.74715685844421
+  },
+  {
+    "stage": "dev_generate_step-100",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_sprint\\checkpoints\\step-100",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--input",
+      "tmp/splits/dev.jsonl",
+      "--output",
+      "reports/sprint_dev_step-100_pred.jsonl",
+      "--candidate-output",
+      "tmp/sprint_step-100_candidates.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "started_at": 1794791061.2342114,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 2145.998971223831
+  },
+  {
+    "stage": "dev_score_step-100",
+    "command": [
+      "scripts/evaluate.py",
+      "tmp/splits/dev.jsonl",
+      "reports/sprint_dev_step-100_pred.jsonl",
+      "--output",
+      "reports/sprint_dev_step-100_metrics.json",
+      "--repair-known-scorer-errors"
+    ],
+    "started_at": 1794793207.2342157,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 2.758272647857666
+  },
+  {
+    "stage": "dates_step-100",
+    "command": [
+      "scripts/select_sprint_dates.py",
+      "--predictions",
+      "reports/sprint_dev_step-100_pred.jsonl",
+      "--prefix",
+      "reports/sprint_dates_step-100"
+    ],
+    "started_at": 1794793209.99324,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 124.47196245193481
+  },
+  {
+    "stage": "val_generate",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_sprint",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--input",
+      "data/raw/val.jsonl",
+      "--output",
+      "reports/sprint_val_pred.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "started_at": 1794793334.5497932,
+    "status": "interrupted_to_refresh_full_dev_policy_inventory_before_val"
+  },
+  {
+    "stage": "val_generate",
+    "command": [
+      "scripts/predict_experiment.py",
+      "--engine",
+      "qwen",
+      "--model",
+      "artifacts\\qwen_sprint",
+      "--base-model",
+      "artifacts/qwen_base",
+      "--input",
+      "data/raw/val.jsonl",
+      "--output",
+      "reports/sprint_val_pred.jsonl",
+      "--device",
+      "cuda",
+      "--batch-size",
+      "4"
+    ],
+    "started_at": 1794793480.1545901,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 1306.906831741333
+  },
+  {
+    "stage": "val_score",
+    "command": [
+      "scripts/evaluate.py",
+      "data/raw/val.jsonl",
+      "reports/sprint_val_pred.jsonl",
+      "--output",
+      "reports/sprint_val_metrics.json"
+    ],
+    "started_at": 1794794787.0623224,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 15.098060369491577
+  },
+  {
+    "stage": "val_schema",
+    "command": [
+      "scripts/check_predictions.py",
+      "data/raw/val.jsonl",
+      "reports/sprint_val_pred.jsonl",
+      "--output",
+      "reports/sprint_val_schema.json"
+    ],
+    "started_at": 1794794802.1611865,
+    "status": "complete",
+    "exit_code": 0,
+    "seconds": 0.15262627601623535
+  }
+]

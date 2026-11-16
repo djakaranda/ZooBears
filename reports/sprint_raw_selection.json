@@ -1,0 +1,1174 @@
+{
+  "selected": "step-100/range_trees_2",
+  "candidates": {
+    "baseline/raw": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4226,
+        "n_temporal": 975,
+        "state_accuracy": 0.5476,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_raw_pred.jsonl",
+      "policy": {}
+    },
+    "baseline/scope_tickets": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4267,
+        "n_temporal": 975,
+        "state_accuracy": 0.5476,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_scope_tickets_pred.jsonl",
+      "policy": {
+        "scope": true
+      }
+    },
+    "baseline/boundary_start_1": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4226,
+        "n_temporal": 975,
+        "state_accuracy": 0.5487,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_start_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "start",
+        "margin": 1.0
+      }
+    },
+    "baseline/boundary_end_1": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4256,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_end_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "end",
+        "margin": 1.0
+      }
+    },
+    "baseline/boundary_both_0": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4185,
+        "n_temporal": 975,
+        "state_accuracy": 0.5403,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_0_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 0.0
+      }
+    },
+    "baseline/boundary_both_1": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4246,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0
+      }
+    },
+    "baseline/boundary_both_2": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4277,
+        "n_temporal": 975,
+        "state_accuracy": 0.5508,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0
+      }
+    },
+    "baseline/boundary_both_1_scope": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4246,
+        "n_temporal": 975,
+        "state_accuracy": 0.5455,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_boundary_both_1_scope_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0,
+        "scope": true
+      }
+    },
+    "baseline/range_estimate": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4246,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_range_estimate_pred.jsonl",
+      "policy": {
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "baseline/range_boundary_2": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4297,
+        "n_temporal": 975,
+        "state_accuracy": 0.5487,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_range_boundary_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "baseline/range_scope": {
+      "model": "artifacts/qwen_dates",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2615,
+        "fact_precision": 0.6031,
+        "fact_recall": 0.5646,
+        "temporal_recall": 0.4287,
+        "n_temporal": 975,
+        "state_accuracy": 0.5466,
+        "n_state": 955,
+        "grounding_turn": 0.7952,
+        "grounding_span": 0.9726,
+        "n_grounded": 1577
+      },
+      "predictions": "reports/sprint_dates_baseline_range_scope_pred.jsonl",
+      "policy": {
+        "scope": true,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "epoch-1/raw": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.424,
+        "n_temporal": 993,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_raw_pred.jsonl",
+      "policy": {}
+    },
+    "epoch-1/scope_tickets": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.429,
+        "n_temporal": 993,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_scope_tickets_pred.jsonl",
+      "policy": {
+        "scope": true
+      }
+    },
+    "epoch-1/boundary_start_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.424,
+        "n_temporal": 993,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_boundary_start_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "start",
+        "margin": 1.0
+      }
+    },
+    "epoch-1/boundary_end_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.434,
+        "n_temporal": 993,
+        "state_accuracy": 0.5644,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_boundary_end_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "end",
+        "margin": 1.0
+      }
+    },
+    "epoch-1/boundary_both_0": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.432,
+        "n_temporal": 993,
+        "state_accuracy": 0.5571,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_boundary_both_0_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 0.0
+      }
+    },
+    "epoch-1/boundary_both_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.433,
+        "n_temporal": 993,
+        "state_accuracy": 0.5623,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_boundary_both_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0
+      }
+    },
+    "epoch-1/boundary_both_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.4361,
+        "n_temporal": 993,
+        "state_accuracy": 0.5696,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_boundary_both_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0
+      }
+    },
+    "epoch-1/boundary_both_1_scope": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.434,
+        "n_temporal": 993,
+        "state_accuracy": 0.5613,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_boundary_both_1_scope_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0,
+        "scope": true
+      }
+    },
+    "epoch-1/range_estimate": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.425,
+        "n_temporal": 993,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_range_estimate_pred.jsonl",
+      "policy": {
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "epoch-1/range_boundary_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.4381,
+        "n_temporal": 993,
+        "state_accuracy": 0.5686,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_range_boundary_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "epoch-1/range_scope": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.43,
+        "n_temporal": 993,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_range_scope_pred.jsonl",
+      "policy": {
+        "scope": true,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "epoch-1/trees_both_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.4401,
+        "n_temporal": 993,
+        "state_accuracy": 0.5634,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_trees_both_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 1.0
+      }
+    },
+    "epoch-1/trees_both_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.4421,
+        "n_temporal": 993,
+        "state_accuracy": 0.5696,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_trees_both_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0
+      }
+    },
+    "epoch-1/range_trees_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.4441,
+        "n_temporal": 993,
+        "state_accuracy": 0.5696,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_range_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "epoch-1/calendar_exact": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.424,
+        "n_temporal": 993,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_calendar_exact_pred.jsonl",
+      "policy": {
+        "constraints": true
+      }
+    },
+    "epoch-1/calendar_trees_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.4421,
+        "n_temporal": 993,
+        "state_accuracy": 0.5696,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_calendar_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "constraints": true
+      }
+    },
+    "epoch-1/calendar_range_trees_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/epoch-1",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2715,
+        "fact_precision": 0.5901,
+        "fact_recall": 0.5736,
+        "temporal_recall": 0.4441,
+        "n_temporal": 993,
+        "state_accuracy": 0.5696,
+        "n_state": 955,
+        "grounding_turn": 0.794,
+        "grounding_span": 0.9732,
+        "n_grounded": 1602
+      },
+      "predictions": "reports/sprint_dates_epoch-1_calendar_range_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true
+      }
+    },
+    "step-100/raw": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4293,
+        "n_temporal": 983,
+        "state_accuracy": 0.5539,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_raw_pred.jsonl",
+      "policy": {}
+    },
+    "step-100/scope_tickets": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4334,
+        "n_temporal": 983,
+        "state_accuracy": 0.5539,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_scope_tickets_pred.jsonl",
+      "policy": {
+        "scope": true
+      }
+    },
+    "step-100/boundary_start_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4283,
+        "n_temporal": 983,
+        "state_accuracy": 0.5529,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_boundary_start_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "start",
+        "margin": 1.0
+      }
+    },
+    "step-100/boundary_end_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4364,
+        "n_temporal": 983,
+        "state_accuracy": 0.556,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_boundary_end_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "end",
+        "margin": 1.0
+      }
+    },
+    "step-100/boundary_both_0": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4273,
+        "n_temporal": 983,
+        "state_accuracy": 0.5455,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_boundary_both_0_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 0.0
+      }
+    },
+    "step-100/boundary_both_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4344,
+        "n_temporal": 983,
+        "state_accuracy": 0.5529,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_boundary_both_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0
+      }
+    },
+    "step-100/boundary_both_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4385,
+        "n_temporal": 983,
+        "state_accuracy": 0.5592,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_boundary_both_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0
+      }
+    },
+    "step-100/boundary_both_1_scope": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4344,
+        "n_temporal": 983,
+        "state_accuracy": 0.5529,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_boundary_both_1_scope_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 1.0,
+        "scope": true
+      }
+    },
+    "step-100/range_estimate": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4313,
+        "n_temporal": 983,
+        "state_accuracy": 0.5539,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_range_estimate_pred.jsonl",
+      "policy": {
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "step-100/range_boundary_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4405,
+        "n_temporal": 983,
+        "state_accuracy": 0.5581,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_range_boundary_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "step-100/range_scope": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4354,
+        "n_temporal": 983,
+        "state_accuracy": 0.5539,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_range_scope_pred.jsonl",
+      "policy": {
+        "scope": true,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "step-100/trees_both_1": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4405,
+        "n_temporal": 983,
+        "state_accuracy": 0.555,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_trees_both_1_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 1.0
+      }
+    },
+    "step-100/trees_both_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4435,
+        "n_temporal": 983,
+        "state_accuracy": 0.5602,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_trees_both_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0
+      }
+    },
+    "step-100/range_trees_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4456,
+        "n_temporal": 983,
+        "state_accuracy": 0.5602,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_range_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib"
+      }
+    },
+    "step-100/calendar_exact": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4293,
+        "n_temporal": 983,
+        "state_accuracy": 0.5539,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_calendar_exact_pred.jsonl",
+      "policy": {
+        "constraints": true
+      }
+    },
+    "step-100/calendar_trees_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4435,
+        "n_temporal": 983,
+        "state_accuracy": 0.5602,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_calendar_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "constraints": true
+      }
+    },
+    "step-100/calendar_range_trees_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4456,
+        "n_temporal": 983,
+        "state_accuracy": 0.5602,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_calendar_range_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true
+      }
+    },
+    "step-100/calendar_interval_trees_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4456,
+        "n_temporal": 983,
+        "state_accuracy": 0.5602,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_calendar_interval_trees_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary_trees.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true,
+        "range_method": "interval_offset"
+      }
+    },
+    "step-100/calendar_interval_linear_2": {
+      "model": "artifacts/qwen_sprint/checkpoints/step-100",
+      "metrics": {
+        "metrics_version": "2.1",
+        "n_calls": 592,
+        "n_gold_facts": 2793,
+        "n_pred_facts": 2667,
+        "fact_precision": 0.5969,
+        "fact_recall": 0.57,
+        "temporal_recall": 0.4415,
+        "n_temporal": 983,
+        "state_accuracy": 0.5581,
+        "n_state": 955,
+        "grounding_turn": 0.7984,
+        "grounding_span": 0.9731,
+        "n_grounded": 1592
+      },
+      "predictions": "reports/sprint_dates_step-100_calendar_interval_linear_2_pred.jsonl",
+      "policy": {
+        "model": "artifacts/sprint_boundary.joblib",
+        "mode": "both",
+        "margin": 2.0,
+        "ranges": "artifacts/sprint_ranges.joblib",
+        "constraints": true,
+        "range_method": "interval_offset"
+      }
+    }
+  },
+  "eligible": [
+    "baseline/raw",
+    "baseline/scope_tickets",
+    "baseline/boundary_start_1",
+    "baseline/boundary_end_1",
+    "baseline/boundary_both_1",
+    "baseline/boundary_both_2",
+    "baseline/boundary_both_1_scope",
+    "baseline/range_estimate",
+    "baseline/range_boundary_2",
+    "baseline/range_scope",
+    "epoch-1/raw",
+    "epoch-1/scope_tickets",
+    "epoch-1/boundary_start_1",
+    "epoch-1/boundary_end_1",
+    "epoch-1/boundary_both_0",
+    "epoch-1/boundary_both_1",
+    "epoch-1/boundary_both_2",
+    "epoch-1/boundary_both_1_scope",
+    "epoch-1/range_estimate",
+    "epoch-1/range_boundary_2",
+    "epoch-1/range_scope",
+    "epoch-1/trees_both_1",
+    "epoch-1/trees_both_2",
+    "epoch-1/range_trees_2",
+    "epoch-1/calendar_exact",
+    "epoch-1/calendar_trees_2",
+    "epoch-1/calendar_range_trees_2",
+    "step-100/raw",
+    "step-100/scope_tickets",
+    "step-100/boundary_start_1",
+    "step-100/boundary_end_1",
+    "step-100/boundary_both_0",
+    "step-100/boundary_both_1",
+    "step-100/boundary_both_2",
+    "step-100/boundary_both_1_scope",
+    "step-100/range_estimate",
+    "step-100/range_boundary_2",
+    "step-100/range_scope",
+    "step-100/trees_both_1",
+    "step-100/trees_both_2",
+    "step-100/range_trees_2",
+    "step-100/calendar_exact",
+    "step-100/calendar_trees_2",
+    "step-100/calendar_range_trees_2",
+    "step-100/calendar_interval_trees_2",
+    "step-100/calendar_interval_linear_2"
+  ],
+  "checkpoint_selection": "full internal dev only",
+  "deployment_changed": false,
+  "baseline_preserved": true,
+  "external_val_used_for_checkpoint_selection": false
+}

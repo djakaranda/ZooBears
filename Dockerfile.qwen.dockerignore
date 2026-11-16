@@ -5,8 +5,10 @@
 !artifacts/
 !artifacts/qwen_base/
 !artifacts/qwen_base/**
-!artifacts/qwen_dates/
-!artifacts/qwen_dates/**
-artifacts/qwen_dates/checkpoints/
-artifacts/qwen_dates/checkpoints/**
+!artifacts/qwen_sprint/
+!artifacts/qwen_sprint/**
+artifacts/qwen_sprint/checkpoints/
+artifacts/qwen_sprint/checkpoints/**
 !artifacts/date_ranker_v21.joblib
+!artifacts/sprint_boundary_trees.joblib
+!artifacts/sprint_ranges.joblib

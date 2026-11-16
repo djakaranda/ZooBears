@@ -6,9 +6,11 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir transformers==4.57.1 safetensors==0.8.0 peft==0.17.1 'accelerate>=1,<2'
 COPY src ./src
 COPY artifacts/qwen_base ./artifacts/qwen_base
-COPY artifacts/qwen_dates ./artifacts/qwen_dates
+COPY artifacts/qwen_sprint ./artifacts/qwen_sprint
 COPY artifacts/date_ranker_v21.joblib ./artifacts/
+COPY artifacts/sprint_boundary_trees.joblib ./artifacts/
+COPY artifacts/sprint_ranges.joblib ./artifacts/
 ENV PYTHONPATH=/app/src
 ENV HF_HUB_OFFLINE=1
 EXPOSE 8000
-CMD ["python", "-m", "compactfacts.api", "--engine", "qwen", "--model", "artifacts/qwen_dates", "--base-model", "artifacts/qwen_base", "--device", "cpu", "--host", "0.0.0.0"]
+CMD ["python", "-m", "compactfacts.api", "--engine", "qwen", "--model", "artifacts/qwen_sprint", "--base-model", "artifacts/qwen_base", "--device", "cpu", "--host", "0.0.0.0"]

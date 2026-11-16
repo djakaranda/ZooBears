@@ -1,0 +1,9 @@
+{
+  "source": "subset of fit-only sprint dataset; no dev/val/suite examples",
+  "calls": 838,
+  "windows": 1041,
+  "tokens": 1349897,
+  "context_budget_excluded_calls": 0,
+  "task": "dates of supplied facts only; fact dates excluded from prompt",
+  "seed": 173
+}
