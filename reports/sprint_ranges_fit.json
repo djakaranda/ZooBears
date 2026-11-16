@@ -1,0 +1,51 @@
+{
+  "week/previous": {
+    "total": 504,
+    "inside": 232,
+    "delta_mode": -7,
+    "offset_mode": 5,
+    "delta_mode_count": 34
+  },
+  "week/previous/ticket_status": {
+    "total": 162,
+    "inside": 149,
+    "delta_mode": -7,
+    "offset_mode": 5,
+    "delta_mode_count": 24
+  },
+  "week/previous/service_state": {
+    "total": 296,
+    "inside": 66,
+    "delta_mode": -6,
+    "offset_mode": 1,
+    "delta_mode_count": 14
+  },
+  "month/previous": {
+    "total": 245,
+    "inside": 140,
+    "delta_mode": -25,
+    "offset_mode": 13,
+    "delta_mode_count": 9
+  },
+  "month/previous/tariff": {
+    "total": 151,
+    "inside": 67,
+    "delta_mode": -25,
+    "offset_mode": 10,
+    "delta_mode_count": 4
+  },
+  "month/previous/service_state": {
+    "total": 94,
+    "inside": 73,
+    "delta_mode": -21,
+    "offset_mode": 19,
+    "delta_mode_count": 7
+  },
+  "week/previous/tariff": {
+    "total": 46,
+    "inside": 17,
+    "delta_mode": -8,
+    "offset_mode": 2,
+    "delta_mode_count": 3
+  }
+}

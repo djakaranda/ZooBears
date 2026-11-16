@@ -1,0 +1,15 @@
+{
+  "source": "original fit plus synthetic; no dev labels",
+  "seconds": 101.06677050000872,
+  "audit": {
+    "start_unobservable_skipped": 3922,
+    "end_facts": 7547,
+    "start_facts": 4377,
+    "end_unobservable_skipped": 1300,
+    "start_rows": 25081,
+    "start_features": 111,
+    "end_rows": 46882,
+    "end_features": 119
+  },
+  "inference_threads": 1
+}

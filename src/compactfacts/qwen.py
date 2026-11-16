@@ -35,6 +35,15 @@ class QwenExtractor:
         self.catalog = json.loads(catalog_path.read_text(encoding='utf-8')) if catalog_path.exists() else {}
         inference_path = directory / 'inference_config.json'
         inference = json.loads(inference_path.read_text(encoding='utf-8')) if inference_path.exists() else {}
+        self.sprint_dates_policy=inference.get('sprint_dates') or {}
+        self.sprint_dates_model=None
+        self.sprint_ranges_model=None
+        if self.sprint_dates_policy.get('model'):
+            from joblib import load
+            self.sprint_dates_model=load(self.sprint_dates_policy['model'])
+        if self.sprint_dates_policy.get('ranges'):
+            from joblib import load
+            self.sprint_ranges_model=load(self.sprint_dates_policy['ranges'])
         self.date_pointer_mode=inference.get('date_pointer_mode','conservative') if self.metadata.get('transport_format_version',1)==2 else 'off'
         if date_ranker is None:
             date_ranker = inference.get('date_ranker')
@@ -165,4 +174,7 @@ class QwenExtractor:
             from .date_pointers import apply_date_pointers
             apply_date_pointers(call,result,candidates,self.date_pointer_mode)
         result['generation_diagnostics'] = diagnostics
+        if self.sprint_dates_policy:
+            from .scoped_dates import apply_sprint_policy
+            apply_sprint_policy(call,result,self.sprint_dates_policy,self.sprint_dates_model,self.sprint_ranges_model)
         return result

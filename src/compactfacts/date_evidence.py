@@ -112,6 +112,11 @@ def with_date_evidence(call, prediction):
         key=(fact['object'].get('id'),fact['attribute'],fact['source']['turn_idx'])
         pointer=pointers.get((*key,fact['value'],fact.get('polarity',1))) or pointers.get((*key,None,None))
         if pointer:
+            estimate=pointer.get('range_estimate')
+            if estimate:
+                item['start']={'kind':'range','earliest':estimate['earliest'],'latest_exclusive':estimate['latest_exclusive'],
+                    'precision':estimate['precision'],'observed_at':call['started_at'],'reason':'spoken_period_with_point_estimate',
+                    'point_estimate':estimate['value'],'estimate_method':estimate['method'],'sources':estimate['sources']}
             if pointer.get('start_unknown') and item['start']['kind']!='range':
                 item['start']={'kind':'unknown','observed_at':call['started_at'],'reason':'start_not_resolved','sources':[]}
             for field,key in [('start','valid_from'),('end','valid_to')]:
@@ -120,9 +125,13 @@ def with_date_evidence(call, prediction):
                     local=item.get(field,{})
                     if local.get('kind')=='range' and not local['earliest']<=ref['value']<local['latest_exclusive']:
                         continue
-                    reason='confirmed_offer_window' if field=='end' and pointer.get('confirmed_visit_window_recovered') else 'model_linked_spoken_date'
+                    reason='confirmed_offer_window' if field=='end' and pointer.get('confirmed_visit_window_recovered') else {'event_clause':'clause_bound_spoken_date','fit_boundary_ranker':'fit_ranked_spoken_date','calendar_constraints':'spoken_constraint_intersection'}.get(ref.get('selection_method'),'model_linked_spoken_date')
+                    sources=[source]
+                    for support in ref.get('supporting_sources',[]):
+                        valid=reference_source(support)
+                        if valid and valid not in sources:sources.append(valid)
                     item[field]={'kind':'exact','value':ref['value'],'precision':ref.get('precision','day'),
-                        'observed_at':call['started_at'],'reason':reason,'sources':[source]}
+                        'observed_at':call['started_at'],'reason':reason,'sources':sources}
             if pointer.get('closed_unknown') and not item.get('end'):
                 item['end']={'kind':'unknown','observed_at':call['started_at'],'reason':'end_not_resolved','sources':[]}
         evidence.append(item)

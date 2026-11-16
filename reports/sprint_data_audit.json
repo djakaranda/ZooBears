@@ -1,0 +1,13 @@
+{
+  "seed": 73,
+  "real_fit_calls": 800,
+  "synthetic_calls": 640,
+  "tokens_before_asr": 1774312,
+  "real_tokens": 1490413,
+  "synthetic_tokens": 283899,
+  "account_overlap": 0,
+  "suite_exact_dialogue_overlap": 0,
+  "new_suite_calls": 43,
+  "source": "original fit plus newly generated templates; no dev/val/suite labels in training",
+  "fit_sha256": "33e9d34298337384f0adc1e4a40884853e1ac3a5576584b8762891edc5387cae"
+}

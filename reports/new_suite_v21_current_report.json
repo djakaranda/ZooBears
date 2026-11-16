@@ -1,0 +1,268 @@
+{
+  "official": {
+    "metrics_version": "2.1",
+    "n_calls": 41,
+    "n_gold_facts": 51,
+    "n_pred_facts": 31,
+    "fact_precision": 0.7097,
+    "fact_recall": 0.4314,
+    "temporal_recall": 0.6667,
+    "n_temporal": 15,
+    "state_accuracy": 0.3871,
+    "n_state": 31,
+    "grounding_turn": 1.0,
+    "grounding_span": 1.0,
+    "n_grounded": 22
+  },
+  "official_excluded_calls": [
+    {
+      "call_id": "zb-v21-stress-06:call0000",
+      "error": "TypeError: 'datetime.date' object is not iterable"
+    },
+    {
+      "call_id": "zb-v21-stress-17:call0000",
+      "error": "TypeError: 'datetime.date' object is not iterable"
+    }
+  ],
+  "strict": {
+    "passed": 16,
+    "total": 43,
+    "cases": [
+      {
+        "call_id": "zb-v21-easy-01:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-easy-02:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-easy-03:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-easy-04:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-easy-05:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-easy-06:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-easy-07:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-easy-08:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-easy-09:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-easy-10:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-01:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-02:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-03:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-04:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-05:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-06:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-07:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-08:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-tricky-09:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-10:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-11:call0000",
+        "errors": [
+          "missing_facts:1",
+          "extra_or_invalid_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-12:call0000",
+        "errors": [
+          "agreement/клиент.valid_from"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-13:call0000",
+        "errors": [
+          "missing_facts:1",
+          "extra_or_invalid_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-14:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-15:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-tricky-16:call0000",
+        "errors": [
+          "tariff/клиент.valid_from"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-01:call0000",
+        "errors": [
+          "missing_facts:3",
+          "extra_or_invalid_facts:2"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-02:call0000",
+        "errors": [
+          "missing_facts:3",
+          "extra_or_invalid_facts:3"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-03:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-stress-04:call0000",
+        "errors": [
+          "missing_facts:3",
+          "extra_or_invalid_facts:1",
+          "service_state/телевидение.valid_to"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-05:call0000",
+        "errors": [
+          "agreement/клиент.valid_from"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-06:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-stress-07:call0000",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-08:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-stress-09:call0000",
+        "errors": [
+          "service_state/модем.valid_to",
+          "service_state/модем.valid_from"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-10:call0000",
+        "errors": [
+          "missing_facts:2"
+        ]
+      },
+      {
+        "call_id": "zb-v21-series-01:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-series-01:call0001",
+        "errors": [
+          "missing_facts:1"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-13:call0000",
+        "errors": [
+          "agreement/клиент.valid_from"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-14:call0000",
+        "errors": [
+          "missing_facts:2"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-15:call0000",
+        "errors": [
+          "missing_facts:1",
+          "extra_or_invalid_facts:1",
+          "agreement/клиент.valid_from"
+        ]
+      },
+      {
+        "call_id": "zb-v21-stress-16:call0000",
+        "errors": []
+      },
+      {
+        "call_id": "zb-v21-stress-17:call0000",
+        "errors": [
+          "tariff/клиент.valid_from"
+        ]
+      }
+    ]
+  }
+}
