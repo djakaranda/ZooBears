@@ -54,8 +54,10 @@ Dockerfile обновлён, но его сборка на текущей маш
 История: [v2.1](reports/V21_ITERATION_REPORT.md),
 [предыдущая привязка дат](reports/DATE_POINTER_REPORT.md),
 [архивный v1](reports/QWEN_REPORT.md).
-Старая презентация v1 сохранена в output/presentation; её цифры не относятся
-к текущему релизу. Для защиты используйте новый итоговый отчёт.
+Презентация для защиты: [ZooBears_defense_2026.pptx](output/presentation/ZooBears_defense_2026.pptx).
+12 основных слайдов на 6 минут 20 секунд и 6 резервных для вопросов.
+[Заметки выступающего](output/presentation/ZooBears_speaker_notes.md).
+Архивная презентация v1 сохранена отдельно.
 
 ## Прежний гибрид: запуск и воспроизведение
 
